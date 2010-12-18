@@ -1,0 +1,75 @@
+{% extends "base.html" %}
+
+
+{% block title %}{{ title }}{% endblock %}
+{% block body_class %}{{ block.super }} face_list{% endblock %}
+
+
+{% block content_title %}{{ title }}{% endblock %}
+
+
+{% block content %}
+
+<h3>Filter by status</h3>
+<ul class="inline">
+	<li><a class="mbl-button mbl-button-primary" href="{% url face_list_admin 'all' %}">All</a></li>
+{% for filter in filters %}
+    <li><a class="mbl-button" href="{% url face_list_admin filter %}">{{ filter }}</a></li>
+{% endfor %}
+</ul>
+<div class="clear"></div>
+
+<h3>Users&nbsp; { {{ entries|length }} }</h3>
+<ul class="lined-list">
+{% for entry in entries %}
+    {% if forloop.first %}
+    <li class="first">
+    {% else %}
+        {% if forloop.last %}
+        <li class="last">
+        {% else %}
+        <li>
+        {% endif %}
+    {% endif %}
+    <span class="title">
+    <a href="{% url face_detail entry.username %}">{{ entry.username|truncatewords:20|safe }}</a>
+	</span><br />
+	<div style="margin-top: 10px; font-size: 106%; font-family: monospace; color: #444;">
+	{{ entry.email }}
+	</div>
+    <div class="edit-box">
+	{% if entry.is_active %}
+    <form action="{% url face_active %}" method="post">{% csrf_token %}
+        <input type="hidden" value="{{ entry.id }}" name="entry_id" />
+		<input type="hidden" value="" name="entry_status" />
+        <input type="submit" value="Make Inactive" class="mbl-button" />
+    </form>
+	{% else %}
+    <form action="{% url face_active %}" method="post">{% csrf_token %}
+        <input type="hidden" value="{{ entry.id }}" name="entry_id" />
+		<input type="hidden" value="1" name="entry_status" />
+        <input type="submit" value="Make Active" class="mbl-button mbl-button-primary" />
+    </form>	
+	{% endif %}
+	{% if entry.is_superuser %}
+    <form action="{% url face_admin %}" method="post">{% csrf_token %}
+        <input type="hidden" value="{{ entry.id }}" name="entry_id" />
+		<input type="hidden" value="" name="entry_status" />
+        <input type="submit" value="Make User" class="mbl-button" />
+    </form>
+	{% else %}
+    <form action="{% url face_admin %}" method="post">{% csrf_token %}
+        <input type="hidden" value="{{ entry.id }}" name="entry_id" />
+		<input type="hidden" value="1" name="entry_status" />
+        <input type="submit" value="Make Admin" class="mbl-button mbl-button-primary" />
+    </form>	
+	{% endif %}
+    <form action="{% url face_delete %}" method="post">{% csrf_token %}
+        <input type="hidden" value="{{ entry.id }}" name="entry_id" />
+        <input type="submit" value="Delete" class="mbl-button mbl-button-primary" />
+    </form>
+    </div>
+    </li>
+{% endfor %}
+</ul>
+{% endblock %}

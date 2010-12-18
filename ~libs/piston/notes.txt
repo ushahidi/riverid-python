@@ -1,0 +1,16 @@
+notes by soe
+============
+
+http://bitbucket.org/jespern/django-piston 0.2.3 rc1 (ffd444db828c)
+
+search for #m instances for mods
+
+mods
+====
+#m authentication.py
+#m managers.py
+#m models.py
+#m tests.py
+
+#todo
+	models can be refactored to take advantage of mongo structure

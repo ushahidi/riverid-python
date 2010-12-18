@@ -1,0 +1,17 @@
+{% extends "base.html" %}
+
+
+{% block title %}RiverID{% endblock %}
+{% block body_class %}{{ block.super }} home{% endblock %}
+
+
+{% block content_title %}
+	Welcome to RiverID
+{% endblock %}
+
+
+{% block content %}
+	<p>RiverID is a reputation system for <a href="http://www.ushahidi.com" target="_blank">Ushahidi's</a> <a href="http://swift.ushahidi.com" target="_blank">Swift</a> platform.</p>
+	<p><a href="{% url registration_register %}">Create an account here</a> to log in to Swift River instances across the web and manage authorizations in these instances. With an account here, your contributions towards Swift River instances will be reflected on your profile. Your reputation can then be carried across all Swift River instances</p>
+	<p>RiverID welcomes developers to get access to <a href="{% url api %}">RiverID APIs</a>. So get started now by <a href="{% url key_add %}">grabbing API key here</a> (you need to have a RiverID account first).</p>
+{% endblock %}

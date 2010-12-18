@@ -1,0 +1,20 @@
+{% extends "base.html" %}
+
+
+{% block title %}{{ face.user.username }}'s Profile{% endblock %}
+{% block body_class %}{{ block.super }} face_detail{% endblock %}
+
+
+{% block content_title %}
+	{{ face.user.username }}'s Profile
+{% endblock %}
+
+
+{% block content %}
+	<h3>Name</h3>
+	<p>{{ face.first_name }} {{ face.last_name }}</p>
+	<h3>About</h3>
+	<p>{{ face.about }}</p>
+	<h3>Activities</h3>
+	<p>-----<br />-----<br />-----</p>		
+{% endblock %}

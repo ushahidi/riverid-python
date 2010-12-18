@@ -1,0 +1,11 @@
+notes by soe
+============
+
+mongoengine 0.3
+
+search for #m instances for mods
+
+mods
+====
+
+refactored out UserManger, added functions in User class

@@ -1,0 +1,22 @@
+{% extends "base.html" %}
+
+
+{% block title %}Log in{% endblock %}
+{% block body_class %}{{ block.super }} face_edit{% endblock %}
+
+
+{% block content_title %}
+	Edit your profile
+{% endblock %}
+
+
+{% block content %}
+<form action="" method="post" class="profile_edit">{% csrf_token %}
+	<table>
+        {{ form }}
+        <tr>
+            <th></th><td><input type="submit" value="Update" /></td>
+    </table>
+    <input type="hidden" name="next" value="{% if next %}{{ next }}{% else %}/{% endif %}">
+</form>
+{% endblock %}

@@ -1,0 +1,78 @@
+{% extends "base.html" %}
+
+
+{% block title %}{{ title }}{% endblock %}
+{% block body_class %}{{ block.super }} consumer_list{% endblock %}
+
+
+{% block content_title %}{{ title }}{% endblock %}
+
+
+{% block content %}
+
+{% if admin %}
+	<h3>Filter by status</h3>
+	<ul class="inline">
+		<li><a class="mbl-button mbl-button-primary" href="{% url key_list_admin 'all' %}">All</a></li>
+	{% for status in statuses %}
+	    <li><a class="mbl-button" href="{% url key_list_admin status %}">{{ status }}</a></li>
+	{% endfor %}
+	</ul>
+	<div class="clear"></div>
+{% endif %}
+
+<h3>API Keys&nbsp; { {{ entries|length }} }</h3>
+<ul class="lined-list">
+{% if entries|length == 0 %}
+	<li class="first">Feel like writing some code? <a href="{% url key_add %}">Get an API Key!</a></li>
+{% endif %}
+{% for entry in entries %}
+    {% if forloop.first %}
+    <li class="first">
+    {% else %}
+        {% if forloop.last %}
+        <li class="last">
+        {% else %}
+        <li>
+        {% endif %}
+    {% endif %}
+    <span class="title">
+    {{ entry.name|truncatewords:14|safe }}
+	</span><br />
+	<div style="margin-top: 10px; font-size: 106%; font-family: monospace; color: #444;">
+		Key: {{ entry.key }}
+		&nbsp;|&nbsp; 
+		Secret: {{ entry.secret }}
+	</div>
+    <div class="edit-box">
+	{% if admin %}
+    <form action="{% url key_status %}" method="post">{% csrf_token %}
+		<span class="published"> Status: <select name="entry_status">
+		{% for status in statuses %}
+			{% if status == entry.status %}
+		    	<option value="{{ status }}" selected="yes">{{ status }}</option>
+			{% else %}
+				<option value="{{ status }}">{{ status }}</option>
+			{% endif %}
+		{% endfor %}
+		</select></span>
+        <input type="hidden" value="{{ entry.id }}" name="entry_id" />
+        <input type="submit" value="Change" class="mbl-button" />
+    </form>&nbsp;
+    <form action="{% url key_delete_admin %}" method="post">{% csrf_token %}
+        <input type="hidden" value="{{ entry.id }}" name="entry_id" />
+        <input type="submit" value="Delete" class="mbl-button mbl-button-primary" />
+    </form>
+	{% else %}
+	<span class="published">Status: {{ entry.status }}</span>&nbsp;
+	<a class="mbl-button" href="{% url key_edit entry.id %}">Edit</a>&nbsp;
+    <form action="{% url key_delete %}" method="post">{% csrf_token %}
+        <input type="hidden" value="{{ entry.id }}" name="entry_id" />
+        <input type="submit" value="Delete" class="mbl-button mbl-button-primary" />
+    </form>
+	{% endif %}
+    </div>
+    </li>
+{% endfor %}
+</ul>
+{% endblock %}

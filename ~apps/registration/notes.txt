@@ -1,0 +1,20 @@
+notes by soe
+============
+
+http://bitbucket.org/ubernostrum/django-registration/  (d36a38202ee3)
+
+templates/registration used from http://github.com/nathanborror/django-registration
+
+search for #m instances for mods
+
+mods
+====
+
+#m forms.py
+
+#m models.py
+
+#todo
+	activation_key could just be part of user object
+	that means no reference field, but a lot of code changes on registration app
+	should come back to it for optimization but activation is just 1 time for each user anyway

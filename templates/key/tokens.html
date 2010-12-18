@@ -1,0 +1,40 @@
+{% extends "base.html" %}
+
+
+{% block title %}{{ title }}{% endblock %}
+{% block body_class %}{{ block.super }} consumer_token{% endblock %}
+
+
+{% block content_title %}{{ title }}{% endblock %}
+
+
+{% block content %}
+
+<h3>Authorized Sites/Apps&nbsp; { {{ entries|length }} }</h3>
+<ul class="lined-list">
+{% if entries|length == 0 %}
+	<li class="first"><a href="{% url key_add %}">See list of sites and apps which are using RiverID here!</a><br />Cool stuffs! Once you have authorized those, you can manage your authorizations here.</li>
+{% endif %}
+{% for entry in entries %}
+    {% if forloop.first %}
+    <li class="first">
+    {% else %}
+        {% if forloop.last %}
+        <li class="last">
+        {% else %}
+        <li>
+        {% endif %}
+    {% endif %}
+    <span class="title">
+    {{ entry.consumer.name|truncatewords:24|safe }}
+	</span><br />
+	<div style="margin-top: 10px; font-size: 106%; font-family: monospace; color: #444;">
+		{{ entry.consumer.url }}
+	</div>
+    <div class="edit-box">
+	<a class="mbl-button" href="#">Cancel Authorization</a>&nbsp;
+    </div>
+    </li>
+{% endfor %}
+</ul>
+{% endblock %}

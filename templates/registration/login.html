@@ -1,0 +1,22 @@
+{% extends "registration/base_registration.html" %}
+
+
+{% block title %}Log in{% endblock %}
+{% block body_class %}{{ block.super }} login_form{% endblock %}
+
+
+{% block content_title %}
+	Log in
+{% endblock %}
+
+
+{% block content %}
+<form action="" method="post" class="login_form">{% csrf_token %}
+	<table>
+        {{ form }}
+        <tr>
+            <th></th><td><input type="submit" value="Login" /></td>
+    </table>
+    <input type="hidden" name="next" value="{% if next %}{{ next }}{% else %}/{% endif %}">
+</form>
+{% endblock %}

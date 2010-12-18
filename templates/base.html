@@ -1,0 +1,93 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"> 
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+    <head>
+        <title>{% block title %}{% endblock %} | {{ SITE_INFO_TITLE }}</title>
+        <link rel="stylesheet" type="text/css" href="{{ MEDIA_URL }}/css/reset.css" />
+        <link rel="stylesheet" type="text/css" href="{{ MEDIA_URL }}/css/pygments.css" />
+        <link rel="stylesheet" type="text/css" href="{{ MEDIA_URL }}/css/grey-theme.css" />
+        {% block extrahead %}{% endblock %}
+    </head>
+    <body>
+        <div class="container">
+        <div class="pagehead" id="pagehead">
+            <div class="content">
+
+            <div class="left-column">
+
+                <div class="fold-box">
+                    <span class="fold"></span>
+                    <div class="fold-box-padder">
+                        <h1><a href="{% url home %}">{{ SITE_INFO_TITLE }}</a></h1>
+                        <h4 class="author">{{ SITE_INFO_DESC }}</h4>
+                    </div>
+                </div>
+				
+                <div class="fold-box" id="admin-box">
+                    <span class="fold"></span>
+                    <div class="fold-box-padder">
+						{% if user.is_authenticated %}
+                        <h2>Habari!</h2>
+						<h4>
+                        {% if user.get_full_name %}
+                            {{ user.get_full_name }} 
+                        {% else %}
+                            {{ user.email }}
+                        {% endif %}
+                        </h4>
+                        <ul class="inline">
+                            <!--<li><a class="mbl-button" href="">Admin</a></li>-->
+                            <li><a class="mbl-button mbl-button-primary" href="{% url auth_logout %}">Log out</a></li>
+                        </ul>
+						<div class="hr-styled-inverted"></div>	
+						<h4><a href="{% url face_detail user.username %}">Profile</a> / <a href="{% url face_edit %}">Edit</a></h4>
+                        <h4><a href="{% url key_tokens %}">Authorizations</a></h4>
+						<div class="hr-styled-inverted"></div>
+						<h4><a href="{% url key_list %}">API Keys</a> / <a href="{% url key_add %}">Get One</a></h4>
+						{% else %}
+                        <ul class="inline">
+							<li><a class="mbl-button mbl-button-primary" href="{% url auth_login %}">Log in</a></li>
+							<li><a class="mbl-button" href="{% url registration_register %}">Register</a></li>
+                        </ul>
+						{% endif %}
+                    </div>
+                </div>
+				
+				{% if user.is_superuser %}
+                <div class="fold-box">
+                    <span class="fold"></span>
+                    <div class="fold-box-padder">						
+					<h4><a href="{% url face_list_admin 'all' %}">Manage Users</a></h4>
+                    <h4><a href="{% url key_list_admin 'all' %}">Manage API Keys</a></h4>					
+					</div>
+                </div>
+				{% endif %}
+
+            </div> <!-- /left-column -->
+			<h2>{% block content_title %}{{ base_title }}{% endblock %}</h2>
+			<div class="clear"></div>
+            {% block content %}{{ base_content }}{% endblock %}
+
+            </div> <!-- /content-->
+        </div> <!-- /pagehead -->
+        </div> <!-- /container -->
+
+        <div class="footer">
+            <div class="container">
+	            
+	            <div class="login">
+	                <p>
+						<a class="mbl-button mbl-button-primary" href="{% url fish_feedfish %}">Feed fish :)</a>
+						{% if user.is_superuser %}
+						<a class="mbl-button mbl-button-primary" href="{% url fish_killoil %}">Kill Oil!</a>
+						{% endif %}
+					</p>
+	            </div>
+	            
+            <div class="content">
+            <p>RiverID is a component of <a href="http://swift.ushahidi.com">Swift</a> platform that uses <a href="http://www.djangoproject.com">Django</a>, <a href="http://www.mongodb.org">MongoDB</a>, and <a href="http://github.com/hmarr/mongoengine">MongoEngine</a>. <i>(Version 0.05)</i></p>
+            </div>
+            </div>
+        </div> <!-- /footer -->
+
+    </body>
+</html>
