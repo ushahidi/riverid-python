@@ -1,4 +1,0 @@
-notes by soe
-============
-
-http://github.com/simplegeo/python-oauth2 1.2.1
