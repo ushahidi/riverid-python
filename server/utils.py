@@ -32,6 +32,7 @@ class OAuthContainer(object):
 
 def validate_gateway_oauth_credentials(request):
     oauth_server = oauth2.Server(signature_methods={'HMAC-SHA1': oauth2.SignatureMethod_HMAC_SHA1()})
+    oauth_server.timestamp_threshold = 50000
 
     auth_header = {}
     if 'Authorization' in request.headers:
