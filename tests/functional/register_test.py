@@ -7,11 +7,12 @@ from urllib2 import URLError
 
 key = u'451ee6b4d98f800700ff6af49c7fa3478783ade4177e1dc5c84796aa'
 secret = u'f7fcdeef3a5a0989d31217589599fdd21f1f54acb78571dd1173d913'
-url = 'http://localhost:5000/thegateway/register'
+#url = 'http://localhost:5000/thegateway/register'
+url = 'http://50.56.31.61/thegateway/register'
 
 def build_request(url, method='POST', values={}):
     params = {
-        'oauth_timestamp': int(time.time()),
+        'oauth_timestamp': int(time.time()),#int(time.mktime(time.gmtime())),
         'oauth_nonce': None,
         'oauth_signature_method':'HMAC-SHA1',
     }
@@ -23,9 +24,9 @@ def build_request(url, method='POST', values={}):
     return req
 
 values = {
-    'riverid':'test2',
-    'password':'password',
-    'emailaddress':'test2@test.com',
+    'riverid':'matt',
+    'password':'sv_penguin666',
+#    'emailaddress':'test2@test.com',
 #    'familyname':'Somename',
 #    'othernames':'Someone',
 }
