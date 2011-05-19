@@ -8,5 +8,5 @@ __email__ = "mg@swiftly.org"
 __status__ = "Development"
 
 
-ENV = "staging"
+ENV = "production"
 
