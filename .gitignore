@@ -1,2 +1,3 @@
+*.csv
 *.log
 configuration/environment.py
