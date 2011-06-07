@@ -15,7 +15,7 @@ from urllib2 import URLError
 
 key = u'451ee6b4d98f800700ff6af49c7fa3478783ade4177e1dc5c84796aa'
 secret = u'f7fcdeef3a5a0989d31217589599fdd21f1f54acb78571dd1173d913'
-url = 'http://localhost:5000/thegateway/validatecredentials'
+url = 'http://local.riverid.com/thegateway/validatecredentials'
 
 def build_request(url, method='POST', values={}):
     params = {
@@ -31,8 +31,8 @@ def build_request(url, method='POST', values={}):
     return req
 
 values = {
-    'riverid':'test1',
-    'password':'password'
+    'riverid':'matt',
+    'password':'sv_penguin666'
 }
 request = build_request(url, values=values)
 data = urllib.urlencode(values)

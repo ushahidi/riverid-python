@@ -8,7 +8,7 @@ from urllib2 import URLError
 key = u'451ee6b4d98f800700ff6af49c7fa3478783ade4177e1dc5c84796aa'
 secret = u'f7fcdeef3a5a0989d31217589599fdd21f1f54acb78571dd1173d913'
 #url = 'http://localhost:5000/thegateway/register'
-url = 'http://50.56.31.61/thegateway/register'
+url = 'http://local.riverid.com/thegateway/register'
 
 def build_request(url, method='POST', values={}):
     params = {
@@ -26,7 +26,7 @@ def build_request(url, method='POST', values={}):
 values = {
     'riverid':'matt',
     'password':'sv_penguin666',
-#    'emailaddress':'test2@test.com',
+    'emailaddress':'test2@test.com',
 #    'familyname':'Somename',
 #    'othernames':'Someone',
 }
