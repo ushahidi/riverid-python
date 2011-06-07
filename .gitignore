@@ -1,3 +1,5 @@
 *.csv
-*.log
-configuration/environment.py
+.project
+.pydevproject
+*_local_wsgi_*
+
