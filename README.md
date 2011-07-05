@@ -4,10 +4,10 @@
 
 1. Install the necessary Debian packages:  
 `apt-get update`  
-`apt-get install apache2 libapache2-mod-wsgi python-pip git`
+`apt-get install apache2 libapache2-mod-wsgi python-pip mongodb-server git`
 
 2. Install the necessary Python packages:  
-`pip install flask mongokit`
+`pip install flask mongokit oauth2`
 
 3. Create a user for RiverID processes to run as:  
 `adduser --disabled-password --gecos "" riverid`
