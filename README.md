@@ -1,6 +1,6 @@
-= RiverID
+# RiverID
 
-== Debian 6.0 (Squeeze) Installation Instructions
+## Debian 6.0 (Squeeze) Installation Instructions
 
 1. Install the necessary Debian packages:  
 `apt-get update`  
