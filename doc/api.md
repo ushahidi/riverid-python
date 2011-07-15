@@ -11,6 +11,20 @@
 
 ## Methods
 
+### checkpassword
+
+#### Parameters
+
+* `email` The email address of the account.
+* `password` The password to check.
+
+#### Returns
+
+    {
+        "status": "success",
+        "valid": true
+    }
+
 ### confirmemail
 
 #### Parameters
