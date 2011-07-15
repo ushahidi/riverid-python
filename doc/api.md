@@ -25,6 +25,19 @@
         "email": "user@example.com"
     }
 
+### recoverpassword
+
+#### Parameters
+
+* `email` The email address of the account to recover.
+
+### Returns
+
+    {
+        "status": "success",
+        "email": "user@example.com"
+    }
+
 ### register
 
 #### Parameters
