@@ -11,6 +11,21 @@
 
 ## Methods
 
+### changepassword
+
+#### Parameters
+
+* `email` The email address of the account.
+* `oldpassword` The old password.
+* `newpassword` The new password.
+
+#### Returns
+
+    {
+        "status": "success",
+        "email": "user@example.com"
+    }
+
 ### checkpassword
 
 #### Parameters
