@@ -1,41 +1,43 @@
 # RiverID API Documentation
 
-## GET api/confirmemail
+## Methods
 
-### Parameters
+### api/confirmemail
+
+#### Parameters
 
 * `email` The email address to confirm.
 * `token` The secret token sent to the address.
 
-### Returns
+#### Returns
 
     {
         "status": "success",
         "email": "user@example.com"
     }
 
-## GET api/register
+### api/register
 
-### Parameters
+#### Parameters
 
 * `email` The email address associated with the new account.
 * `password` The initial password of the new account.
 
-### Returns
+#### Returns
 
     {
         "status": "success",
         "email": "user@example.com"
     }
 
-## GET api/signin
+### api/signin
 
-### Parameters
+#### Parameters
 
 * `email` The email address of the user signing in.
 * `password` The password associated with the email address.
 
-### Returns
+#### Returns
 
     {
         "status": "success",
