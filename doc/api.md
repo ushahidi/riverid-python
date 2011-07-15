@@ -1,6 +1,6 @@
 # RiverID API Documentation
 
-## `api/signin`
+## GET api/signin
 
 ### Parameters
 
