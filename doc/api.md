@@ -2,7 +2,7 @@
 
 ## Methods
 
-### api/confirmemail
+### confirmemail
 
 #### Parameters
 
@@ -16,7 +16,7 @@
         "email": "user@example.com"
     }
 
-### api/register
+### register
 
 #### Parameters
 
@@ -30,7 +30,7 @@
         "email": "user@example.com"
     }
 
-### api/signin
+### signin
 
 #### Parameters
 
