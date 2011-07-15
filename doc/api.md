@@ -66,3 +66,15 @@
         "email": "user@example.com",
         "session": "2C7C5F47B6CFBE2FB3BE931C9FB2CC05638D26A00D85E747BF7DB2900154D58D"
     }
+
+### signout
+
+#### Parameters
+
+* `session` The session identifier.
+
+#### Returns
+
+    {
+        "status: "success"
+    }
