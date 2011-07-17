@@ -11,6 +11,22 @@
 
 ## Methods
 
+### changeemail
+
+#### Parameters
+
+* `oldemail` The old email address of the account.
+* `newemail` The new email address of the account.
+* `password` The account's password.
+
+#### Returns
+
+    {
+        "status": "success",
+        "oldemail": "user1@example.com",
+        "newemail": "user2@example.com"
+    }
+
 ### changepassword
 
 #### Parameters
