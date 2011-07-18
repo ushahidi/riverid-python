@@ -1,3 +1,4 @@
+from hashlib import sha512
 from user import User
 
 class API(object):
@@ -20,7 +21,9 @@ class API(object):
         pass
 
     def register(email, password):
-        pass
+        user = User()
+        user.email = email
+        user.password = sha512(password).digest()
 
     def signin(email, password):
         pass
