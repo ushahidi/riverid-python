@@ -1,4 +1,4 @@
-import re
+from re import match, IGNORECASE
 
 class Validator(object):
     @staticmethod
@@ -8,5 +8,5 @@ class Validator(object):
 
     @staticmethod
     def email(string):
-        if re.match(r'(?:^|\s)[-a-z0-9_.]+@(?:[-a-z0-9]+\.)+[a-z]{2,6}(?:\s|$)', string, re.IGNORECASE) == None:
+        if match(r'(?:^|\s)[-a-z0-9_.]+@(?:[-a-z0-9]+\.)+[a-z]{2,6}(?:\s|$)', string, IGNORECASE) == None:
             raise Exception('Please provide a valid email address.')
