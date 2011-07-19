@@ -1,7 +1,7 @@
 from email.mime.text import MIMEText
 from smtplib import SMTP
 
-class Email(object):
+class Mail(object):
     @staticmethod
     def send(sender, recipient, subject, body):
         message = MIMEText(body)
