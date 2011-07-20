@@ -33,6 +33,10 @@ class API(object):
     def register(self, email, password):
         Validator.email(email)
         Validator.password(password)
+        if self.db.users.find_one({'email': email}):
+            raise Exception('The email address has already been registered.')
+        self.db.users.insert({'email': email, 'password': Secret.hash(password)})
+        return {'email': email}
 
     def signin(self, email, password):
         Validator.email(email)
