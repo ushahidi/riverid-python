@@ -24,6 +24,13 @@ class API(object):
     def confirmemail(self, email, token):
         Validator.email(email)
         Validator.token(token)
+        user = self.db.users.find_one({'email': email})
+        if not user:
+            raise Exception('The email address has not been registered.')
+        if user.token != token:
+            raise Exception('The token does not match with the email address provided.')
+        self.db.users.update({'email': email}, {'token': False})
+        return {'email': email}
 
     def currentsessions(self, session):
         Validator.session(session)
