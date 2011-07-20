@@ -1,32 +1,41 @@
-from hashlib import sha512
-from user import User
+from utils.mail import Mail
+from utils.secret import Secret
+from utils.validator import Validator
 
 class API(object):
-    def changeemail(oldemail, newemail, password:
+    def __init__(self, db):
+        self.db = db
+
+    def changeemail(self, oldemail, newemail, password):
+        Validator.email(oldemail)
+        Validator.email(newemail)
+        Validator.password(password)
+
+    def changepassword(self, email, oldpassword, newpassword):
+        Validator.email(email)
+        Validator.password(oldpassword)
+        Validator.password(newpassword)
+
+    def checkpassword(self, email, password):
+        Validator.email(email)
+        Validator.password(password)
+
+    def confirmemail(self, email, token):
+        Validator.email(email)
+
+    def currentsessions(self, session):
         pass
 
-    def changepassword(email, oldpassword, newpassword):
-        pass
+    def recoverpassword(self, email):
+        Validator.email(email)
 
-    def checkpassword(email, password):
-        pass
+    def register(self, email, password):
+        Validator.email(email)
+        Validator.password(password)
 
-    def confirmemail(email, token):
-        pass
+    def signin(self, email, password):
+        Validator.email(email)
+        Validator.password(password)
 
-    def currentsessions(session):
-        pass
-
-    def recoverpassword(email):
-        pass
-
-    def register(email, password):
-        user = User()
-        user.email = email
-        user.password = sha512(password).digest()
-
-    def signin(email, password):
-        pass
-
-    def signout(session):
+    def signout(self, session):
         pass
