@@ -1,3 +1,4 @@
+from config import MAIL_FROM, SALT
 from utils.mail import Mail
 from utils.secret import Secret
 from utils.validator import Validator
@@ -35,7 +36,9 @@ class API(object):
         Validator.password(password)
         if self.db.users.find_one({'email': email}):
             raise Exception('The email address has already been registered.')
-        self.db.users.insert({'email': email, 'password': Secret.hash(password)})
+        token = Secret.generate(16)
+        self.db.users.insert({'email': email, 'password': Secret.hash(password, SALT), 'token': token})
+        Mail.send(MAIL_FROM, email, 'RiverID Email Confirmation', token)
         return {'email': email}
 
     def signin(self, email, password):
