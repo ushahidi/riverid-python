@@ -10,3 +10,13 @@ class Validator(object):
     def email(string):
         if match(r'(?:^|\s)[-a-z0-9_.]+@(?:[-a-z0-9]+\.)+[a-z]{2,6}(?:\s|$)', string, IGNORECASE) == None:
             raise Exception('Please provide a valid email address.')
+
+    @staticmethod
+    def token(string):
+        if match(r'^[a-zA-Z0-9]{16}$', string) == None:
+            raise Exception('Please provide a valid token.')
+
+    @staticmethod
+    def session(string):
+        if match(r'^[a-zA-Z0-9]{128}$', string) == None:
+            raise Exception('Please provide a valid session identifier.')
