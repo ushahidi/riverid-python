@@ -5,8 +5,14 @@ class User(object):
     def delete(self, email):
         self.db.user.remove({'email': email})
 
+    def exists(self, email):
+        return self.db.user.find_one({'email': email}) != None
+
     def get(self, email):
-        self.db.user.find_one({'email': email})
+        user = self.db.user.find_one({'email': email})
+        if not user:
+            raise Exception('The email address does not appear to be registered.')
+        return user
 
     def insert(self, email, **values):
         values['email'] = email
