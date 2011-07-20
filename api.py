@@ -22,9 +22,10 @@ class API(object):
 
     def confirmemail(self, email, token):
         Validator.email(email)
+        Validator.token(token)
 
     def currentsessions(self, session):
-        pass
+        Validator.session(session)
 
     def recoverpassword(self, email):
         Validator.email(email)
@@ -38,4 +39,4 @@ class API(object):
         Validator.password(password)
 
     def signout(self, session):
-        pass
+        Validator.session(session)
