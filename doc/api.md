@@ -53,6 +53,7 @@
 
     {
         "status": "success",
+        "email": "user@example.com",
         "valid": true
     }
 
