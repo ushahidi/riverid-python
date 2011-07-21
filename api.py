@@ -13,7 +13,7 @@ class API(object):
         Validator.email(newemail)
         Validator.password(password)
 
-        if user.get(oldemail)['password'] != Secret.hash(password):
+        if user.get(oldemail)['password'] != Secret.hash(password, SALT):
             raise Exception('The password is incorrect for this user.')
 
         self.user.update(oldemail, email=newemail)
@@ -25,10 +25,10 @@ class API(object):
         Validator.password(oldpassword)
         Validator.password(newpassword)
 
-        if user.get(email)['password'] != Secret.hash(oldpassword):
+        if user.get(email)['password'] != Secret.hash(oldpassword, SALT):
             raise Exception('The old password is incorrect for this user.')
 
-        self.user.update(email, password=Secret.hash(newpassword))
+        self.user.update(email, password=Secret.hash(newpassword, SALT))
 
         return {'email': email}
 
@@ -36,7 +36,7 @@ class API(object):
         Validator.email(email)
         Validator.password(password)
 
-        return {'email': email, 'valid': user.get(email)['password'] == Secret.hash(password)}
+        return {'email': email, 'valid': user.get(email)['password'] == Secret.hash(password, SALT)}
 
     def confirmemail(self, email, token):
         Validator.email(email)
@@ -47,15 +47,18 @@ class API(object):
         if not user['token']:
             raise Exception('The email address has already been confirmed.')
 
-        if user.token != token:
+        if user['token'] != token:
             raise Exception('The token is not valid for this email address.')
 
         self.user.update(email, token=False)
 
         return {'email': email}
 
-    def currentsessions(self, session):
+    def currentsessions(self, email, session):
+        Validator.email(email)
         Validator.session(session)
+
+        return {'email': email, 'sessions': self.user.get(email)['sessions']}
 
     def recoverpassword(self, email):
         Validator.email(email)
