@@ -13,10 +13,20 @@ class API(object):
         Validator.email(newemail)
         Validator.password(password)
 
+        if user.get(oldemail)['password'] != Secret.hash(password):
+            raise Exception('The password is incorrect for this user.')
+
+        self.user.update(oldemail, email=newemail)
+
     def changepassword(self, email, oldpassword, newpassword):
         Validator.email(email)
         Validator.password(oldpassword)
         Validator.password(newpassword)
+
+        if user.get(email)['password'] != Secret.hash(oldpassword):
+            raise Exception('The old password is incorrect for this user.')
+
+        self.user.update(email, password=Secret.hash(newpassword))
 
     def checkpassword(self, email, password):
         Validator.email(email)
