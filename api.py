@@ -18,6 +18,8 @@ class API(object):
 
         self.user.update(oldemail, email=newemail)
 
+        return {'oldemail': oldemail, 'newemail': newemail}
+
     def changepassword(self, email, oldpassword, newpassword):
         Validator.email(email)
         Validator.password(oldpassword)
@@ -28,9 +30,13 @@ class API(object):
 
         self.user.update(email, password=Secret.hash(newpassword))
 
+        return {'email': email}
+
     def checkpassword(self, email, password):
         Validator.email(email)
         Validator.password(password)
+
+        return {'email': email, 'valid': user.get(email)['password'] == Secret.hash(password)}
 
     def confirmemail(self, email, token):
         Validator.email(email)
