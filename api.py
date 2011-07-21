@@ -36,24 +36,7 @@ class API(object):
         Validator.email(email)
         Validator.password(password)
 
-        return dict(email=email, valid=user.get(email)['password'] == Secret.hash(password, SALT)}
-
-    def setpassword(self, email, token, password):
-        Validator.email(email)
-        Validator.token(token)
-        Validator.password(password)
-
-        user = self.user.get(email)
-
-        if not user['token']:
-            raise Exception('No password change has been requested.')
-
-        if user['token'] != token:
-            raise Exception('The token is not valid for this email address.')
-
-        self.user.update(email, token=False, password=Secret.hash(password, SALT))
-
-        return dict(email=email)
+        return dict(email=email, valid=self.user.get(email)['password'] == Secret.hash(password, SALT)}
 
     def currentsessions(self, email, session):
         Validator.email(email)
@@ -72,6 +55,23 @@ class API(object):
             self.user.insert(email, token=token)
 
         Mail.send(MAIL_FROM, email, 'RiverID Password Change', token)
+
+        return dict(email=email)
+
+    def setpassword(self, email, token, password):
+        Validator.email(email)
+        Validator.token(token)
+        Validator.password(password)
+
+        user = self.user.get(email)
+
+        if not user['token']:
+            raise Exception('No password change has been requested.')
+
+        if user['token'] != token:
+            raise Exception('The token is not valid for this email address.')
+
+        self.user.update(email, token=False, password=Secret.hash(password, SALT))
 
         return dict(email=email)
 
