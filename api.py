@@ -41,12 +41,17 @@ class API(object):
     def confirmemail(self, email, token):
         Validator.email(email)
         Validator.token(token)
+
         user = self.user.get(email)
+
         if not user['token']:
             raise Exception('The email address has already been confirmed.')
+
         if user.token != token:
             raise Exception('The token is not valid for this email address.')
+
         self.user.update(email, token=False)
+
         return {'email': email}
 
     def currentsessions(self, session):
@@ -58,11 +63,14 @@ class API(object):
     def register(self, email, password):
         Validator.email(email)
         Validator.password(password)
+
         if self.user.exists(email):
             raise Exception('The email address has already been registered.')
+
         token = Secret.generate(16)
         self.user.insert(email, password=Secret.hash(password, SALT), token=token)
         Mail.send(MAIL_FROM, email, 'RiverID Email Confirmation', token)
+        
         return {'email': email}
 
     def signin(self, email, password):
