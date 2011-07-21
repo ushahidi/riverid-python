@@ -18,7 +18,7 @@ class API(object):
 
         self.user.update(oldemail, email=newemail)
 
-        return {'oldemail': oldemail, 'newemail': newemail}
+        return dict(oldemail=oldemail, newemail=newemail)
 
     def changepassword(self, email, oldpassword, newpassword):
         Validator.email(email)
@@ -30,55 +30,55 @@ class API(object):
 
         self.user.update(email, password=Secret.hash(newpassword, SALT))
 
-        return {'email': email}
+        return dict(email=email)
 
     def checkpassword(self, email, password):
         Validator.email(email)
         Validator.password(password)
 
-        return {'email': email, 'valid': user.get(email)['password'] == Secret.hash(password, SALT)}
+        return dict(email=email, valid=user.get(email)['password'] == Secret.hash(password, SALT)}
 
-    def confirmemail(self, email, token):
+    def setpassword(self, email, token, password):
         Validator.email(email)
         Validator.token(token)
+        Validator.password(password)
 
         user = self.user.get(email)
 
         if not user['token']:
-            raise Exception('The email address has already been confirmed.')
+            raise Exception('No password change has been requested.')
 
         if user['token'] != token:
             raise Exception('The token is not valid for this email address.')
 
-        self.user.update(email, token=False)
+        self.user.update(email, token=False, password=Secret.hash(password, SALT))
 
-        return {'email': email}
+        return dict(email=email)
 
     def currentsessions(self, email, session):
         Validator.email(email)
         Validator.session(session)
 
-        return {'email': email, 'sessions': self.user.get(email)['sessions']}
+        return dict(email=email, sessions=self.user.get(email)['sessions'])
 
-    def recoverpassword(self, email):
+    def requestpassword(self, email):
         Validator.email(email)
-
-    def register(self, email, password):
-        Validator.email(email)
-        Validator.password(password)
-
-        if self.user.exists(email):
-            raise Exception('The email address has already been registered.')
 
         token = Secret.generate(16)
-        self.user.insert(email, password=Secret.hash(password, SALT), token=token)
-        Mail.send(MAIL_FROM, email, 'RiverID Email Confirmation', token)
-        
-        return {'email': email}
+
+        if self.user.exists(email):
+            self.user.update(email, token=token)
+        else:
+            self.user.insert(email, token=token)
+
+        Mail.send(MAIL_FROM, email, 'RiverID Password Change', token)
+
+        return dict(email=email)
 
     def signin(self, email, password):
         Validator.email(email)
         Validator.password(password)
 
-    def signout(self, session):
+    def signout(self, email, session):
+        Validator.email(email)
         Validator.session(session)
