@@ -13,7 +13,7 @@ class API(object):
         Validator.email(newemail)
         Validator.password(password)
 
-        if user.get(oldemail)['password'] != Secret.hash(password, SALT):
+        if self.user.get(oldemail)['password'] != Secret.hash(password, SALT):
             raise Exception('The password is incorrect for this user.')
 
         self.user.update(oldemail, email=newemail)
@@ -25,7 +25,7 @@ class API(object):
         Validator.password(oldpassword)
         Validator.password(newpassword)
 
-        if user.get(email)['password'] != Secret.hash(oldpassword, SALT):
+        if self.user.get(email)['password'] != Secret.hash(oldpassword, SALT):
             raise Exception('The old password is incorrect for this user.')
 
         self.user.update(email, password=Secret.hash(newpassword, SALT))
@@ -43,6 +43,11 @@ class API(object):
         Validator.session(session)
 
         return dict(email=email, sessions=self.user.get(email)['sessions'])
+
+    def registered(self, email):
+        Validator.email(email)
+
+        return dict(email=email, registered=self.user.exists(email))
 
     def requestpassword(self, email):
         Validator.email(email)
