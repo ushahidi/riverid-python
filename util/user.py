@@ -1,6 +1,9 @@
 class User(object):
     def __init__(self, db):
         self.db = db
+    
+    def add(self, email, array, **item):
+        self.db.user.update({'email': email}, {'$push': {array: item}})
 
     def delete(self, email):
         self.db.user.remove({'email': email})
