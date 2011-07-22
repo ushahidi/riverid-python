@@ -18,7 +18,7 @@ class API(object):
         
         token = Secret.generate(16)
 
-        self.user.update(oldemail, email=newemail, token=token)
+        self.user.update(oldemail, email=newemail, enabled=False, token=token)
 
         Mail.send(MAIL_FROM, newemail, 'RiverID Email Change', token)
 
@@ -54,7 +54,7 @@ class API(object):
         if user['token'] != token:
             raise Exception('The token is not valid for this email address.')
 
-        self.user.update(email, token=False)
+        self.user.update(email, enabled=True, token=False)
 
         return dict(email=email)
 
@@ -75,11 +75,13 @@ class API(object):
         token = Secret.generate(16)
 
         if self.user.exists(email):
+            subject = 'RiverID Change Password'
             self.user.update(email, token=token)
         else:
-            self.user.insert(email, token=token)
+            subject = 'RiverID Registration'
+            self.user.insert(email, enabled=False, token=token)
 
-        Mail.send(MAIL_FROM, email, 'RiverID Password Change', token)
+        Mail.send(MAIL_FROM, email, subject, token)
 
         return dict(email=email)
 
@@ -96,7 +98,7 @@ class API(object):
         if user['token'] != token:
             raise Exception('The token is not valid for this email address.')
 
-        self.user.update(email, token=False, password=Secret.hash(password, SALT))
+        self.user.update(email, enabled=True, token=False, password=Secret.hash(password, SALT))
 
         return dict(email=email)
 
