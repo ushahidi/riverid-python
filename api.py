@@ -1,4 +1,5 @@
 from config import MAIL_FROM, SALT
+from datetime import datetime
 from util.mail import Mail
 from util.secret import Secret
 from util.user import User
@@ -105,6 +106,13 @@ class API(object):
     def signin(self, email, password):
         Validator.email(email)
         Validator.password(password)
+
+        id = Secret.generate(64)
+        start = datetime.isoformat(datetime.utcnow())
+
+        self.user.add(email, 'session', id=id, start=start)
+
+        return dict(email=email, id=id, start=start)
 
     def signout(self, email, session):
         Validator.email(email)
