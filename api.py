@@ -15,8 +15,12 @@ class API(object):
 
         if self.user.get(oldemail)['password'] != Secret.hash(password, SALT):
             raise Exception('The password is incorrect for this user.')
+        
+        token = Secret.generate(16)
 
-        self.user.update(oldemail, email=newemail)
+        self.user.update(oldemail, email=newemail, token=token)
+
+        Mail.send(MAIL_FROM, newemail, 'RiverID Email Change', token)
 
         return dict(oldemail=oldemail, newemail=newemail)
 
@@ -37,6 +41,22 @@ class API(object):
         Validator.password(password)
 
         return dict(email=email, valid=self.user.get(email)['password'] == Secret.hash(password, SALT)}
+    
+    def confirmemail(self, email, token):
+        Validator.email(email)
+        Validator.token(token)
+
+        user = self.user.get(email)
+
+        if not user['token']:
+            raise Exception('This email address has already been confirmed.')
+
+        if user['token'] != token:
+            raise Exception('The token is not valid for this email address.')
+
+        self.user.update(email, token=False)
+
+        return dict(email=email)
 
     def currentsessions(self, email, session):
         Validator.email(email)
