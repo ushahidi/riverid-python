@@ -71,7 +71,7 @@ class API(object):
         user = self.user.get(email)
 
         if not user['token']:
-            raise Exception('No password change has been requested.')
+            raise Exception('No password change has been requested for this email address.')
 
         if user['token'] != token:
             raise Exception('The token is not valid for this email address.')
