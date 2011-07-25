@@ -18,10 +18,10 @@
 
 from config import MAIL_FROM, SALT
 from datetime import datetime
-from util.mail import Mail
-from util.secret import Secret
-from util.user import User
-from util.validator import Validator
+from mail import Mail
+from secret import Secret
+from user import User
+from validator import Validator
 
 class API(object):
     def __init__(self, db):
