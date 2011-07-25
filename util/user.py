@@ -23,3 +23,6 @@ class User(object):
 
     def update(self, email, **values):
         self.db.user.update({'email': email}, {'$set': values})
+    
+    def update_sub(self, email, array, key, value, **values):
+        self.db.user.update({'email': email, ''.join(array, '.', key): value}, {'$set': values})
