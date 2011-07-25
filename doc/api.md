@@ -95,6 +95,19 @@
         ]
     }
 
+### registered
+
+#### Parameters
+
+* `email` The email address to look up.
+
+#### Returns
+
+    {
+        "email": "user@example.com",
+        "registered": true
+    }
+
 ### recoverpassword
 
 #### Parameters
