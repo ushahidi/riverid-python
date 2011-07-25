@@ -83,14 +83,12 @@
         "email": "user@example.com",
         "sessions": [
             {
-                "id": "F98AB1961B8AC364AEE27ABD27D878BFA8FC5585F4387946952DD2E51C9EBC24",
-                "created": "2011-01-01T00:00:00Z",
-                "ip": "127.0.0.1"
+                "id": "Jl70Vs0UDoABLkkfZGWFKOeVioI0bag07hWVk40lGwQL8mdemca0VjwS9Jbzz0BJ",
+                "created": "2011-07-25T12:38:57.881095"
             },
             {
-                "id": "66DAC61453552C7C9BF617A0676B0B7E158142F71350859E5ABF1A8B5D6B2124",
-                "created": "2011-02-03T01:23:45Z",
-                "ip": "127.0.0.2"
+                "id": "LyF6J3Dn4A5wS9MDKRzB9eAZZqihDol6KSGQVifxYwgrEpQ7KSnXDmNSDW4efLUa",
+                "created": "2011-07-25T12:40:02.476250"
             }
         ]
     }
@@ -148,7 +146,8 @@
     {
         "status": "success",
         "email": "user@example.com",
-        "session": "2C7C5F47B6CFBE2FB3BE931C9FB2CC05638D26A00D85E747BF7DB2900154D58D"
+        "id": "tMFynC1zRYIne0gKjtvSem6yb9usGzIz1xzgeb15YJiKsj0b92gw09b5ueNyhsrW",
+        "start": "2011-07-25T12:41:59.814633"
     }
 
 ### signout
