@@ -108,11 +108,11 @@
         "registered": true
     }
 
-### recoverpassword
+### requestpassword
 
 #### Parameters
 
-* `email` The email address of the account to recover.
+* `email` The email address of the account holder.
 
 ### Returns
 
@@ -121,12 +121,13 @@
         "email": "user@example.com"
     }
 
-### register
+### setpassword
 
 #### Parameters
 
-* `email` The email address associated with the new account.
-* `password` The initial password of the new account.
+* `email` The email address of the account holder.
+* `token` The token mailed to the email address.
+* `password` The new password of the account.
 
 #### Returns
 
