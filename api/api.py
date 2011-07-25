@@ -1,5 +1,5 @@
-# RiverID API
-# ===========
+# RiverID API Class
+# =================
 #
 # This file is part of RiverID.
 #
