@@ -108,7 +108,7 @@ class API(object):
         Validator.password(password)
 
         id = Secret.generate(64)
-        start = datetime.isoformat(datetime.utcnow())
+        start = datetime.utcnow().isoformat()
 
         self.user.add(email, 'session', id=id, start=start)
 
