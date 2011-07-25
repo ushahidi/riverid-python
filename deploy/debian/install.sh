@@ -18,8 +18,14 @@
 # You should have received a copy of the GNU Affero General Public License
 # along with RiverID.  If not, see <http://www.gnu.org/licenses/>.
 
+# Update the sources.
+apt-get update
+
+# Upgrade the existing packages.
+apt-get upgrade -y
+
 # Install the necessary Debian packages.
-apt-get install apache2 libapache2-mod-wsgi mongodb-server python-pip git
+apt-get install -y apache2 libapache2-mod-wsgi mongodb-server python-pip git
 
 # Install the necessary Python packages.
 pip install Flask pymongo
