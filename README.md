@@ -4,6 +4,11 @@
 
 RiverID is an authentication and identity management system that provides users with a secure central sign-on facility. Third party applications can make use of the integrated OAuth and OpenID endpoints.
 
+## Documentation
+
+* [API Documentation](https://github.com/ushahidi/RiverID/blob/master/doc/api.md)
+* [Debian 6.0 (Squeeze) Installation Instructions](https://github.com/ushahidi/RiverID/blob/master/doc/debian.md)
+
 ## Dependencies
 
 * [Apache HTTP Server](http://httpd.apache.org/)
