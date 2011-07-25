@@ -107,13 +107,19 @@ class API(object):
         Validator.email(email)
         Validator.password(password)
 
-        id = Secret.generate(64)
-        start = datetime.utcnow().isoformat()
+        session_id = Secret.generate(64)
+        session_start = datetime.utcnow().isoformat()
 
-        self.user.add(email, 'session', id=id, start=start)
+        self.user.add(email, 'session', id=session_id, start=session_start)
 
-        return dict(email=email, id=id, start=start)
+        return dict(email=email, session_id=session_id, session_start=session_start)
 
-    def signout(self, email, session):
+    def signout(self, email, session_id):
         Validator.email(email)
-        Validator.session(session)
+        Validator.session(session_id)
+
+        session_stop = datetime.utcnow().isoformat()
+
+        self.user.update_sub(email, 'session', 'id', session_id, id=False, stop=session_stop)
+
+        return dict(email=email, session_id=session_id, session_stop=session_stop)
