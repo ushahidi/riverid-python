@@ -138,7 +138,7 @@
 
 #### Parameters
 
-* `email` The email address of the user signing in.
+* `email` The email address of the account.
 * `password` The password associated with the email address.
 
 #### Returns
@@ -146,18 +146,22 @@
     {
         "status": "success",
         "email": "user@example.com",
-        "id": "tMFynC1zRYIne0gKjtvSem6yb9usGzIz1xzgeb15YJiKsj0b92gw09b5ueNyhsrW",
-        "start": "2011-07-25T12:41:59.814633"
+        "session_id": "tMFynC1zRYIne0gKjtvSem6yb9usGzIz1xzgeb15YJiKsj0b92gw09b5ueNyhsrW",
+        "session_start": "2011-07-25T12:41:59.814633"
     }
 
 ### signout
 
 #### Parameters
 
-* `session` The session identifier.
+* `email` The email address of the account.
+* `session_id` The session identifier.
 
 #### Returns
 
     {
-        "status: "success"
+        "status: "success",
+        "email": "user@example.com",
+        "session_id": "tMFynC1zRYIne0gKjtvSem6yb9usGzIz1xzgeb15YJiKsj0b92gw09b5ueNyhsrW",
+        "session_stop": "2011-07-25T12:41:59.814633"
     }
