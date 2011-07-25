@@ -1,5 +1,5 @@
 # RiverID WSGI Handler
-# ======================
+# ====================
 #
 # This file is part of RiverID.
 #
