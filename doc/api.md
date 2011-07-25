@@ -163,5 +163,5 @@
         "status: "success",
         "email": "user@example.com",
         "session_id": "tMFynC1zRYIne0gKjtvSem6yb9usGzIz1xzgeb15YJiKsj0b92gw09b5ueNyhsrW",
-        "session_stop": "2011-07-25T12:41:59.814633"
+        "session_stop": "2011-07-25T13:34:24.184900"
     }
