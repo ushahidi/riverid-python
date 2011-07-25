@@ -1,22 +1,22 @@
 #!/bin/bash
 #
-# SwiftRiver Debian Deployment Bash Script
-# ========================================
+# RiverID Debian Deployment Script
+# ================================
 #
-# This file is part of SwiftMeme.
+# This file is part of RiverID.
 #
-# SwiftMeme is free software: you can redistribute it and/or modify
+# RiverID is free software: you can redistribute it and/or modify
 # it under the terms of the GNU Affero General Public License as published by
 # the Free Software Foundation, either version 3 of the License, or
 # (at your option) any later version.
 #
-# SwiftMeme is distributed in the hope that it will be useful,
+# RiverID is distributed in the hope that it will be useful,
 # but WITHOUT ANY WARRANTY; without even the implied warranty of
 # MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
 # GNU Affero General Public License for more details.
 #
 # You should have received a copy of the GNU Affero General Public License
-# along with SwiftMeme.  If not, see <http://www.gnu.org/licenses/>.
+# along with RiverID.  If not, see <http://www.gnu.org/licenses/>.
 
 # Apply all system updates.
 apt-get update
