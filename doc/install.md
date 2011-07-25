@@ -15,7 +15,7 @@
      Alias /static/ /var/www/riverid/static/
      AliasMatch ^/$ /var/www/riverid/static/index.html
      WSGIDaemonProcess riverid user=riverid group=riverid threads=5
-     WSGIScriptAlias / /var/www/riverid/api/riverid.wsgi
+     WSGIScriptAlias / /var/www/riverid/api/wsgi.py
     </VirtualHost>
 
 * If your application is installed in a different directory than `/var/www/riverid`, remember to modify the path accordingly.
