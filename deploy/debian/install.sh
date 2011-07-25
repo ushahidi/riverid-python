@@ -18,27 +18,23 @@
 # You should have received a copy of the GNU Affero General Public License
 # along with RiverID.  If not, see <http://www.gnu.org/licenses/>.
 
-# Apply all system updates.
-apt-get update
-apt-get upgrade -y
-
 # Install the necessary Debian packages.
-apt-get install -y apache2 libapache2-mod-wsgi memcached python-pip git
+apt-get install apache2 libapache2-mod-wsgi mongodb-server python-pip git
 
 # Install the necessary Python packages.
-pip install Flask oauth2 python-memcached
+pip install Flask pymongo
 
-# Create a user for SwiftMeme processes to run as.
-adduser --disabled-password --gecos "" swiftmeme
+# Create a user for RiverID processes to run as.
+adduser --disabled-password --gecos "" riverid
 
 # Create a local clone of the application.
-git clone https://github.com/ushahidi/SwiftMeme.git /var/www/swiftmeme
+git clone https://github.com/ushahidi/RiverID.git /var/www/riverid
 
 # Replace the default Apache configuration with the bundled one.
-cp /var/www/swiftmeme/deploy/debian/000-default /etc/apache2/sites-enabled/
+cp /var/www/riverid/deploy/debian/apache.conf /etc/apache2/sites-enabled/000-default
 
 # Tell Apache to reload its configuration.
 /etc/init.d/apache2 reload
 
-# Copy the example SwiftMeme configuration file for customisation.
-cp /var/www/swiftmeme/api/config.example.py /var/www/swiftmeme/api/config.py
+# Copy the example RiverID configuration file for customisation.
+cp /var/www/riverid/api/config.example.py /var/www/riverid/api/config.py
