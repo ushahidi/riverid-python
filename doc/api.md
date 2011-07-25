@@ -112,7 +112,7 @@
 
 #### Parameters
 
-* `email` The email address of the account holder.
+* `email` The email address of the account.
 
 ### Returns
 
@@ -125,7 +125,7 @@
 
 #### Parameters
 
-* `email` The email address of the account holder.
+* `email` The email address of the account.
 * `token` The token mailed to the email address.
 * `password` The new password of the account.
 
