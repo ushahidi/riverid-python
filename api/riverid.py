@@ -52,7 +52,7 @@ def api(method_name):
         result = method(**request_parameters)
         result['status'] = 'success'
     except Exception as message:
-        result = {'status': 'error', 'parameters': request_parameters, 'message': message}
+        result = dict(status='error', parameters=request_parameters, message=message)
 
     json = dumps(result)
 
