@@ -28,6 +28,7 @@ def api(method_name):
     api = API()
     method = getattr(api, method_name)
     method_parameters = getargspec(method).args
+
     request_parameters = request.args.to_dict()
 
     if callback in request_parameters:
@@ -35,12 +36,20 @@ def api(method_name):
         del request_parameters['callback']
     else:
         callback = False
+    
+    for key in method_parameters:
+        if key not in request_parameters:
+            raise Exception('Missing request parameter: %s' % key)
+    
+    for key in request_parameters:
+        if key not in callback_parameters:
+            raise Exception('Method does not take parameter: %s' % key)
 
     result = method(**request_parameters)
     json = dumps(result)
 
     if callback:
-        javascript = ''.join(callback, '(', json, ');')
+        javascript = ''.join(callback, '(', json, ')')
         response = make_response(javascript)
         response.headers['Content-Type'] = 'application/javascript; charset=UTF-8'
     else:
