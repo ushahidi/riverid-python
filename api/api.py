@@ -19,6 +19,7 @@
 from config import MAIL_FROM, SALT
 from datetime import datetime
 from mail import Mail
+from riverexception import RiverException
 from secret import Secret
 from user import User
 from validator import Validator
@@ -33,7 +34,7 @@ class API(object):
         Validator.password(password)
 
         if self.user.get(oldemail)['password'] != Secret.hash(password, SALT):
-            raise Exception('The password is incorrect for this user.')
+            raise RiverException('The password is incorrect for this user.')
         
         token = Secret.generate(16)
 
@@ -49,7 +50,7 @@ class API(object):
         Validator.password(newpassword)
 
         if self.user.get(email)['password'] != Secret.hash(oldpassword, SALT):
-            raise Exception('The old password is incorrect for this user.')
+            raise RiverException('The old password is incorrect for this user.')
 
         self.user.update(email, password=Secret.hash(newpassword, SALT))
 
@@ -68,10 +69,10 @@ class API(object):
         user = self.user.get(email)
 
         if not user['token']:
-            raise Exception('This email address has already been confirmed.')
+            raise RiverException('This email address has already been confirmed.')
 
         if user['token'] != token:
-            raise Exception('The token is not valid for this email address.')
+            raise RiverException('The token is not valid for this email address.')
 
         self.user.update(email, enabled=True, token=False)
 
@@ -112,10 +113,10 @@ class API(object):
         user = self.user.get(email)
 
         if not user['token']:
-            raise Exception('No password change has been requested for this email address.')
+            raise RiverException('No password change has been requested for this email address.')
 
         if user['token'] != token:
-            raise Exception('The token is not valid for this email address.')
+            raise RiverException('The token is not valid for this email address.')
 
         self.user.update(email, enabled=True, token=False, password=Secret.hash(password, SALT))
 

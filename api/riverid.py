@@ -20,6 +20,7 @@ from api import API
 from flask import abort, Flask, make_response, request
 from inspect import getargspec
 from json import dumps
+from riverexception import RiverException
 
 app = Flask(__name__)
 
@@ -51,7 +52,7 @@ def api(method_name):
     try:
         result = method(**request_parameters)
         result['status'] = 'success'
-    except Exception as message:
+    except RiverException as message:
         result = dict(status='error', parameters=request_parameters, message=message)
 
     json = dumps(result)

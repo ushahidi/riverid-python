@@ -1,0 +1,2 @@
+class RiverException(Exception):
+	pass
