@@ -60,7 +60,7 @@ class API(object):
         Validator.email(email)
         Validator.password(password)
 
-        return dict(email=email, valid=self.user.get(email)['password'] == Secret.hash(password, SALT)}
+        return dict(email=email, valid=self.user.get(email)['password'] == Secret.hash(password, SALT))
     
     def confirmemail(self, email, token):
         Validator.email(email)
