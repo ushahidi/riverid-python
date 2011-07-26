@@ -17,7 +17,7 @@
 # along with RiverID.  If not, see <http://www.gnu.org/licenses/>.
 
 from api import API
-from flask import Flask, make_response, request
+from flask import abort, Flask, make_response, request
 from inspect import getargspec
 from json import dumps
 
@@ -25,36 +25,40 @@ app = Flask(__name__)
 
 @app.route('/api/<method_name>')
 def api(method_name):
-    api = API()
-    method = getattr(api, method_name)
-    method_parameters = getargspec(method).args
+    try:
+        api = API()
+        method = getattr(api, method_name, False)
 
-    request_parameters = request.args.to_dict()
+        if method == False:
+            abort(404)
 
-    if callback in request_parameters:
-        callback = request_parameters['callback']
-        del request_parameters['callback']
-    else:
-        callback = False
-    
-    for key in method_parameters:
-        if key not in request_parameters:
-            raise Exception('Missing request parameter: %s' % key)
-    
-    for key in request_parameters:
-        if key not in callback_parameters:
-            raise Exception('Method does not take parameter: %s' % key)
+        method_parameters = getargspec(method).args
+        request_parameters = request.args.to_dict()
 
-    result = method(**request_parameters)
-    json = dumps(result)
+        if callback in request_parameters:
+            callback = request_parameters['callback']
+            del request_parameters['callback']
+        else:
+            callback = False
+        
+        for key in method_parameters:
+            if key not in request_parameters:
+                abort(400)
+        
+        for key in request_parameters:
+            if key not in method_parameters:
+                del request_parameters[key]
 
-    if callback:
-        javascript = ''.join(callback, '(', json, ')')
-        response = make_response(javascript)
-        response.headers['Content-Type'] = 'application/javascript; charset=UTF-8'
-    else:
-        response = make_response(json)
-        response.headers['Content-Type'] = 'application/json; charset=UTF-8'
+        result = method(**request_parameters)
+        json = dumps(result)
+
+        if callback:
+            javascript = ''.join(callback, '(', json, ')')
+            response = make_response(javascript)
+            response.headers['Content-Type'] = 'application/javascript; charset=UTF-8'
+        else:
+            response = make_response(json)
+            response.headers['Content-Type'] = 'application/json; charset=UTF-8'
 
     return response
 
