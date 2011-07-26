@@ -25,40 +25,44 @@ app = Flask(__name__)
 
 @app.route('/api/<method_name>')
 def api(method_name):
+    api = API()
+    method = getattr(api, method_name, False)
+
+    if method == False:
+        abort(404)
+
+    method_parameters = getargspec(method).args
+    request_parameters = request.args.to_dict()
+
+    if callback in request_parameters:
+        callback = request_parameters['callback']
+        del request_parameters['callback']
+    else:
+        callback = False
+
+    for key in method_parameters:
+        if key not in request_parameters:
+            abort(400)
+        
+    for key in request_parameters:
+        if key not in method_parameters:
+            del request_parameters[key]
+
     try:
-        api = API()
-        method = getattr(api, method_name, False)
-
-        if method == False:
-            abort(404)
-
-        method_parameters = getargspec(method).args
-        request_parameters = request.args.to_dict()
-
-        if callback in request_parameters:
-            callback = request_parameters['callback']
-            del request_parameters['callback']
-        else:
-            callback = False
-        
-        for key in method_parameters:
-            if key not in request_parameters:
-                abort(400)
-        
-        for key in request_parameters:
-            if key not in method_parameters:
-                del request_parameters[key]
-
         result = method(**request_parameters)
-        json = dumps(result)
+        result['status'] = 'success'
+    except Exception as message:
+        result = {'status': 'error', 'parameters': request_parameters, 'message': message}
 
-        if callback:
-            javascript = ''.join(callback, '(', json, ')')
-            response = make_response(javascript)
-            response.headers['Content-Type'] = 'application/javascript; charset=UTF-8'
-        else:
-            response = make_response(json)
-            response.headers['Content-Type'] = 'application/json; charset=UTF-8'
+    json = dumps(result)
+
+    if callback:
+        javascript = ''.join(callback, '(', json, ')')
+        response = make_response(javascript)
+        response.headers['Content-Type'] = 'application/javascript; charset=UTF-8'
+    else:
+        response = make_response(json)
+        response.headers['Content-Type'] = 'application/json; charset=UTF-8'
 
     return response
 
