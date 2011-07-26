@@ -21,7 +21,7 @@ from datetime import datetime
 from mail import Mail
 from riverexception import RiverException
 from secret import Secret
-from user import User
+from riveruser import User
 from validator import Validator
 
 class API(object):
