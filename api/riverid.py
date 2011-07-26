@@ -37,7 +37,7 @@ def api(method_name):
     method_parameters = getargspec(method).args
     request_parameters = request.args.to_dict()
 
-    if callback in request_parameters:
+    if 'callback' in request_parameters:
         callback = request_parameters['callback']
         del request_parameters['callback']
     else:
