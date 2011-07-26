@@ -6,6 +6,7 @@
 * [Flask](http://flask.pocoo.org/)
 * [mod_wsgi](http://code.google.com/p/modwsgi/)
 * [MongoDB](http://www.mongodb.org/)
+* [Postfix](http://www.postfix.org/)
 * [Python 2.x](http://python.org/)
 * [pymongo](http://pypi.python.org/pypi/pymongo/)
 

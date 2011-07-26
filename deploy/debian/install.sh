@@ -25,7 +25,7 @@ apt-get update
 apt-get upgrade -y
 
 # Install the necessary Debian packages.
-apt-get install -y apache2 libapache2-mod-wsgi mongodb-server python-pip git
+apt-get install -y apache2 libapache2-mod-wsgi postfix mongodb-server python-pip git
 
 # Install the necessary Python packages.
 pip install Flask pymongo

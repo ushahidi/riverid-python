@@ -9,7 +9,7 @@ Run the following at the command line:
 ## Manual
 
 1. Install the necessary Debian packages.  
-`apt-get install apache2 libapache2-mod-wsgi mongodb-server python-pip git`
+`apt-get install apache2 libapache2-mod-wsgi postfix mongodb-server python-pip git`
 
 2. Install the necessary Python packages.  
 `pip install Flask pymongo`
