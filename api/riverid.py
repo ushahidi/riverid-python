@@ -35,6 +35,8 @@ def api(method_name):
         abort(404)
 
     method_parameters = getargspec(method).args
+    method_parameters.remove('self')
+
     request_parameters = request.args.to_dict()
 
     if 'callback' in request_parameters:
