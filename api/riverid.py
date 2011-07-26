@@ -37,13 +37,15 @@ def api(method_name):
         callback = False
 
     result = method(**request_parameters)
-    response_data = dumps(result)
+    json = dumps(result)
 
     if callback:
-        response_data = ''.join(callback, '(', response_data, ')')
-
-    response = make_response(response_data)
-    response.headers['Content-Type'] = 'application/javascript; charset=UTF-8' if callback else 'application/json; charset=UTF-8'
+        javascript = ''.join(callback, '(', json, ');')
+        response = make_response(javascript)
+        response.headers['Content-Type'] = 'application/javascript; charset=UTF-8'
+    else:
+        response = make_response(json)
+        response.headers['Content-Type'] = 'application/json; charset=UTF-8'
 
     return response
 
