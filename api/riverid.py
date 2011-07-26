@@ -20,13 +20,15 @@ from api import API
 from flask import abort, Flask, make_response, request
 from inspect import getargspec
 from json import dumps
+from pymongo import Connection
 from riverexception import RiverException
 
 app = Flask(__name__)
 
 @app.route('/api/<method_name>')
 def api(method_name):
-    api = API()
+    db = Connection().riverid
+    api = API(db)
     method = getattr(api, method_name, False)
 
     if method == False:
