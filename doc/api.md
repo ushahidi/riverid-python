@@ -81,16 +81,6 @@
 * `email` The email address to confirm.
 * `token` The secret token sent to the address.
 
-### sessions
-
-#### Parameters
-
-* `session` An active session id.
-
-#### Returns
-
-* `array` All sessions associated with this account.
-
 ### registered
 
 #### Parameters
@@ -106,6 +96,16 @@
 #### Parameters
 
 * `email` The email address of the account.
+
+### sessions
+
+#### Parameters
+
+* `session` An active session id.
+
+#### Returns
+
+* `array` All sessions associated with this account.
 
 ### setpassword
 
