@@ -81,7 +81,7 @@
 * `email` The email address to confirm.
 * `token` The secret token sent to the address.
 
-### currentsessions
+### sessions
 
 #### Parameters
 
@@ -89,18 +89,7 @@
 
 #### Returns
 
-    {
-        "sessions": [
-            {
-                "id": "Jl70Vs0UDoABLkkfZGWFKOeVioI0bag07hWVk40lGwQL8mdemca0VjwS9Jbzz0BJ",
-                "created": "2011-07-25T12:38:57.881095"
-            },
-            {
-                "id": "LyF6J3Dn4A5wS9MDKRzB9eAZZqihDol6KSGQVifxYwgrEpQ7KSnXDmNSDW4efLUa",
-                "created": "2011-07-25T12:40:02.476250"
-            }
-        ]
-    }
+* `array` All sessions associated with this account.
 
 ### registered
 
