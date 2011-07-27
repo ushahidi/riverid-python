@@ -1,6 +1,6 @@
 # RiverID API Documentation
 
-## Design
+## Overview
 
 * All calls are transported across the HTTP protocol and follow the REST design pattern.
 * All methods return a valid JSON response.
