@@ -9,9 +9,11 @@
 * In the case of HTTP POST, the parameters must be form encoded and sent as part of the POST body.
 * Append the API method name to the base URL `http://api.example.com/api/`. Replace `api.example.com` with the appropriate host.
 
-## Errors
+## Response
 
-* On success, the boolean `success` will equal `true`, on error it will equal `false`.
+* On success, the boolean `success` will equal `true`; on error it will equal `false`.
+* If `success` equals `true` and the method generates a custom response, there will be a `response` dictionary.
+* If `success` equals `true` and the method does not generate a custom response, `response` will equal `null`.
 * If `success` equals `false`, an `error` will be provided explaining the error.
 
 ## Examples
