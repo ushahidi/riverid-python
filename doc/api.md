@@ -72,7 +72,7 @@
 
 #### Returns
 
-* `boolean` Indicator of whether the password is valid for the email account.
+* `boolean` Indicator of whether the password is valid for the account associated with the email address.
 
 ### confirmemail
 
@@ -135,7 +135,7 @@
 
 #### Returns
 
-* `string` The 64-character alphanumeric unique session identifier.
+* `string` The new 64-character alphanumeric unique session identifier.
 
 ### signout
 
