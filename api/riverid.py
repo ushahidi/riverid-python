@@ -37,7 +37,10 @@ def api(method_name):
     method_parameters = getargspec(method).args
     method_parameters.remove('self')
 
-    request_parameters = request.args.to_dict()
+    if request.method == 'POST':
+        request_parameters = request.form.to_dict()
+    else:
+        request_parameters = request.args.to_dict()
 
     if 'callback' in request_parameters:
         callback = request_parameters['callback']
