@@ -14,11 +14,26 @@
 ### Handling
 
 * On success, the boolean `success` will equal `true`, on error it will equal `false`.
-* If `success` equals `false`, a `message` will be provided explaining the error.
+* If `success` equals `false`, an `error` will be provided explaining the error.
 
 ### Success Example
 
+    {
+        "success": true,
+        "request_parameters": {
+            "email": "user@example.com"
+        }
+    }
+
 ### Failure Example
+
+    {
+        "success": false,
+        "error": "Some message explaining the error.",
+        "request_parameters": {
+            "email": "user@example.com"
+        }
+    }
 
 ## Methods
 
