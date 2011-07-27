@@ -42,8 +42,6 @@ class API(object):
 
         Mail.send(MAIL_FROM, newemail, 'RiverID Email Change', token)
 
-        return dict(oldemail=oldemail, newemail=newemail)
-
     def changepassword(self, email, oldpassword, newpassword):
         Validator.email(email)
         Validator.password(oldpassword)
@@ -54,13 +52,11 @@ class API(object):
 
         self.user.update(email, password=Secret.hash(newpassword, SALT))
 
-        return dict(email=email)
-
     def checkpassword(self, email, password):
         Validator.email(email)
         Validator.password(password)
 
-        return dict(email=email, valid=self.user.get(email)['password'] == Secret.hash(password, SALT))
+        return dict(valid=self.user.get(email)['password'] == Secret.hash(password, SALT))
     
     def confirmemail(self, email, token):
         Validator.email(email)
@@ -76,18 +72,16 @@ class API(object):
 
         self.user.update(email, enabled=True, token=False)
 
-        return dict(email=email)
-
     def currentsessions(self, email, session):
         Validator.email(email)
         Validator.session(session)
 
-        return dict(email=email, sessions=self.user.get(email)['sessions'])
+        return dict(sessions=self.user.get(email)['sessions'])
 
     def registered(self, email):
         Validator.email(email)
 
-        return dict(email=email, registered=self.user.exists(email))
+        return dict(registered=self.user.exists(email))
 
     def requestpassword(self, email):
         Validator.email(email)
@@ -102,8 +96,6 @@ class API(object):
             self.user.insert(email, enabled=False, token=token)
 
         Mail.send(MAIL_FROM, email, subject, token)
-
-        return dict(email=email)
 
     def setpassword(self, email, token, password):
         Validator.email(email)
@@ -120,8 +112,6 @@ class API(object):
 
         self.user.update(email, enabled=True, token=False, password=Secret.hash(password, SALT))
 
-        return dict(email=email)
-
     def signin(self, email, password):
         Validator.email(email)
         Validator.password(password)
@@ -131,7 +121,7 @@ class API(object):
 
         self.user.add(email, 'session', id=session_id, start=session_start)
 
-        return dict(email=email, session_id=session_id, session_start=session_start)
+        return dict(session_id=session_id, session_start=session_start)
 
     def signout(self, email, session_id):
         Validator.email(email)
@@ -141,4 +131,4 @@ class API(object):
 
         self.user.update_sub(email, 'session', 'id', session_id, id=False, stop=session_stop)
 
-        return dict(email=email, session_id=session_id, session_stop=session_stop)
+        return dict(session_stop=session_stop)

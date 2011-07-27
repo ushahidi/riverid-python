@@ -41,7 +41,6 @@ def api(method_name):
 
     if 'callback' in request_parameters:
         callback = request_parameters['callback']
-        del request_parameters['callback']
     else:
         callback = False
 
@@ -55,6 +54,8 @@ def api(method_name):
 
     try:
         result = method(**request_parameters)
+        if result == None:
+            result = {}
         result['status'] = True
     except RiverException as (error,):
         result = dict(status=False, error=error)
