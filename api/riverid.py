@@ -55,9 +55,11 @@ def api(method_name):
 
     try:
         result = method(**request_parameters)
-        result['status'] = 'success'
-    except RiverException as (message,):
-        result = dict(status='error', parameters=request_parameters, message=message)
+        result['status'] = True
+    except RiverException as (error,):
+        result = dict(status=False, error=error)
+    
+    result['request_parameters'] = request_parameters
 
     json = dumps(result)
 
