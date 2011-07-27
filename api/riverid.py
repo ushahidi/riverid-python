@@ -59,9 +59,9 @@ def api(method_name):
 
     try:
         result['response'] = method(**request_parameters)
-        result['status'] = True
+        result['success'] = True
     except RiverException as (error,):
-        result['status'] = False
+        result['success'] = False
         result['error'] = error
 
     json = dumps(result)
