@@ -9,35 +9,38 @@
 * In the case of HTTP POST, the parameters must be form encoded and sent as part of the POST body.
 * Append the API method name to the base URL `http://api.example.com/api/`. Replace `api.example.com` with the appropriate host.
 
-## Example
-
-    $ curl http://api.example.com/api/requestpassword?email=user@example.com
-    {"status": true, "request_parameters": {"email": "user@example.com"}}
-
 ## Errors
-
-### Handling
 
 * On success, the boolean `success` will equal `true`, on error it will equal `false`.
 * If `success` equals `false`, an `error` will be provided explaining the error.
 
-### Success Example
+## Examples
+
+### Curl
+
+    $ curl http://api.example.com/api/requestpassword?email=user@example.com
+    {"status": true, "request": {"email": "user@example.com"}, "method": "requestpassword", "response": {}}
+
+### Success JSON
 
     {
-        "success": true,
-        "request_parameters": {
+        "status": true,
+        "request": {
             "email": "user@example.com"
-        }
+        },
+        "method": "requestpassword",
+        "response": {}
     }
 
-### Failure Example
+### Failure JSON
 
     {
-        "success": false,
-        "error": "Some message explaining the error.",
-        "request_parameters": {
-            "email": "user@example.com"
-        }
+        "status": false,
+        "request": {
+            "email": "user@example"
+        },
+        "method": "requestpassword",
+        "error": "Please provide a valid email address."
     }
 
 ## Methods
