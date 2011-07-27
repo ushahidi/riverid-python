@@ -8,6 +8,7 @@
 * In the case of HTTP GET, the parameters need to be sent as part of the query string.
 * In the case of HTTP POST, the parameters must be form encoded and sent as part of the POST body.
 * Append the API method name to the base URL `http://api.example.com/api/`. Replace `api.example.com` with the appropriate host.
+* JSONP is supported through the optional `callback` parameter.
 
 ## Responses
 
