@@ -52,15 +52,16 @@ def api(method_name):
         if key not in method_parameters:
             del request_parameters[key]
 
+    result = dict(method=method_name, request=request_parameters)
+
     try:
-        result = method(**request_parameters)
-        if result == None:
-            result = {}
+        result['response'] = method(**request_parameters)
+        if result['response'] == None:
+            result['response'] = {}
         result['status'] = True
     except RiverException as (error,):
-        result = dict(status=False, error=error)
-    
-    result['request_parameters'] = request_parameters
+        result['status'] = False
+        result['error'] = error
 
     json = dumps(result)
 
