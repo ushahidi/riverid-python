@@ -56,8 +56,6 @@ def api(method_name):
 
     try:
         result['response'] = method(**request_parameters)
-        if result['response'] == None:
-            result['response'] = {}
         result['status'] = True
     except RiverException as (error,):
         result['status'] = False
