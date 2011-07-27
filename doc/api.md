@@ -45,14 +45,6 @@
 * `newemail` The new email address of the account.
 * `password` The account's password.
 
-#### Returns
-
-    {
-        "success" true,
-        "oldemail": "user1@example.com",
-        "newemail": "user2@example.com"
-    }
-
 ### changepassword
 
 #### Parameters
@@ -60,13 +52,6 @@
 * `email` The email address of the account.
 * `oldpassword` The old password.
 * `newpassword` The new password.
-
-#### Returns
-
-    {
-        "success" true,
-        "email": "user@example.com"
-    }
 
 ### checkpassword
 
@@ -77,11 +62,7 @@
 
 #### Returns
 
-    {
-        "success" true,
-        "email": "user@example.com",
-        "valid": true
-    }
+* `valid` Boolean indicating if the password is valid for the email account.
 
 ### confirmemail
 
@@ -89,13 +70,6 @@
 
 * `email` The email address to confirm.
 * `token` The secret token sent to the address.
-
-#### Returns
-
-    {
-        "success" true,
-        "email": "user@example.com"
-    }
 
 ### currentsessions
 
@@ -106,7 +80,6 @@
 #### Returns
 
     {
-        "email": "user@example.com",
         "sessions": [
             {
                 "id": "Jl70Vs0UDoABLkkfZGWFKOeVioI0bag07hWVk40lGwQL8mdemca0VjwS9Jbzz0BJ",
@@ -127,24 +100,13 @@
 
 #### Returns
 
-    {
-        "success" true,
-        "email": "user@example.com",
-        "registered": true
-    }
+* `registered` Boolean indicating if the email address is registered.
 
 ### requestpassword
 
 #### Parameters
 
 * `email` The email address of the account.
-
-### Returns
-
-    {
-        "success" true,
-        "email": "user@example.com"
-    }
 
 ### setpassword
 
@@ -153,13 +115,6 @@
 * `email` The email address of the account.
 * `token` The token mailed to the email address.
 * `password` The new password of the account.
-
-#### Returns
-
-    {
-        "success" true,
-        "email": "user@example.com"
-    }
 
 ### signin
 
@@ -170,12 +125,8 @@
 
 #### Returns
 
-    {
-        "success" true,
-        "email": "user@example.com",
-        "session_id": "tMFynC1zRYIne0gKjtvSem6yb9usGzIz1xzgeb15YJiKsj0b92gw09b5ueNyhsrW",
-        "session_start": "2011-07-25T12:41:59.814633"
-    }
+* `session_id` 64-character alphanumeric unique session identifier.
+* `session_start` The exact start date (including microseconds) in ISO format.
 
 ### signout
 
@@ -186,9 +137,4 @@
 
 #### Returns
 
-    {
-        "success" true,
-        "email": "user@example.com",
-        "session_id": "tMFynC1zRYIne0gKjtvSem6yb9usGzIz1xzgeb15YJiKsj0b92gw09b5ueNyhsrW",
-        "session_stop": "2011-07-25T13:34:24.184900"
-    }
+* `session_stop` The exact stop date (including microseconds) in ISO format.
