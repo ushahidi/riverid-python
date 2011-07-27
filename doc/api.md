@@ -9,6 +9,17 @@
 * In the case of HTTP POST, the parameters must be form encoded and sent as part of the POST body.
 * Append the API method name to the base URL `https://api.example.com/api/`. Replace `api.example.com` with the appropriate host.
 
+## Errors
+
+### Handling
+
+* On success, the boolean `success` will equal `true`, on error it will equal `false`.
+* If `success` equals `false`, a `message` will be provided explaining the error.
+
+### Success Example
+
+### Failure Example
+
 ## Methods
 
 ### changeemail
