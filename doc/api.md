@@ -12,8 +12,8 @@
 ## Responses
 
 * On success, the boolean `success` will equal `true`; on error it will equal `false`.
-* If `success` equals `true` and the method generates a custom response, there will be a `response` dictionary.
-* If `success` equals `true` and the method does not generate a custom response, `response` will equal `null`.
+* If `success` equals `true` and the method returns a value, `response` will equal the returned value.
+* If `success` equals `true` and the method does not return a value, `response` will equal `null`.
 * If `success` equals `false`, an `error` will be provided explaining the error.
 
 ## Examples
@@ -72,7 +72,7 @@
 
 #### Returns
 
-* `valid` Boolean indicating if the password is valid for the email account.
+* `boolean` Indicator of whether the password is valid for the email account.
 
 ### confirmemail
 
@@ -110,7 +110,7 @@
 
 #### Returns
 
-* `registered` Boolean indicating if the email address is registered.
+* `boolean` Indicator of whether the email address is associated with an account.
 
 ### requestpassword
 
@@ -135,8 +135,7 @@
 
 #### Returns
 
-* `session_id` 64-character alphanumeric unique session identifier.
-* `session_start` The exact start date (including microseconds) in ISO format.
+* `string` The 64-character alphanumeric unique session identifier.
 
 ### signout
 
@@ -144,7 +143,3 @@
 
 * `email` The email address of the account.
 * `session_id` The session identifier.
-
-#### Returns
-
-* `session_stop` The exact stop date (including microseconds) in ISO format.
