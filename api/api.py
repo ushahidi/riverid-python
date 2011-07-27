@@ -56,7 +56,7 @@ class API(object):
         Validator.email(email)
         Validator.password(password)
 
-        return dict(valid=self.user.get(email)['password'] == Secret.hash(password, SALT))
+        return self.user.get(email)['password'] == Secret.hash(password, SALT)
     
     def confirmemail(self, email, token):
         Validator.email(email)
@@ -72,16 +72,10 @@ class API(object):
 
         self.user.update(email, enabled=True, token=False)
 
-    def currentsessions(self, email, session):
-        Validator.email(email)
-        Validator.session(session)
-
-        return dict(sessions=self.user.get(email)['sessions'])
-
     def registered(self, email):
         Validator.email(email)
 
-        return dict(registered=self.user.exists(email))
+        return self.user.exists(email)
 
     def requestpassword(self, email):
         Validator.email(email)
@@ -96,6 +90,12 @@ class API(object):
             self.user.insert(email, enabled=False, token=token)
 
         Mail.send(MAIL_FROM, email, subject, token)
+    
+    def sessions(self, email, session):
+        Validator.email(email)
+        Validator.session(session)
+
+        return self.user.get(email)['sessions']
 
     def setpassword(self, email, token, password):
         Validator.email(email)
@@ -121,7 +121,7 @@ class API(object):
 
         self.user.add(email, 'session', id=session_id, start=session_start)
 
-        return dict(session_id=session_id, session_start=session_start)
+        return session_id
 
     def signout(self, email, session_id):
         Validator.email(email)
@@ -130,5 +130,3 @@ class API(object):
         session_stop = datetime.utcnow().isoformat()
 
         self.user.update_sub(email, 'session', 'id', session_id, id=False, stop=session_stop)
-
-        return dict(session_stop=session_stop)
