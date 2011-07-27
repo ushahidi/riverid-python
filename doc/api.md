@@ -7,7 +7,12 @@
 * All methods support both HTTP GET and POST.
 * In the case of HTTP GET, the parameters need to be sent as part of the query string.
 * In the case of HTTP POST, the parameters must be form encoded and sent as part of the POST body.
-* Append the API method name to the base URL `https://api.example.com/api/`. Replace `api.example.com` with the appropriate host.
+* Append the API method name to the base URL `http://api.example.com/api/`. Replace `api.example.com` with the appropriate host.
+
+## Example
+
+    $ curl 'http://api.example.com/api/requestpassword?email=user@example.com'
+    {"status": true, "request_parameters": {"email": "user@example.com"}}
 
 ## Errors
 
