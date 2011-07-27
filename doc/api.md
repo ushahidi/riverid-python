@@ -33,7 +33,7 @@
 #### Returns
 
     {
-        "status": "success",
+        "success" true,
         "oldemail": "user1@example.com",
         "newemail": "user2@example.com"
     }
@@ -49,7 +49,7 @@
 #### Returns
 
     {
-        "status": "success",
+        "success" true,
         "email": "user@example.com"
     }
 
@@ -63,7 +63,7 @@
 #### Returns
 
     {
-        "status": "success",
+        "success" true,
         "email": "user@example.com",
         "valid": true
     }
@@ -78,7 +78,7 @@
 #### Returns
 
     {
-        "status": "success",
+        "success" true,
         "email": "user@example.com"
     }
 
@@ -113,6 +113,7 @@
 #### Returns
 
     {
+        "success" true,
         "email": "user@example.com",
         "registered": true
     }
@@ -126,7 +127,7 @@
 ### Returns
 
     {
-        "status": "success",
+        "success" true,
         "email": "user@example.com"
     }
 
@@ -141,7 +142,7 @@
 #### Returns
 
     {
-        "status": "success",
+        "success" true,
         "email": "user@example.com"
     }
 
@@ -155,7 +156,7 @@
 #### Returns
 
     {
-        "status": "success",
+        "success" true,
         "email": "user@example.com",
         "session_id": "tMFynC1zRYIne0gKjtvSem6yb9usGzIz1xzgeb15YJiKsj0b92gw09b5ueNyhsrW",
         "session_start": "2011-07-25T12:41:59.814633"
@@ -171,7 +172,7 @@
 #### Returns
 
     {
-        "status: "success",
+        "success" true,
         "email": "user@example.com",
         "session_id": "tMFynC1zRYIne0gKjtvSem6yb9usGzIz1xzgeb15YJiKsj0b92gw09b5ueNyhsrW",
         "session_stop": "2011-07-25T13:34:24.184900"
