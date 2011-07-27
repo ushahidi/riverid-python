@@ -2,8 +2,8 @@
 
 ## Description
 
-* Calls are transported across the HTTPS protocol and follow the REST design pattern.
-* Calls return a valid JSON response on success or failure.
+* All calls are transported across the HTTP protocol and follow the REST design pattern.
+* All methods return a valid JSON response.
 * All methods support both HTTP GET and POST.
 * In the case of HTTP GET, the parameters need to be sent as part of the query string.
 * In the case of HTTP POST, the parameters must be form encoded and sent as part of the POST body.
