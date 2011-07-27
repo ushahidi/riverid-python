@@ -25,7 +25,7 @@ from riverexception import RiverException
 
 app = Flask(__name__)
 
-@app.route('/api/<method_name>')
+@app.route('/api/<method_name>', methods=['GET', 'POST'])
 def api(method_name):
     db = Connection().riverid
     api = API(db)
