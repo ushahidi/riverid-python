@@ -67,7 +67,7 @@ def api(method_name):
     json = dumps(result)
 
     if callback:
-        javascript = ''.join((callback, '(', json, ');\n'))
+        javascript = '%s(%s);\n' % (callback, json)
         response = make_response(javascript)
         response.headers['Content-Type'] = 'application/javascript; charset=UTF-8'
     else:
