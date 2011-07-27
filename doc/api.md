@@ -11,7 +11,7 @@
 
 ## Example
 
-    $ curl 'http://api.example.com/api/requestpassword?email=user@example.com'
+    $ curl http://api.example.com/api/requestpassword?email=user@example.com
     {"status": true, "request_parameters": {"email": "user@example.com"}}
 
 ## Errors
