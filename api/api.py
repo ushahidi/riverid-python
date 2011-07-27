@@ -21,12 +21,12 @@ from datetime import datetime
 from mail import Mail
 from riverexception import RiverException
 from secret import Secret
-from riveruser import User
+from riveruser import RiverUser
 from validator import Validator
 
 class API(object):
     def __init__(self, db):
-        self.user = User(db)
+        self.user = RiverUser(db)
 
     def changeemail(self, oldemail, newemail, password):
         Validator.email(oldemail)

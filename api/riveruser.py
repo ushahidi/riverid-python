@@ -16,7 +16,9 @@
 # You should have received a copy of the GNU Affero General Public License
 # along with RiverID.  If not, see <http://www.gnu.org/licenses/>.
 
-class User(object):
+from riverexception import RiverException
+
+class RiverUser(object):
     def __init__(self, db):
         self.db = db
     
@@ -32,7 +34,7 @@ class User(object):
     def get(self, email):
         user = self.db.user.find_one({'email': email})
         if not user:
-            raise Exception('The email address does not appear to be registered.')
+            raise RiverException('The email address does not appear to be registered.')
         return user
 
     def insert(self, email, **values):
