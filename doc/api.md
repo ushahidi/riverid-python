@@ -19,7 +19,7 @@
 ### Curl
 
     $ curl http://api.example.com/api/requestpassword?email=user@example.com
-    {"status": true, "request": {"email": "user@example.com"}, "method": "requestpassword", "response": {}}
+    {"status": true, "request": {"email": "user@example.com"}, "method": "requestpassword", "response": null}
 
 ### Success JSON
 
@@ -29,7 +29,7 @@
             "email": "user@example.com"
         },
         "method": "requestpassword",
-        "response": {}
+        "response": null
     }
 
 ### Failure JSON
