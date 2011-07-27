@@ -47,10 +47,13 @@ def api(method_name):
     for key in method_parameters:
         if key not in request_parameters:
             abort(400)
-        
+    
+    unused_parameters = []
     for key in request_parameters:
         if key not in method_parameters:
-            del request_parameters[key]
+            unused_parameters.append(key)
+    for key in unused_parameters:
+        del request_parameters[key]
 
     result = dict(method=method_name, request=request_parameters)
 
