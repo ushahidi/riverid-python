@@ -96,14 +96,14 @@ class API(object):
         Validator.session(session_id)
 
         sessions = self.user.get(email)['session']
-        valid = False
+        found = False
 
         for session in sessions:
             if session['id'] == session_id:
-                valid = True
+                found = True
         
-        if not valid:
-            raise RiverException('The given session is not valid for this account.')
+        if not found:
+            raise RiverException('The session is not valid for this account.')
         
         return sessions
 
@@ -145,6 +145,17 @@ class API(object):
         Validator.email(email)
         Validator.session(session_id)
 
-        session_stop = datetime.utcnow().isoformat()
+        sessions = self.user.get(email)['session']
+        found = False
 
-        self.user.update_sub(email, 'session', 'id', session_id, id=False, stop=session_stop)
+        for session in sessions:
+            if session['id'] == session_id:
+                if 'stop' in session:
+                    raise RiverException('The session has already been ended.')
+
+                found = True
+                session_stop = datetime.utcnow().isoformat()
+                self.user.update_sub(email, 'session', 'id', session_id, id=False, stop=session_stop)
+        
+        if not found:
+            raise RiverException('The session is not valid for this account.')
