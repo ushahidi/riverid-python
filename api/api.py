@@ -98,8 +98,8 @@ class API(object):
         sessions = self.user.get(email)['session']
         valid = False
 
-        for session in sessions:
-            if session['id'] == session:
+        for s in sessions:
+            if s['id'] == session:
                 valid = True
         
         if not valid:
