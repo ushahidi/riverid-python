@@ -32,7 +32,7 @@ class Validator(object):
 
     @staticmethod
     def session(string):
-        if match(r'^[a-zA-Z0-9]{128}$', string) == None:
+        if match(r'^[a-zA-Z0-9]{64}$', string) == None:
             raise RiverException('Please provide a valid session identifier.')
 
     @staticmethod
