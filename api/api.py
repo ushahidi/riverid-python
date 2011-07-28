@@ -95,7 +95,7 @@ class API(object):
         Validator.email(email)
         Validator.session(session)
 
-        return self.user.get(email)['sessions']
+        return self.user.get(email)['session']
 
     def setpassword(self, email, token, password):
         Validator.email(email)
