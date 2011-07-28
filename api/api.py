@@ -99,7 +99,7 @@ class API(object):
         found = False
 
         for session in sessions:
-            if session['id'] == session_id:
+            if session['id'] == session_id and 'stop' not in session:
                 found = True
         
         if not found:
