@@ -148,14 +148,14 @@ class API(object):
         sessions = self.user.get(email)['session']
         found = False
 
-        for session in sessions:
+        for count, session in enumerate(sessions):
             if session['id'] == session_id:
                 if 'stop' in session:
                     raise RiverException('The session has already been ended.')
 
                 found = True
                 session_stop = datetime.utcnow().isoformat()
-                self.user.update_sub(email, 'session', 'id', session_id, id=False, stop=session_stop)
+                self.user.update_sub(email, 'session', 'id', session_id, 'stop', session_stop)
         
         if not found:
             raise RiverException('The session is not valid for this account.')

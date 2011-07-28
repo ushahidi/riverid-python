@@ -44,5 +44,5 @@ class RiverUser(object):
     def update(self, email_id, **values):
         self.db.user.update({'email': email_id}, {'$set': values})
     
-    def update_sub(self, email, array, key, value, **values):
-        self.db.user.update({'email': email, ''.join((array, '.', key)): value}, {'$set': values})
+    def update_sub(self, email, array, select_key, select_value, update_key, update_value):
+        self.db.user.update({'email': email, ''.join((array, '.', select_key)): select_value}, {'$set': {''.join((array, '.', update_key)): update_value}})
