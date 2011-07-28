@@ -155,7 +155,7 @@ class API(object):
 
                 found = True
                 session_stop = datetime.utcnow().isoformat()
-                self.user.update_sub(email, 'session', 'id', session_id, 'stop', session_stop)
+                self.user.update_array(email, 'session', count, 'stop', session_stop)
         
         if not found:
             raise RiverException('The session is not valid for this account.')
