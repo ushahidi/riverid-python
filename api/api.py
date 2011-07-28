@@ -116,6 +116,14 @@ class API(object):
         Validator.email(email)
         Validator.password(password)
 
+        user = self.user.get(email)
+
+        if user['enabled'] == False:
+            raise RiverException('The account is disabled.')
+        
+        if user['password'] != Secret.hash(password, SALT):
+            raise RiverException('The password is incorrect for this user.')
+
         session_id = Secret.generate(64)
         session_start = datetime.utcnow().isoformat()
 
