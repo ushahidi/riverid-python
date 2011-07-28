@@ -102,7 +102,8 @@
 
 #### Parameters
 
-* `session` An active session id.
+* `email` The email address of the account.
+* `session` An active session id for this account.
 
 #### Returns
 
