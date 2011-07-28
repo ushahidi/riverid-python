@@ -103,7 +103,7 @@
 #### Parameters
 
 * `email` The email address of the account.
-* `session` An active session id for this account.
+* `session_id` An active session id for this account.
 
 #### Returns
 

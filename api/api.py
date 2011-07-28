@@ -91,15 +91,15 @@ class API(object):
 
         Mail.send(MAIL_FROM, email, subject, token)
     
-    def sessions(self, email, session):
+    def sessions(self, email, session_id):
         Validator.email(email)
-        Validator.session(session)
+        Validator.session(session_id)
 
         sessions = self.user.get(email)['session']
         valid = False
 
-        for s in sessions:
-            if s['id'] == session:
+        for session in sessions:
+            if session['id'] == session_id:
                 valid = True
         
         if not valid:
