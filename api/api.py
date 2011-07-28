@@ -95,7 +95,17 @@ class API(object):
         Validator.email(email)
         Validator.session(session)
 
-        return self.user.get(email)['session']
+        sessions = self.user.get(email)['session']
+        valid = False
+
+        for session in sessions:
+            if session['id'] == session:
+                valid = True
+        
+        if not valid:
+            raise RiverException('The given session is not valid for this account.')
+        
+        return sessions
 
     def setpassword(self, email, token, password):
         Validator.email(email)
