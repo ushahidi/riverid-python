@@ -26,6 +26,11 @@ class Validator(object):
             raise RiverException('Please provide a valid email address.')
 
     @staticmethod
+    def callback(string):
+        if match(r'^[a-zA-Z][a-zA-Z0-9_]*$', string) == None:
+            raise RiverException('Please provide a valid callback function name.')
+
+    @staticmethod
     def password(string):
         if not 8 <= len(string) <= 128:
             raise RiverException('Please provide a password between 8 and 128 characters in length.')

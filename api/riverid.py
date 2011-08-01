@@ -22,6 +22,7 @@ from inspect import getargspec
 from json import dumps
 from pymongo import Connection
 from riverexception import RiverException
+from validator import Validator
 
 app = Flask(__name__)
 
@@ -44,6 +45,7 @@ def api(method_name):
 
     if 'callback' in request_parameters:
         callback = request_parameters['callback']
+        Validator.callback(callback)
     else:
         callback = False
 
