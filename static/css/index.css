@@ -1,0 +1,35 @@
+html {
+	font: 0.8em / 1.6 verdana, arial, sans-serif;
+	background: #eee;
+}
+body {
+	margin: 20px auto;
+	padding: 0 20px;
+	border: 2px solid black;
+	max-width: 800px;
+	color: #333;
+	background: white;
+}
+nav {
+	display: inline-block;
+	visibility: hidden;
+}
+ul {
+	margin: 0;
+	padding: 0;
+}
+li {
+	margin: 0;
+	padding: 0;
+	list-style: none;
+}
+section {
+	display: inline-block;
+	visibility: hidden;
+}
+#signedin {
+	visibility: visible;
+}
+#signin {
+	visibility: visible;
+}
