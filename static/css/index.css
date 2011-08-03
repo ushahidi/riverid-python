@@ -1,18 +1,34 @@
 html {
 	font: 0.8em / 1.6 verdana, arial, sans-serif;
-	background: #eee;
+	background: #ddd;
 }
 body {
 	margin: 20px auto;
-	padding: 0 20px;
+	padding: 0;
 	border: 2px solid black;
-	max-width: 800px;
+	width: 600px;
 	color: #333;
 	background: white;
 }
+header {
+	margin: 0;
+	padding: 10px 20px;
+	border-bottom: 1px solid #aaa;
+	text-align: right;
+	background: #eee;
+}
+h1 {
+	float: left;
+	margin: 0;
+	padding: 0;
+	font-size: 2em;
+	font-weight: normal;
+}
 nav {
-	display: inline-block;
-	visibility: hidden;
+	display: none;
+	vertical-align: top;
+	height: 300px;
+	background: #eee;
 }
 ul {
 	margin: 0;
@@ -23,13 +39,44 @@ li {
 	padding: 0;
 	list-style: none;
 }
-section {
-	display: inline-block;
-	visibility: hidden;
+li a {
+	display: block;
+	padding: 10px 10px 10px 40px;
+	border-right: 1px solid #aaa;
+	border-bottom: 1px solid #aaa;
+	color: #333;
+	text-align: right;
+	text-decoration: none;
 }
-#signedin {
-	visibility: visible;
+li a.active {
+	border-right: none;
+	background: #f9f9f9;
+}
+section {
+	display: none;
+	margin: 0 20px;
+}
+h2 {
+	font-size: 1.6em;
+	font-weight: normal;
+}
+form {
+	display: table;
+}
+form p {
+	display: table-row;
+}
+label, form p span {
+	display: table-cell;
+	padding: 10px 20px 10px 0;
+}
+button, input {
+	display: table-cell;
+	padding: 5px;
+}
+#anonymous {
+	display: inline-block;
 }
 #signin {
-	visibility: visible;
+	display: inline-block;
 }
