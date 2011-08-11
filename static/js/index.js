@@ -1,11 +1,11 @@
-$('nav a').click(function() {
+$('nav a').live('click', function() {
 	$('nav a.active').removeClass('active');
 	$(this).addClass('active');
 	$('section').hide();
 	$('#' + this.hash.substr(1)).show();
 	return false;
 });
-$('#signin button').click(function() {
+$('#signin button').live('click', function() {
 	$('#signin button, #signin input').attr('disabled', true);
 	$.getJSON('/api/signin?callback=?', {email: $('#signin-email').val(), password: $('#signin-password').val()}, function(response) {
 		if (response.success) {
