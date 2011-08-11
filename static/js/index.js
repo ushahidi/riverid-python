@@ -34,6 +34,7 @@ $('#register button').live('click', function() {
 			if (response.success) {
 				$('#register .error').text('');
 				$('#register .success').show();
+				$('#register input').val('');
 			} else {
 				$('#register .success').hide();
 				$('#register .error').text(response.error);
