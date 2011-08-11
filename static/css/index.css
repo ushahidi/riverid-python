@@ -74,9 +74,6 @@ button, input {
 	display: table-cell;
 	padding: 5px;
 }
-#anonymous {
-	display: inline-block;
-}
-#signin {
+#anonymous, #signin {
 	display: inline-block;
 }

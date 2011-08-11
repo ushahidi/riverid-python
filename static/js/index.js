@@ -2,7 +2,7 @@ $('nav a').live('click', function() {
 	$('nav a.active').removeClass('active');
 	$(this).addClass('active');
 	$('section').hide();
-	$('#' + this.hash.substr(1)).show();
+	$('#' + this.hash.substr(1)).css('display', 'inline-block');
 	return false;
 });
 $('#signin button').live('click', function() {
