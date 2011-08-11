@@ -1,3 +1,9 @@
+$('nav a').click(function() {
+	$('nav a.active').removeClass('active');
+	$(this).addClass('active');
+	$('section').hide();
+	$('#' + this.hash.substr(1)).show();
+});
 $('#signin button').click(function() {
 	$('#signin button, #signin input').attr('disabled', true);
 	$.getJSON('/api/signin?callback=?', {email: $('#signin-email').val(), password: $('#signin-password').val()}, function(response) {
