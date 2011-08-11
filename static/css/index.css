@@ -27,6 +27,7 @@ h1 {
 nav {
 	float: left;
 	display: none;
+	margin-right: 20px;
 	vertical-align: top;
 	height: 300px;
 	background: #eee;
@@ -56,6 +57,7 @@ li a.active {
 section {
 	display: none;
 	margin: 0 20px;
+	height: 300px;
 }
 h2 {
 	font-size: 1.6em;
