@@ -3,6 +3,7 @@ $('nav a').click(function() {
 	$(this).addClass('active');
 	$('section').hide();
 	$('#' + this.hash.substr(1)).show();
+	return false;
 });
 $('#signin button').click(function() {
 	$('#signin button, #signin input').attr('disabled', true);
