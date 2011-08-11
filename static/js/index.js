@@ -42,7 +42,7 @@ $('#register button').live('click', function() {
 			$('#register button, #register input').attr('disabled', false);
 		});
 	} else {
-		$('#register .error').text('The two passwords you entered do not match. Please try again.')
+		$('#register .error').text('The two email addresses you entered do not match. Please try again.')
 	}
 
 	return false;
