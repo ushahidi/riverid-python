@@ -78,5 +78,5 @@ button, input {
 	display: inline-block;
 }
 #signout {
-	display: none;
+	visibility: hidden;
 }
