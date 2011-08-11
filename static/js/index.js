@@ -7,7 +7,7 @@ $('nav a').live('click', function() {
 });
 $('#signin button').live('click', function() {
 	$('#signin button, #signin input').attr('disabled', true);
-	
+
 	$.getJSON('/api/signin?callback=?', {email: $('#signin-email').val(), password: $('#signin-password').val()}, function(response) {
 		if (response.success) {
 			localStorage.setItem('session_email', $('#signin-email').val());
@@ -42,7 +42,7 @@ $('#register button').live('click', function() {
 			$('#register button, #register input').attr('disabled', false);
 		});
 	} else {
-		$('#register').text('The two passwords you entered do not match. Please try again.')
+		$('#register .error').text('The two passwords you entered do not match. Please try again.')
 	}
 
 	return false;
