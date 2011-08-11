@@ -7,10 +7,12 @@ $('nav a').live('click', function() {
 });
 $('#signin button').live('click', function() {
 	$('#signin button, #signin input').attr('disabled', true);
+	
 	$.getJSON('/api/signin?callback=?', {email: $('#signin-email').val(), password: $('#signin-password').val()}, function(response) {
 		if (response.success) {
 			localStorage.setItem('session_email', $('#signin-email').val());
 			localStorage.setItem('session_id', response.response);
+
 			$('#email').text($('#signin-email').val());
 			$('#signout').show();
 			$('#anonymous, #signin').hide();
@@ -18,11 +20,15 @@ $('#signin button').live('click', function() {
 		} else {
 			$('#signin .error').text(response.error);
 		}
+
 		$('#signin button, #signin input').attr('disabled', false);
 	});
+
+	return false;
 });
 $('#register button').live('click', function() {
 	$('#register button, #register input').attr('disabled', true);
+
 	if ($('#register-email').val() == $('#register-confirm').val()) {
 		$.getJSON('/api/requestpassword?callback=?', {email: $('#register-email').val()}, function(response) {
 			if (response.success) {
@@ -32,9 +38,12 @@ $('#register button').live('click', function() {
 				$('#register .success').hide();
 				$('#register .error').text(response.error);
 			}
+
 			$('#register button, #register input').attr('disabled', false);
 		});
 	} else {
 		$('#register').text('The two passwords you entered do not match. Please try again.')
 	}
+
+	return false;
 });
