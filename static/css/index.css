@@ -77,3 +77,6 @@ button, input {
 #anonymous, #signin {
 	display: inline-block;
 }
+#signout {
+	display: none;
+}
