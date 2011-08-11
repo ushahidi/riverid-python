@@ -2,7 +2,7 @@ $('nav a').live('click', function() {
 	$('nav a.active').removeClass('active');
 	$(this).addClass('active');
 	$('section').hide();
-	$('#' + this.hash.substr(1)).css('display', 'inline-block');
+	$('#' + this.hash.substr(1)).show();
 	return false;
 });
 $('#signin button').live('click', function() {
@@ -27,9 +27,9 @@ $('#signin button').live('click', function() {
 	return false;
 });
 $('#register button').live('click', function() {
-	$('#register button, #register input').attr('disabled', true);
-
 	if ($('#register-email').val() == $('#register-confirm').val()) {
+		$('#register button, #register input').attr('disabled', true);
+
 		$.getJSON('/api/requestpassword?callback=?', {email: $('#register-email').val()}, function(response) {
 			if (response.success) {
 				$('#register .error').text('');

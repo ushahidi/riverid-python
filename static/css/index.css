@@ -25,6 +25,7 @@ h1 {
 	font-weight: normal;
 }
 nav {
+	float: left;
 	display: none;
 	vertical-align: top;
 	height: 300px;
@@ -82,7 +83,7 @@ button, input {
 	color: #961200;
 }
 #anonymous, #signin {
-	display: inline-block;
+	display: block;
 }
 #signout {
 	visibility: hidden;
