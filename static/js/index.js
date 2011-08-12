@@ -1,7 +1,7 @@
 $('nav a').live('click', function() {
 	$('nav a.active').removeClass('active');
 	$(this).addClass('active');
-	$('section').hide();
+	$('section').hide("slide", {direction: "left"}, 1000);
 	$('#' + this.hash.substr(1)).show();
 	
 	return false;
