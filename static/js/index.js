@@ -15,9 +15,8 @@ $('#signin button').live('click', function() {
 			localStorage.setItem('session_id', response.response);
 
 			$('#email').text($('#signin-email').val());
-			$('#signout').show();
 			$('#anonymous, #signin').hide();
-			$('#signedin').show();
+			$('#signout, #signedin, #changepassword').show();
 		} else {
 			$('#signin .error').text(response.error);
 		}
