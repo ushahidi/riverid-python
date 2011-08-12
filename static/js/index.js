@@ -137,7 +137,7 @@ $('#changeemail button').live('click', function() {
 			$('#changeemail button, #changeemail input').attr('disabled', false);
 		});
 	} else {
-		$('#changepassword .error').text('The two passwords you entered do not match. Please try again.');
+		$('#changeemail .error').text('The two email addresses you entered do not match. Please try again.');
 	}
 
 	return false;
