@@ -10,7 +10,7 @@ $('nav a').live('click', function() {
 $('#signin button').live('click', function() {
 	$('#signin button, #signin input').attr('disabled', true);
 
-	$.getJSON('/api/signin?callback=?', {email: $('#signin-email').val(), password: $('#signin-password').val()}, function(response) {
+	$.getJSON('/api/signin', {email: $('#signin-email').val(), password: $('#signin-password').val()}, function(response) {
 		if (response.success) {
 			localStorage.setItem('session_email', $('#signin-email').val());
 			localStorage.setItem('session_id', response.response);
@@ -33,9 +33,9 @@ $('#register button').live('click', function() {
 	if ($('#register-email').val() == $('#register-confirm').val()) {
 		$('#register button, #register input').attr('disabled', true);
 
-		$.getJSON('/api/registered?callback=?', {email: $('#register-email').val()}, function(response) {
+		$.getJSON('/api/registered', {email: $('#register-email').val()}, function(response) {
 			if (!response.response) {
-				$.getJSON('/api/requestpassword?callback=?', {email: $('#register-email').val()}, function(response) {
+				$.getJSON('/api/requestpassword', {email: $('#register-email').val()}, function(response) {
 					if (response.success) {
 						$('#register .error').text('');
 						$('#register .success').show();
@@ -63,9 +63,9 @@ $('#register button').live('click', function() {
 $('#recover button').live('click', function() {
 	$('#recover button, #recover input').attr('disabled', true);
 
-	$.getJSON('/api/registered?callback=?', {email: $('#recover-email').val()}, function(response) {
+	$.getJSON('/api/registered', {email: $('#recover-email').val()}, function(response) {
 		if (response.response) {
-			$.getJSON('/api/requestpassword?callback=?', {email: $('#recover-email').val()}, function(response) {
+			$.getJSON('/api/requestpassword', {email: $('#recover-email').val()}, function(response) {
 				if (response.success) {
 					$('#recover .error').text('');
 					$('#recover .success').show();
@@ -96,7 +96,7 @@ $('#changepassword button').live('click', function() {
 		params.oldpassword = $('#changepassword-old').val();
 		params.newpassword = $('#changepassword-new').val();
 
-		$.getJSON('/api/changepassword?callback=?', params, function(response) {
+		$.getJSON('/api/changepassword', params, function(response) {
 			if (response.success) {
 				$('#changepassword .error').text('');
 				$('#changepassword .success').show();
@@ -124,7 +124,7 @@ $('#changeemail button').live('click', function() {
 		params.newemail = $('#changeemail-email').val();
 		params.password = $('#changeemail-password').val();
 
-		$.getJSON('/api/changeemail?callback=?', params, function(response) {
+		$.getJSON('/api/changeemail', params, function(response) {
 			if (response.success) {
 				localStorage.setItem('session_email', $('#changeemail-email').val());
 				$('#changeemail .error').text('');
