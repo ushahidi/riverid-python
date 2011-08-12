@@ -85,3 +85,31 @@ $('#recover button').live('click', function() {
 
 	return false;
 });
+
+$('#changepassword button').live('click', function() {
+	if ($('#changepassword-new').val() == $('#changepassword-confirm').val()) {
+		$('#changepassword button, #changepassword input').attr('disabled', true);
+
+		var params = new Array();
+		params.email = localStorage.getItem('email');
+		params.oldpassword = $('#changepassword-old').val();
+		params.newpassword = $('$changepassword-new').val();
+
+		$.getJSON('/api/changepassword?callback=?', params, function(response) {
+			if (response.success) {
+				$('#changepassword .error').text('');
+				$('#changepassword .success').show();
+				$('#changepassword input').val('');
+			} else {
+				$('#changepassword .success').hide();
+				$('#changepassword .error').text(response.error);
+			}
+
+			$('#changepassword button, #changepassword input').attr('disabled', false);
+		});
+	} else {
+		$('#changepassword .error').text('The two passwords you entered do not match. Please try again.');
+	}
+
+	return false;
+});
