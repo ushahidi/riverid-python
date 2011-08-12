@@ -91,7 +91,7 @@ $('#changepassword button').live('click', function() {
 		$('#changepassword button, #changepassword input').attr('disabled', true);
 
 		var params = {};
-		params.email = localStorage.getItem('email');
+		params.email = localStorage.getItem('session_email');
 		params.oldpassword = $('#changepassword-old').val();
 		params.newpassword = $('#changepassword-new').val();
 
