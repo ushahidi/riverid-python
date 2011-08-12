@@ -43,13 +43,14 @@ $('#register button').live('click', function() {
 						$('#register .success').hide();
 						$('#register .error').text(response.error);
 					}
+
+					$('#register button, #register input').attr('disabled', false);
 				});
 			} else {
 				$('#register .success').hide();
 				$('#register .error').text('This email address has already been registered.');
+				$('#register button, #register input').attr('disabled', false);
 			}
-
-			$('#register button, #register input').attr('disabled', false);
 		});
 	} else {
 		$('#register .error').text('The two email addresses you entered do not match. Please try again.')
@@ -72,13 +73,14 @@ $('#recover button').live('click', function() {
 					$('#recover .success').hide();
 					$('#recover .error').text(response.error);
 				}
+				
+				$('#recover button, #recover input').attr('disabled', false);
 			});
 		} else {
 			$('#recover .success').hide();
 			$('#recover .error').text('This email address is not currently associated with any account on our records.');
+			$('#recover button, #recover input').attr('disabled', false);
 		}
-
-		$('#recover button, #recover input').attr('disabled', false);
 	});
 
 	return false;
