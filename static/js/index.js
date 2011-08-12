@@ -16,7 +16,8 @@ $('#signin button').live('click', function() {
 
 			$('#email').text($('#signin-email').val());
 			$('#anonymous, #signin').hide();
-			$('#signout, #signedin, #changepassword').show();
+			$('#signedin, #changepassword').show();
+			$('#signout').css('visibility', 'visible');
 		} else {
 			$('#signin .error').text(response.error);
 		}
