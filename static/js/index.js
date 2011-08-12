@@ -113,3 +113,32 @@ $('#changepassword button').live('click', function() {
 
 	return false;
 });
+
+$('#changeemail button').live('click', function() {
+	if ($('#changeemail-email').val() == $('#changeemail-confirm').val()) {
+		$('#changeemail button, #changeemail input').attr('disabled', true);
+
+		var params = {};
+		params.oldemail = localStorage.getItem('session_email');
+		params.newemail = $('#changeemail-email').val();
+		params.password = $('#changeemail-password').val();
+
+		$.getJSON('/api/changepassword?callback=?', params, function(response) {
+			if (response.success) {
+				localStorage.setItem('session_email', $('#changeemail-email').val());
+				$('#changeemail .error').text('');
+				$('#changeemail .success').show();
+				$('#changeemail input').val('');
+			} else {
+				$('#changeemail .success').hide();
+				$('#changeemail .error').text(response.error);
+			}
+
+			$('#changeemail button, #changeemail input').attr('disabled', false);
+		});
+	} else {
+		$('#changepassword .error').text('The two passwords you entered do not match. Please try again.');
+	}
+
+	return false;
+});
