@@ -93,7 +93,7 @@ $('#changepassword button').live('click', function() {
 		var params = new Array();
 		params.email = localStorage.getItem('email');
 		params.oldpassword = $('#changepassword-old').val();
-		params.newpassword = $('$changepassword-new').val();
+		params.newpassword = $('#changepassword-new').val();
 
 		$.getJSON('/api/changepassword?callback=?', params, function(response) {
 			if (response.success) {
