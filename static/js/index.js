@@ -123,7 +123,7 @@ $('#changeemail button').live('click', function() {
 		params.newemail = $('#changeemail-email').val();
 		params.password = $('#changeemail-password').val();
 
-		$.getJSON('/api/changepassword?callback=?', params, function(response) {
+		$.getJSON('/api/changeemail?callback=?', params, function(response) {
 			if (response.success) {
 				localStorage.setItem('session_email', $('#changeemail-email').val());
 				$('#changeemail .error').text('');
