@@ -57,3 +57,29 @@ $('#register button').live('click', function() {
 
 	return false;
 });
+
+$('#recover button').live('click', function() {
+	$('#recover button, #recover input').attr('disabled', true);
+
+	$.getJSON('/api/registered?callback=?', {email: $('#recover-email').val()}, function(response) {
+		if (response.response) {
+			$.getJSON('/api/requestpassword?callback=?', {email: $('#recover-email').val()}, function(response) {
+				if (response.success) {
+					$('#recover .error').text('');
+					$('#recover .success').show();
+					$('#recover input').val('');
+				} else {
+					$('#recover .success').hide();
+					$('#recover .error').text(response.error);
+				}
+			});
+		} else {
+			$('#recover .success').hide();
+			$('#recover .error').text('This email address is not currently associated with any account on our records.');
+		}
+
+		$('#register button, #register input').attr('disabled', false);
+	});
+
+	return false;
+});
