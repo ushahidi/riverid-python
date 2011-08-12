@@ -78,7 +78,7 @@ $('#recover button').live('click', function() {
 			$('#recover .error').text('This email address is not currently associated with any account on our records.');
 		}
 
-		$('#register button, #register input').attr('disabled', false);
+		$('#recover button, #recover input').attr('disabled', false);
 	});
 
 	return false;
