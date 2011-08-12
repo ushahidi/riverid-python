@@ -5,6 +5,7 @@ $('nav a').live('click', function() {
 	$('#' + this.hash.substr(1)).show();
 	return false;
 });
+
 $('#signin button').live('click', function() {
 	$('#signin button, #signin input').attr('disabled', true);
 
@@ -26,18 +27,26 @@ $('#signin button').live('click', function() {
 
 	return false;
 });
+
 $('#register button').live('click', function() {
 	if ($('#register-email').val() == $('#register-confirm').val()) {
 		$('#register button, #register input').attr('disabled', true);
 
-		$.getJSON('/api/requestpassword?callback=?', {email: $('#register-email').val()}, function(response) {
-			if (response.success) {
-				$('#register .error').text('');
-				$('#register .success').show();
-				$('#register input').val('');
+		$.getJSON('/api/registered?callback=?', {email: $('#register-email').val()}, function(response) {
+			if (!response.response) {
+				$.getJSON('/api/requestpassword?callback=?', {email: $('#register-email').val()}, function(response) {
+					if (response.success) {
+						$('#register .error').text('');
+						$('#register .success').show();
+						$('#register input').val('');
+					} else {
+						$('#register .success').hide();
+						$('#register .error').text(response.error);
+					}
+				});
 			} else {
 				$('#register .success').hide();
-				$('#register .error').text(response.error);
+				$('#register .error').text('This email address has already been registered.');
 			}
 
 			$('#register button, #register input').attr('disabled', false);
