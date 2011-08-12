@@ -90,7 +90,7 @@ $('#changepassword button').live('click', function() {
 	if ($('#changepassword-new').val() == $('#changepassword-confirm').val()) {
 		$('#changepassword button, #changepassword input').attr('disabled', true);
 
-		var params = new Array();
+		var params = {};
 		params.email = localStorage.getItem('email');
 		params.oldpassword = $('#changepassword-old').val();
 		params.newpassword = $('#changepassword-new').val();
