@@ -127,6 +127,7 @@ $('#changeemail button').live('click', function() {
 		$.getJSON('/api/changeemail', params, function(response) {
 			if (response.success) {
 				localStorage.setItem('session_email', $('#changeemail-email').val());
+
 				$('#changeemail .error').text('');
 				$('#changeemail .success').show();
 				$('#changeemail input').val('');
@@ -142,4 +143,15 @@ $('#changeemail button').live('click', function() {
 	}
 
 	return false;
+});
+
+$(function() {
+	var session_email = localStorage.getItem('session_email');
+	var session_id = localStorage.getItem('session_id');
+	if (session_email != null && session_id != null) {
+		$('#email').text(email);
+		$('#anonymous, #signin').hide();
+		$('#signedin, #changepassword').show();
+		$('#signout').css('visibility', 'visible');
+	}
 });
