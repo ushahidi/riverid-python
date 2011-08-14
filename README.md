@@ -1,4 +1,4 @@
-# RiverID v0.3.0
+# RiverID v0.4.0 (Alpha)
 
 ## Synopsis
 
