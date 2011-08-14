@@ -15,6 +15,7 @@ $('#signin button').live('click', function() {
 			localStorage.setItem('session_email', $('#signin-email').val());
 			localStorage.setItem('session_id', response.response);
 
+			$('#signin-password').val('');
 			$('#email').text($('#signin-email').val());
 			$('#anonymous, #signin').hide();
 			$('#signedin, #changepassword, #signout').show();
