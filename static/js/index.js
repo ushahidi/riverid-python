@@ -87,6 +87,34 @@ $('#recover button').live('click', function() {
 	return false;
 });
 
+$('#reset button').live('click', function() {
+	if ($('#reset-password').val() == $('#reset-confirm').val()) {
+		$('#reset button, #reset input').attr('disabled', true);
+
+		var params = {};
+		params.email = $('#reset-email').val();
+		params.token = $('#reset-token').val();
+		params.password = $('#reset-password').val();
+
+		$.getJSON('/api/setpassword', params, function(response) {
+			if (response.success) {
+				$('#reset .error').text('');
+				$('#reset .success').show();
+				$('#reset input').val('');
+			} else {
+				$('#reset .success').hide();
+				$('#reset .error').text(response.error);
+			}
+
+			$('#reset button, #reset input').attr('disabled', false);
+		});
+	} else {
+		$('#reset .error').text('The two passwords you entered do not match. Please try again.');
+	}
+
+	return false;
+});
+
 $('#changepassword button').live('click', function() {
 	if ($('#changepassword-new').val() == $('#changepassword-confirm').val()) {
 		$('#changepassword button, #changepassword input').attr('disabled', true);
