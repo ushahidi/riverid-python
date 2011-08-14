@@ -60,6 +60,29 @@ $('#register button').live('click', function() {
 	return false;
 });
 
+$('#confirm button').live('click', function() {
+	$('#confirm button, #confirm input').attr('disabled', true);
+
+	var params = {};
+	params.email = $('#confirm-email').val();
+	params.token = $('#confirm-token').val();
+
+	$.getJSON('/api/confirmemail', params, function(response) {
+		if (response.success) {
+			$('#confirm .error').text('');
+			$('#confirm .success').show();
+			$('#confirm input').val('');
+		} else {
+			$('#confirm .success').hide();
+			$('#confirm .error').text(response.error);
+		}
+
+		$('#confirm button, #confirm input').attr('disabled', false);
+	});
+
+	return false;
+});
+
 $('#recover button').live('click', function() {
 	$('#recover button, #recover input').attr('disabled', true);
 
@@ -185,6 +208,7 @@ $('#signout').live('click', function() {
 $(function() {
 	var session_email = localStorage.getItem('session_email');
 	var session_id = localStorage.getItem('session_id');
+
 	if (session_email != null && session_id != null) {
 		$('#email').text(session_email);
 		$('#anonymous, #signin').hide();

@@ -16,6 +16,7 @@
    <ul>
     <li><a class="active" href="#signin">Sign In</a></li>
     <li><a href="#register">Register</a></li>
+    <li><a href="#confirm">Confirm Email</a></li>
     <li><a href="#recover">Recover Password</a></li>
     <li><a href="#reset">Reset Password</a></li>
    </ul>
@@ -44,6 +45,14 @@
    </form>
    <p class="success">Your email address has been registered. Kindly check your mail and activate your account by confirming your email address.</p>
    <p class="error"></p>
+  </section>
+  <section id="confirm">
+   <h2>Confirm Email</h2>
+   <form>
+    <p><label for="confirm-email">Email:</label> <input id="confirm-email" type="email" placeholder="user@example.com"></p>
+    <p><label for="confirm-token">Token:</label> <input id="confirm-token" type="password" placeholder="xxxxxxxxxxxxxxxx"></p>
+    <p><span></span><button>Confirm Email</button></p>
+   </form>
   </section>
   <section id="recover">
    <h2>Recover Password</h2>
