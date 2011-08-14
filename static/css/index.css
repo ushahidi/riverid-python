@@ -91,5 +91,6 @@ button, input {
 	display: block;
 }
 #signout {
-	visibility: hidden;
+	display: none;
+	cursor: pointer;
 }

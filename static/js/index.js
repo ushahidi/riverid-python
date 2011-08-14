@@ -17,8 +17,7 @@ $('#signin button').live('click', function() {
 
 			$('#email').text($('#signin-email').val());
 			$('#anonymous, #signin').hide();
-			$('#signedin, #changepassword').show();
-			$('#signout').css('visibility', 'visible');
+			$('#signedin, #changepassword, #signout').show();
 		} else {
 			$('#signin .error').text(response.error);
 		}
@@ -173,13 +172,21 @@ $('#changeemail button').live('click', function() {
 	return false;
 });
 
+$('#signout').live('click', function() {
+	localStorage.removeItem('session_email');
+	localStorage.removeItem('session_id');
+
+	$('#email').text('');
+	$('#signedin, section, #signout').hide();
+	$('#anonymous, #signin').show();
+});
+
 $(function() {
 	var session_email = localStorage.getItem('session_email');
 	var session_id = localStorage.getItem('session_id');
 	if (session_email != null && session_id != null) {
 		$('#email').text(session_email);
 		$('#anonymous, #signin').hide();
-		$('#signedin, #changepassword').show();
-		$('#signout').css('visibility', 'visible');
+		$('#signedin, #changepassword, #signout').show();
 	}
 });
