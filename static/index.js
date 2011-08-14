@@ -200,6 +200,7 @@ $('#signout').live('click', function() {
 	localStorage.removeItem('session_email');
 	localStorage.removeItem('session_id');
 
+	$('input').val('');
 	$('#email').text('');
 	$('#signedin, section, #signout').hide();
 	$('#anonymous, #signin').show();
