@@ -177,7 +177,7 @@ $(function() {
 	var session_email = localStorage.getItem('session_email');
 	var session_id = localStorage.getItem('session_id');
 	if (session_email != null && session_id != null) {
-		$('#email').text(email);
+		$('#email').text(session_email);
 		$('#anonymous, #signin').hide();
 		$('#signedin, #changepassword').show();
 		$('#signout').css('visibility', 'visible');
