@@ -18,7 +18,7 @@ RiverID is an authentication and identity management system that provides users 
 ## Support
 
 * [SwiftRiver Mailing List](http://groups.google.com/group/swiftriver)
-* [Freenode #ushahidi](http://irc.lc/freenode/ushahidi)
+* [#ushahidi on Freenode](http://irc.lc/freenode/ushahidi)
 
 ## See Also
 
