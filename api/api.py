@@ -83,10 +83,10 @@ class API(object):
         token = Secret.generate(16)
 
         if self.user.exists(email):
-            subject = 'RiverID Change Password'
+            subject = 'RiverID: Please confirm your password change.'
             self.user.update(email, token=token)
         else:
-            subject = 'RiverID Registration'
+            subject = 'RiverID: Please confirm your email address.'
             self.user.insert(email, enabled=False, token=token)
 
         Mail.send(MAIL_FROM, email, subject, token)
