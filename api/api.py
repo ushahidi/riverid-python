@@ -87,7 +87,8 @@ class API(object):
             self.user.update(email, token=token)
         else:
             subject = 'RiverID: Please confirm your email address.'
-            self.user.insert(email, enabled=False, token=token)
+            identifier = Secret.generate(128)
+            self.user.insert(email, identifier=identifier, enabled=False, token=token)
 
         Mail.send(MAIL_FROM, email, subject, token)
     
