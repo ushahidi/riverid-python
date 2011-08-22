@@ -122,6 +122,12 @@ class API(object):
             raise RiverException('The token is not valid for this email address.')
 
         self.user.update(email, enabled=True, token=False, password=Secret.hash(password, SALT))
+    
+    def signedin(self, cookies):
+        session_id = cookies.get('session_id')
+        user_id = cookies.get('user_id')
+        
+        return dict(session_id=session_id, user_id=user_id)
 
     def signin(self, email, password):
         Validator.email(email)
