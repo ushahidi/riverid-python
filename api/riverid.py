@@ -48,6 +48,9 @@ def api(method_name):
         Validator.callback(callback)
     else:
         callback = False
+    
+    if 'cookies' in method_parameters:
+        request_parameters['cookies'] = request.cookies
 
     for key in method_parameters:
         if key not in request_parameters:
