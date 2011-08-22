@@ -140,7 +140,7 @@ class API(object):
 
         self.user.add(email, 'session', id=session_id, start=session_start)
 
-        return dict(user_id=user.id, session_id=session_id)
+        return dict(user_id=user['id'], session_id=session_id)
 
     def signout(self, email, session_id):
         Validator.email(email)
