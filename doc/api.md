@@ -117,6 +117,14 @@
 * `token` The token mailed to the email address.
 * `password` The new password of the account.
 
+### signedin
+
+#### Returns
+
+* `object`
+** `string` `session_id` The 64-character alphanumeric unique session identifier.
+** `string` `user_id` The 128-character alphanumeric unique user identifier.
+
 ### signin
 
 #### Parameters
