@@ -126,7 +126,9 @@
 
 #### Returns
 
-* `string` The new 64-character alphanumeric unique session identifier.
+* `object`
+** `string` `session_id` The new 64-character alphanumeric unique session identifier.
+** `string` `user_id` The 128-character alphanumeric unique user identifier.
 
 ### signout
 
