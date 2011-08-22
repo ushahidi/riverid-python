@@ -33,7 +33,8 @@ $('#signin button').live('click', function() {
 	$.getJSON('/api/signin', {email: $('#signin-email').val(), password: $('#signin-password').val()}, function(response) {
 		if (response.success) {
 			localStorage.setItem('session_email', $('#signin-email').val());
-			localStorage.setItem('session_id', response.response);
+			localStorage.setItem('session_id', response.response.session_id);
+			localStorage.setItem('user_id', response.response.user_id);
 
 			$('#signin-password').val('');
 			$('#email').text($('#signin-email').val());
@@ -219,6 +220,7 @@ $('#changeemail button').live('click', function() {
 $('#signout').live('click', function() {
 	localStorage.removeItem('session_email');
 	localStorage.removeItem('session_id');
+	localStorage.removeItem('user_id');
 
 	$('input').val('');
 	$('#email').text('');
