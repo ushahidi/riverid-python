@@ -87,8 +87,8 @@ class API(object):
             self.user.update(email, token=token)
         else:
             subject = 'RiverID: Please confirm your email address.'
-            identifier = Secret.generate(128)
-            self.user.insert(email, identifier=identifier, enabled=False, token=token)
+            user_id = Secret.generate(128)
+            self.user.insert(email, id=user_id, enabled=False, token=token)
 
         Mail.send(MAIL_FROM, email, subject, token)
     
@@ -140,7 +140,7 @@ class API(object):
 
         self.user.add(email, 'session', id=session_id, start=session_start)
 
-        return session_id
+        return dict(user_id=user.id, session_id=session_id)
 
     def signout(self, email, session_id):
         Validator.email(email)
