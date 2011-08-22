@@ -36,6 +36,9 @@ $('#signin button').live('click', function() {
 			localStorage.setItem('session_id', response.response.session_id);
 			localStorage.setItem('user_id', response.response.user_id);
 
+			$.cookie('session_id', response.response.session_id);
+			$.cookie('user_id', response.response.user_id);
+
 			$('#signin-password').val('');
 			$('#email').text($('#signin-email').val());
 			$('#anonymous, #signin').hide();
@@ -221,6 +224,9 @@ $('#signout').live('click', function() {
 	localStorage.removeItem('session_email');
 	localStorage.removeItem('session_id');
 	localStorage.removeItem('user_id');
+
+	$.cookie('session_id', null);
+	$.cookie('user_id', null);
 
 	$('input').val('');
 	$('#email').text('');
