@@ -6,9 +6,9 @@ RiverID is an authentication and identity management system that provides users 
 
 ## Documentation
 
-* [API Documentation](https://github.com/ushahidi/RiverID/blob/master/doc/api.md)
-* [Generic Installation Instructions](https://github.com/ushahidi/RiverID/blob/master/doc/install.md)
-* [Debian 6.0 (Squeeze) Installation Instructions](https://github.com/ushahidi/RiverID/blob/master/doc/debian.md)
+* [API Documentation](https://github.com/ushahidi/riverid/blob/master/doc/api.md)
+* [Generic Installation Instructions](https://github.com/ushahidi/riverid/blob/master/doc/install.md)
+* [Debian 6.0 (Squeeze) Installation Instructions](https://github.com/ushahidi/riverid/blob/master/doc/debian.md)
 
 ## Licenses
 
