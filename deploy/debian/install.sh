@@ -34,7 +34,7 @@ pip install Flask pymongo
 adduser --disabled-password --gecos "" riverid
 
 # Create a local clone of the application.
-git clone https://github.com/ushahidi/RiverID.git /var/www/riverid
+git clone https://github.com/ushahidi/riverid.git /var/www/riverid
 
 # Replace the default Apache configuration with the bundled one.
 cp /var/www/riverid/deploy/debian/apache.conf /etc/apache2/sites-enabled/000-default
