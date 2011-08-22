@@ -1,6 +1,6 @@
 (function() {
-	var user_id = localStorage.getItem('user_id');
-	var session_id = localStorage.getItem('session_id');
+	var user_id = $.cookie('user_id');
+	var session_id = $.cookie('session_id');
 	if (user_id == null || session_id == null) {
 		alert('Not signed in.');
 	} else {
