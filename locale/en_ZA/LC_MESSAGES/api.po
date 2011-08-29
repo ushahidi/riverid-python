@@ -31,9 +31,6 @@ msgstr ""
 msgid "The session has already been ended."
 msgstr ""
 
-msgid "The session is not valid for this account."
-msgstr ""
-
 msgid "The email address does not appear to be registered."
 msgstr ""
 
@@ -50,9 +47,6 @@ msgid "Please provide a valid session identifier."
 msgstr ""
 
 msgid "Please provide a valid token."
-msgstr ""
-
-msgid "Please provide a valid email address."
 msgstr ""
 
 msgid "Please provide a valid callback function name."
