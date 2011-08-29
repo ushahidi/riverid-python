@@ -1,0 +1,74 @@
+msgid "The password is incorrect for this user."
+msgstr ""
+
+msgid "RiverID Email Change"
+msgstr ""
+
+msgid "The old password is incorrect for this user."
+msgstr ""
+
+msgid "This email address has already been confirmed."
+msgstr ""
+
+msgid "The token is not valid for this email address."
+msgstr ""
+
+msgid "RiverID: Please confirm your password change."
+msgstr ""
+
+msgid "RiverID: Please confirm your email address."
+msgstr ""
+
+msgid "The session is not valid for this account."
+msgstr ""
+
+msgid "No password change has been requested for this email address."
+msgstr ""
+
+msgid "The token is not valid for this email address."
+msgstr ""
+
+msgid "The account is disabled."
+msgstr ""
+
+msgid "The password is incorrect for this user."
+msgstr ""
+
+msgid "The session has already been ended."
+msgstr ""
+
+msgid "The session is not valid for this account."
+msgstr ""
+
+msgid "The email address does not appear to be registered."
+msgstr ""
+
+msgid "Please provide a valid email address."
+msgstr ""
+
+msgid "Please provide a valid callback function name."
+msgstr ""
+
+msgid "Please provide a password between 8 and 128 characters in length."
+msgstr ""
+
+msgid "Please provide a valid session identifier."
+msgstr ""
+
+msgid "Please provide a valid token."
+msgstr ""
+
+msgid "Please provide a valid email address."
+msgstr ""
+
+msgid "Please provide a valid callback function name."
+msgstr ""
+
+msgid "Please provide a password between 8 and 128 characters in length."
+msgstr ""
+
+msgid "Please provide a valid session identifier."
+msgstr ""
+
+msgid "Please provide a valid token."
+msgstr ""
