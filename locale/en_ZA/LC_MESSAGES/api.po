@@ -28,9 +28,6 @@ msgstr ""
 msgid "The account is disabled."
 msgstr ""
 
-msgid "The password is incorrect for this user."
-msgstr ""
-
 msgid "The session has already been ended."
 msgstr ""
 
