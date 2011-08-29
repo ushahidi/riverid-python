@@ -48,9 +48,3 @@ msgstr ""
 
 msgid "Please provide a valid callback function name."
 msgstr ""
-
-msgid "Please provide a valid session identifier."
-msgstr ""
-
-msgid "Please provide a valid token."
-msgstr ""
