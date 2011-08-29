@@ -25,9 +25,6 @@ msgstr ""
 msgid "No password change has been requested for this email address."
 msgstr ""
 
-msgid "The token is not valid for this email address."
-msgstr ""
-
 msgid "The account is disabled."
 msgstr ""
 
