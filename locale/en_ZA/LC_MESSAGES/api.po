@@ -37,9 +37,6 @@ msgstr ""
 msgid "Please provide a valid email address."
 msgstr ""
 
-msgid "Please provide a valid callback function name."
-msgstr ""
-
 msgid "Please provide a password between 8 and 128 characters in length."
 msgstr ""
 
