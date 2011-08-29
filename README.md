@@ -10,6 +10,10 @@ RiverID is an authentication and identity management system that provides users 
 * [Generic Installation Instructions](https://github.com/ushahidi/riverid/blob/master/doc/install.md)
 * [Debian 6.0 (Squeeze) Installation Instructions](https://github.com/ushahidi/riverid/blob/master/doc/debian.md)
 
+## Localisation
+
+* [Transifex](https://www.transifex.net/projects/p/riverid/)
+
 ## Licenses
 
 * All bundled source code is released under the [GNU Affero General Public License](http://www.gnu.org/licenses/agpl.html).
