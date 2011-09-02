@@ -24,9 +24,9 @@ from pymongo import Connection
 from riverexception import RiverException
 from validator import Validator
 
-app = Flask(__name__)
+application = Flask(__name__)
 
-@app.route('/api/<method_name>', methods=['GET', 'POST'])
+@application.route('/api/<method_name>', methods=['GET', 'POST'])
 def api(method_name):
     db = Connection().riverid
     api = API(db)
@@ -85,8 +85,8 @@ def api(method_name):
     return response
 
 def main():
-    app.debug = True
-    app.run(host='0.0.0.0')
+    application.debug = True
+    application.run(host='0.0.0.0')
 
 if __name__ == '__main__':
     main()
