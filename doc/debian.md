@@ -4,7 +4,7 @@
 
 Run the following at the command line:
 
-`wget -qO- --no-check-certificate https://raw.github.com/ushahidi/riverid/master/deploy/debian/install.sh | sudo bash`
+`wget -qO- --no-check-certificate https://raw.github.com/ushahidi/riverid/master/scripts/install.sh | sudo bash`
 
 ## Manual
 

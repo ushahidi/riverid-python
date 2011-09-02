@@ -36,8 +36,11 @@ adduser --disabled-password --gecos "" riverid
 # Create a local clone of the application.
 git clone https://github.com/ushahidi/riverid.git /var/www/riverid
 
-# Replace the default Apache configuration with the bundled one.
-cp /var/www/riverid/deploy/debian/apache.conf /etc/apache2/sites-enabled/000-default
+# Remove the default Apache configuration.
+rm -f /etc/apache2/sites-enabled/000-default
+
+# Copy the RiverID Apache configuration.
+cp /var/www/riverid/config/apache.conf /etc/apache2/sites-enabled/riverid.conf
 
 # Tell Apache to reload its configuration.
 /etc/init.d/apache2 reload
