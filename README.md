@@ -14,7 +14,7 @@ RiverID is an authentication and identity management system that provides users 
 
 * [Transifex](https://www.transifex.net/projects/p/riverid/)
 
-## Licenses
+## License
 
 * [GNU Affero General Public License](http://www.gnu.org/licenses/agpl.html)
 
