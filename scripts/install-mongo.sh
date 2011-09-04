@@ -31,7 +31,7 @@ apt-get update
 apt-get upgrade -y
 
 # Install MongoDB Server
-apt-get install mongodb-10gen
+apt-get install -y mongodb-10gen
 
 # Download Firewall Configuration
 wget -O /etc/firewall.conf --no-check-certificate https://raw.github.com/ushahidi/riverid/master/config/firewall-mongo.conf
