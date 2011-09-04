@@ -24,6 +24,12 @@ apt-key adv --keyserver keyserver.ubuntu.com --recv 7F0CEB10
 # Add MongoDB Repository to Sources
 echo deb http://downloads-distro.mongodb.org/repo/ubuntu-upstart dist 10gen >> /etc/sources.list
 
+# Update Sources
+apt-get update
+
+# Upgrade Existing Packages
+apt-get upgrade -y
+
 # Install MongoDB Server
 apt-get install mongodb-10gen
 
