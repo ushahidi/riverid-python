@@ -20,9 +20,12 @@ RiverID is an authentication and identity management system that provides users 
 
 ## Installation
 
-* Application Server  
+### Application Server
+
 `wget -qO- --no-check-certificate https://raw.github.com/ushahidi/riverid/master/scripts/install-app.sh | sudo bash`
-* MongoDB Server  
+
+### MongoDB Server
+
 `wget -qO- --no-check-certificate https://raw.github.com/ushahidi/riverid/master/scripts/install-mongo.sh | sudo bash`
 
 ## Documentation
