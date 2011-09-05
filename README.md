@@ -32,6 +32,9 @@ RiverID is an authentication and identity management system that provides users 
 2. Whitelist the IP addresses which need access to the MongoDB node (replace `10.1.2.3` and repeat for each):  
 `iptables -I INPUT 1 -p tcp --dport 27017 -s 10.1.2.3 -j ACCEPT`
 
+3. After whitelisting the IP addresses, save the firewall configuration for restore after reboot:  
+`iptables-save > /etc/firewall.conf`
+
 ## Documentation
 
 * [API Documentation](https://github.com/ushahidi/riverid/blob/master/doc/api.md)
