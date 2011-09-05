@@ -30,7 +30,7 @@ from validator import Validator
 
 import gettext
 localedir = os.path.normpath(os.path.join(os.path.dirname(__file__), '..', 'locale'))
-gettext.bindtextdomain('api', localedir, '..', 'locale')))
+gettext.bindtextdomain('api', localedir)
 gettext.textdomain('api')
 _ = gettext.gettext
 
