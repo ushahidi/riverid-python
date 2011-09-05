@@ -47,3 +47,18 @@ cp /var/www/riverid/config/apache.conf /etc/apache2/sites-enabled/riverid.conf
 
 # Copy the example RiverID configuration file for customisation.
 cp /var/www/riverid/api/config.example.py /var/www/riverid/api/config.py
+
+# Download Firewall Configuration
+wget -O /etc/firewall.conf --no-check-certificate https://raw.github.com/ushahidi/riverid/master/config/firewall-app.conf
+
+# Download Firewall Startup Script
+wget -O /etc/init.d/firewall --no-check-certificate https://raw.github.com/ushahidi/riverid/master/scripts/firewall.sh
+
+# Flag Firewall Startup Script as Executable
+chmod +x /etc/init.d/firewall
+
+# Enable Firewall Startup Script
+update-rc.d firewall defaults
+
+# Start Firewall
+/etc/init.d/firewall start

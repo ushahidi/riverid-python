@@ -45,5 +45,5 @@ chmod +x /etc/init.d/firewall
 # Enable Firewall Startup Script
 update-rc.d firewall defaults
 
-# Start the Firewall
+# Start Firewall
 /etc/init.d/firewall start
