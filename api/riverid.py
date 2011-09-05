@@ -29,9 +29,14 @@ from riverexception import RiverException
 from validator import Validator
 
 import gettext
-gettext.bindtextdomain('riverid', os.path.join(os.path.dirname(__file__), 'locale'))
+gettext.bindtextdomain('riverid', os.path.normpath(os.path.join(os.path.dirname(__file__), '..', 'locale')))
 gettext.textdomain('riverid')
 _ = gettext.gettext
+
+languages = {}
+for lang in os.path.normpath(os.path.join(os.path.dirname(__file__), '..', 'locale')):
+    langauges[lang] = gettext.translation('riverid', languages=[lang])
+languages['en-ZA'].install()
 
 application = Flask(__name__)
 
