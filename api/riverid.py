@@ -37,7 +37,7 @@ _ = gettext.gettext
 languages = {}
 for lang in os.listdir(localedir):
     languages[lang] = gettext.translation('api', localedir, [lang])
-languages['en-ZA'].install()
+languages['en_ZA'].install()
 
 application = Flask(__name__)
 
@@ -68,9 +68,9 @@ def api(method_name):
         if request_parameters['lang'] in languages:
             languages[request_parameters['lang']].install()
         else:
-            languages['en-ZA'].install()
+            languages['en_ZA'].install()
     else:
-        languages['en-ZA'].install()
+        languages['en_ZA'].install()
     
     if 'cookies' in method_parameters:
         request_parameters['cookies'] = request.cookies
