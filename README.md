@@ -26,7 +26,11 @@ RiverID is an authentication and identity management system that provides users 
 
 ### MongoDB Server
 
+1. Run the installation script:  
 `wget -qO- --no-check-certificate https://raw.github.com/ushahidi/riverid/master/scripts/install-mongo.sh | sudo bash`
+
+2. Whitelist the IP addresses which need access to the MongoDB node (replace `10.1.2.3` and repeat for each):  
+`iptables -I INPUT 1 -p tcp --dport 27017 -s 10.1.2.3 -j ACCEPT`
 
 ## Documentation
 
