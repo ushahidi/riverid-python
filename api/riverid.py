@@ -36,7 +36,7 @@ _ = gettext.gettext
 
 languages = {}
 for lang in os.listdir(localedir):
-    langauges[lang] = gettext.translation('api', localedir, [lang])
+    languages[lang] = gettext.translation('api', localedir, [lang])
 languages['en-ZA'].install()
 
 application = Flask(__name__)
