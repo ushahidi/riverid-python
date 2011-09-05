@@ -1,0 +1,71 @@
+# 
+#   <jhcaiced@gmail.com>, 2011.
+msgid ""
+msgstr ""
+"Project-Id-Version: riverid\n"
+"Report-Msgid-Bugs-To: http://github.com/ushahidi/riverid/issues\n"
+"POT-Creation-Date: 2011-08-29 00:00+0000\n"
+"PO-Revision-Date: 2011-08-29 15:26+0000\n"
+"Last-Translator: jhcaiced <jhcaiced@gmail.com>\n"
+"Language-Team: Spanish (Colombia) (http://www.transifex.net/projects/p/riverid/team/es_CO/)\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Language: es_CO\n"
+"Plural-Forms: nplurals=2; plural=(n != 1)\n"
+
+msgid "The password is incorrect for this user."
+msgstr "La clave es incorrecta para este usuario"
+
+msgid "RiverID Email Change"
+msgstr "RiverID: Cambio correo electrónico"
+
+msgid "The old password is incorrect for this user."
+msgstr "La clave anterior es incorrecta para este usuario."
+
+msgid "This email address has already been confirmed."
+msgstr "Esta dirección de correo electrónico ya ha sido confirmada."
+
+msgid "The token is not valid for this email address."
+msgstr ""
+"El indicio de clave no es válido para esta dirección de correo electrónico."
+
+msgid "RiverID: Please confirm your password change."
+msgstr "RiverID: Por favor confirme el cambio de su clave."
+
+msgid "RiverID: Please confirm your email address."
+msgstr "RiverID: Por favor confirme su dirección de correo electrónico."
+
+msgid "The session is not valid for this account."
+msgstr "La sesión no es válida para esta cuenta de usuario."
+
+msgid "No password change has been requested for this email address."
+msgstr ""
+"No se ha solicitado cambio de clave para esta dirección de correo "
+"electrónico."
+
+msgid "The account is disabled."
+msgstr "La cuenta está desactivada."
+
+msgid "The session has already been ended."
+msgstr "La sesión ya ha terminado."
+
+msgid "The email address does not appear to be registered."
+msgstr "Esta dirección de correo electrónico no aparece registrada."
+
+msgid "Please provide a valid email address."
+msgstr "Por favor ingrese una dirección de correo electrónico válida."
+
+msgid "Please provide a password between 8 and 128 characters in length."
+msgstr "Por favor ingrese una clave con longitud entre 8 y 128 caracteres."
+
+msgid "Please provide a valid session identifier."
+msgstr "Por favor ingrese un identificador de sesión válido."
+
+msgid "Please provide a valid token."
+msgstr "Por favor ingrese un indicio de sesión válido."
+
+msgid "Please provide a valid callback function name."
+msgstr "Por favor ingrese un nombre de función válido."
+
+
