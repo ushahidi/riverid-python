@@ -34,7 +34,7 @@ gettext.textdomain('api')
 _ = gettext.gettext
 
 languages = {}
-for lang in os.path.normpath(os.path.join(os.path.dirname(__file__), '..', 'locale')):
+for lang in os.listdir(os.path.normpath(os.path.join(os.path.dirname(__file__), '..', 'locale'))):
     langauges[lang] = gettext.translation('api', languages=[lang])
 languages['en-ZA'].install()
 
