@@ -18,6 +18,9 @@
 # You should have received a copy of the GNU Affero General Public License
 # along with RiverID.  If not, see <http://www.gnu.org/licenses/>.
 
+# Stop whiptail from prompting for user input during unattended installation.
+export DEBIAN_FRONTEND=noninteractive
+
 # Update the sources.
 apt-get update
 
