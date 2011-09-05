@@ -17,6 +17,7 @@
 # along with RiverID.  If not, see <http://www.gnu.org/licenses/>.
 
 from api import API
+from config import MONGODB_SERVERS
 from flask import abort, Flask, make_response, request
 from inspect import getargspec
 from json import dumps
@@ -28,7 +29,7 @@ application = Flask(__name__)
 
 @application.route('/api/<method_name>', methods=['GET', 'POST'])
 def api(method_name):
-    db = Connection().riverid
+    db = Connection(MONGODB_SERVERS).riverid
     api = API(db)
     method = getattr(api, method_name, False)
 
