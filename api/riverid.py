@@ -16,6 +16,9 @@
 # You should have received a copy of the GNU Affero General Public License
 # along with RiverID.  If not, see <http://www.gnu.org/licenses/>.
 
+import os, sys
+sys.path.append(os.path.dirname(__file__))
+
 from api import API
 from config import MONGODB_SERVERS
 from flask import abort, Flask, make_response, request
