@@ -26,7 +26,12 @@ Please remember to execute each of the following as `root`.
 
 ### Application Server
 
+1. Run the installation script:  
 `wget -qO- --no-check-certificate https://raw.github.com/ushahidi/riverid/master/scripts/install-app.sh | bash`
+
+2. Edit the configuration file using a tool such as `vim` or `nano`:  
+`vim /var/www/riverid/api/config.py`  
+`nano /var/www/riverid/api/config.py`
 
 ### MongoDB Server
 
