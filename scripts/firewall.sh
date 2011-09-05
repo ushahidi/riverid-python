@@ -26,6 +26,7 @@ case "$1" in
   stop)
     echo "Stopping Firewall"
     iptables-save > /etc/firewall.conf
+    iptables -F
     ;;
   *)
     echo "Usage: /etc/init.d/firewall {start|stop}"
