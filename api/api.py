@@ -34,13 +34,13 @@ class API(object):
         Validator.password(password)
 
         if self.user.get(oldemail)['password'] != Secret.hash(password, SALT):
-            raise RiverException('The password is incorrect for this user.')
+            raise RiverException(_('The password is incorrect for this user.'))
         
         token = Secret.generate(16)
 
         self.user.update(oldemail, email=newemail, enabled=False, token=token)
 
-        Mail.send(MAIL_FROM, newemail, 'RiverID Email Change', token)
+        Mail.send(MAIL_FROM, newemail, _('RiverID Email Change'), token)
 
     def changepassword(self, email, oldpassword, newpassword):
         Validator.email(email)
@@ -48,7 +48,7 @@ class API(object):
         Validator.password(newpassword)
 
         if self.user.get(email)['password'] != Secret.hash(oldpassword, SALT):
-            raise RiverException('The old password is incorrect for this user.')
+            raise RiverException(_('The old password is incorrect for this user.'))
 
         self.user.update(email, password=Secret.hash(newpassword, SALT))
 
@@ -65,10 +65,10 @@ class API(object):
         user = self.user.get(email)
 
         if not user['token']:
-            raise RiverException('This email address has already been confirmed.')
+            raise RiverException(_('This email address has already been confirmed.'))
 
         if user['token'] != token:
-            raise RiverException('The token is not valid for this email address.')
+            raise RiverException(_('The token is not valid for this email address.'))
 
         self.user.update(email, enabled=True, token=False)
 
@@ -83,10 +83,10 @@ class API(object):
         token = Secret.generate(16)
 
         if self.user.exists(email):
-            subject = 'RiverID: Please confirm your password change.'
+            subject = _('RiverID: Please confirm your password change.')
             self.user.update(email, token=token)
         else:
-            subject = 'RiverID: Please confirm your email address.'
+            subject = _('RiverID: Please confirm your email address.')
             user_id = Secret.generate(128)
             self.user.insert(email, id=user_id, enabled=False, token=token)
 
@@ -104,7 +104,7 @@ class API(object):
                 found = True
         
         if not found:
-            raise RiverException('The session is not valid for this account.')
+            raise RiverException(_('The session is not valid for this account.'))
         
         return sessions
 
@@ -116,10 +116,10 @@ class API(object):
         user = self.user.get(email)
 
         if not user['token']:
-            raise RiverException('No password change has been requested for this email address.')
+            raise RiverException(_('No password change has been requested for this email address.'))
 
         if user['token'] != token:
-            raise RiverException('The token is not valid for this email address.')
+            raise RiverException(_('The token is not valid for this email address.'))
 
         self.user.update(email, enabled=True, token=False, password=Secret.hash(password, SALT))
     
@@ -136,10 +136,10 @@ class API(object):
         user = self.user.get(email)
 
         if user['enabled'] == False:
-            raise RiverException('The account is disabled.')
+            raise RiverException(_('The account is disabled.'))
         
         if user['password'] != Secret.hash(password, SALT):
-            raise RiverException('The password is incorrect for this user.')
+            raise RiverException(_('The password is incorrect for this user.'))
 
         session_id = Secret.generate(64)
         session_start = datetime.utcnow().isoformat()
@@ -158,11 +158,11 @@ class API(object):
         for count, session in enumerate(sessions):
             if session['id'] == session_id:
                 if 'stop' in session:
-                    raise RiverException('The session has already been ended.')
+                    raise RiverException(_('The session has already been ended.'))
 
                 found = True
                 session_stop = datetime.utcnow().isoformat()
                 self.user.update_array(email, 'session', count, 'stop', session_stop)
         
         if not found:
-            raise RiverException('The session is not valid for this account.')
+            raise RiverException(_('The session is not valid for this account.'))

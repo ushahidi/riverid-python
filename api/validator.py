@@ -23,24 +23,24 @@ class Validator(object):
     @staticmethod
     def email(string):
         if match(r'(?:^|\s)[-a-z0-9_.]+@(?:[-a-z0-9]+\.)+[a-z]{2,6}(?:\s|$)', string, IGNORECASE) == None:
-            raise RiverException('Please provide a valid email address.')
+            raise RiverException(_('Please provide a valid email address.'))
 
     @staticmethod
     def callback(string):
         if match(r'^[a-zA-Z][a-zA-Z0-9_]*$', string) == None:
-            raise RiverException('Please provide a valid callback function name.')
+            raise RiverException(_('Please provide a valid callback function name.'))
 
     @staticmethod
     def password(string):
         if not 8 <= len(string) <= 128:
-            raise RiverException('Please provide a password between 8 and 128 characters in length.')
+            raise RiverException(_('Please provide a password between 8 and 128 characters in length.'))
 
     @staticmethod
     def session(string):
         if match(r'^[a-zA-Z0-9]{64}$', string) == None:
-            raise RiverException('Please provide a valid session identifier.')
+            raise RiverException(_('Please provide a valid session identifier.'))
 
     @staticmethod
     def token(string):
         if match(r'^[a-zA-Z0-9]{16}$', string) == None:
-            raise RiverException('Please provide a valid token.')
+            raise RiverException(_('Please provide a valid token.'))

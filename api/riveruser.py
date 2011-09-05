@@ -34,7 +34,7 @@ class RiverUser(object):
     def get(self, email):
         user = self.db.user.find_one({'email': email})
         if not user:
-            raise RiverException('The email address does not appear to be registered.')
+            raise RiverException(_('The email address does not appear to be registered.'))
         return user
 
     def insert(self, email, **values):
