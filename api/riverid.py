@@ -63,6 +63,14 @@ def api(method_name):
     else:
         callback = False
     
+    if 'lang' in request_parameters:
+        if request_parameters['lang'] in languages:
+            languages[request_parameters['lang']].install()
+        else:
+            languages['en-ZA'].install()
+    else:
+        languages['en-ZA'].install()
+    
     if 'cookies' in method_parameters:
         request_parameters['cookies'] = request.cookies
 
