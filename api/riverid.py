@@ -28,6 +28,11 @@ from pymongo import Connection
 from riverexception import RiverException
 from validator import Validator
 
+import gettext
+gettext.bindtextdomain('riverid', os.path.join(os.path.dirname(__file__), 'locale'))
+gettext.textdomain('riverid')
+_ = gettext.gettext
+
 application = Flask(__name__)
 
 @application.route('/api/<method_name>', methods=['GET', 'POST'])
