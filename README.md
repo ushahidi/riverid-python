@@ -6,7 +6,7 @@ RiverID is an authentication and identity management system that provides users 
 
 ## Recommended Architecture
 
-![Diagram](https://github.com/ushahidi/riverid/raw/master/doc/architecture.png)
+![Diagram](https://github.com/ushahidi/riverid/raw/master/diagrams/architecture.png)
 
 ## Supported Operating Systems
 
