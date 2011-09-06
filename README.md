@@ -45,10 +45,14 @@ Please remember to execute each of the following as `root`.
 1. Run the installation script:  
 `wget -qO- --no-check-certificate https://raw.github.com/ushahidi/riverid/master/scripts/install-mongo.sh | bash`
 
-2. Whitelist the IP addresses which need access to the MongoDB node (replace `10.1.2.3` and repeat for each):  
+2. Edit the configuration file using a tool such as `vim` or `nano`:  
+`vim /etc/mongodb.conf`  
+`nano /etc/mongodb.conf`
+
+3. Whitelist the IP addresses which need access to the MongoDB node (replace `10.1.2.3` and repeat for each):  
 `iptables -I INPUT 1 -p tcp --dport 27017 -s 10.1.2.3 -j ACCEPT`
 
-3. After whitelisting the IP addresses, save the firewall configuration for restore after reboot:  
+4. After whitelisting the IP addresses, save the firewall configuration for restore after reboot:  
 `iptables-save > /etc/firewall.conf`
 
 ## Documentation
