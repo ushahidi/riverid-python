@@ -4,6 +4,10 @@
 
 RiverID is an authentication and identity management system that provides users with a secure central sign-on facility. Third party applications can make use of the integrated OAuth and OpenID endpoints.
 
+## Recommended Architecture
+
+![Diagram](https://github.com/ushahidi/riverid/raw/master/doc/architecture.png)
+
 ## Supported Operating Systems
 
 * [Debian 6.0](http://www.debian.org/)
@@ -17,10 +21,6 @@ RiverID is an authentication and identity management system that provides users 
 * [Postfix](http://www.postfix.org/)
 * [Python 2.x](http://python.org/)
 * [pymongo](http://pypi.python.org/pypi/pymongo/)
-
-## Recommended Architecture
-
-![Diagram](https://github.com/ushahidi/riverid/raw/master/doc/architecture.png)
 
 ## Installation
 
