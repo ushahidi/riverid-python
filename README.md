@@ -40,7 +40,7 @@ Please remember to execute each of the following as `root`.
 3. Restart Apache to make sure your new configuration is loaded:  
 `/etc/init.d/apache2 restart`
 
-### MongoDB Server
+### MongoDB Node
 
 1. Run the installation script:  
 `wget -qO- --no-check-certificate https://raw.github.com/ushahidi/riverid/master/scripts/install-mongo.sh | bash`
