@@ -1,7 +1,7 @@
 #!/bin/bash
 
-# RiverID Application Installation Script
-# =======================================
+# RiverID API Installation Script
+# ===============================
 #
 # This file is part of RiverID.
 #
@@ -43,7 +43,7 @@ git clone https://github.com/ushahidi/riverid.git /var/www/riverid
 rm -f /etc/apache2/sites-enabled/000-default
 
 # Copy the RiverID Apache configuration.
-cp /var/www/riverid/config/apache.conf /etc/apache2/sites-enabled/riverid.conf
+cp /var/www/riverid/config/apache-api.conf /etc/apache2/sites-enabled/riverid-api.conf
 
 # Tell Apache to reload its configuration.
 /etc/init.d/apache2 reload
@@ -52,7 +52,7 @@ cp /var/www/riverid/config/apache.conf /etc/apache2/sites-enabled/riverid.conf
 cp /var/www/riverid/api/config.example.py /var/www/riverid/api/config.py
 
 # Download Firewall Configuration
-wget -O /etc/firewall.conf --no-check-certificate https://raw.github.com/ushahidi/riverid/master/config/firewall-app.conf
+wget -O /etc/firewall.conf --no-check-certificate https://raw.github.com/ushahidi/riverid/master/config/firewall-api.conf
 
 # Download Firewall Startup Script
 wget -O /etc/init.d/firewall --no-check-certificate https://raw.github.com/ushahidi/riverid/master/scripts/firewall.sh
