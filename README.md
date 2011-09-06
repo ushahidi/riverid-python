@@ -18,6 +18,10 @@ RiverID is an authentication and identity management system that provides users 
 * [Python 2.x](http://python.org/)
 * [pymongo](http://pypi.python.org/pypi/pymongo/)
 
+## Recommended Architecture
+
+![Diagram](https://github.com/ushahidi/riverid/raw/master/doc/architecture.png)
+
 ## Installation
 
 ### Root Required
