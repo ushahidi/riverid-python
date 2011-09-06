@@ -16,6 +16,7 @@
 * If `success` equals `true` and the method returns a value, `response` will equal the returned value.
 * If `success` equals `true` and the method does not return a value, `response` will equal `null`.
 * If `success` equals `false`, an `error` will be provided explaining the error.
+* Error messages are provided in English by default. You can change this by specifying the `lang` parameter in the request.
 
 ## Examples
 
