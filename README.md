@@ -49,10 +49,13 @@ Please remember to execute each of the following as `root`.
 `vim /etc/mongodb.conf`  
 `nano /etc/mongodb.conf`
 
-3. Whitelist the IP addresses which need access to the MongoDB node (replace `10.1.2.3` and repeat for each):  
+3. Restart MongoDB to make sure your new configuration is loaded.  
+`/etc/init.d/mongodb restart`
+
+4. Whitelist the IP addresses which need access to the MongoDB node (replace `10.1.2.3` and repeat for each):  
 `iptables -I INPUT 1 -p tcp --dport 27017 -s 10.1.2.3 -j ACCEPT`
 
-4. After whitelisting the IP addresses, save the firewall configuration for restore after reboot:  
+5. After whitelisting the IP addresses, save the firewall configuration for restore after reboot:  
 `iptables-save > /etc/firewall.conf`
 
 ## Documentation
