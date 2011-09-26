@@ -52,7 +52,7 @@ Please remember to execute each of the following as `root`.
 3. Restart MongoDB to make sure your new configuration is loaded.  
 `/etc/init.d/mongodb restart`
 
-4. Whitelist the IP addresses which need access to the MongoDB node (replace `10.1.2.3` and repeat for each):  
+4. Whitelist the IP address of each Application Server and each other MongoDB Node. Replace `10.1.2.3` and repeat for each:  
 `iptables -I INPUT 1 -p tcp --dport 27017 -s 10.1.2.3 -j ACCEPT`
 
 5. After whitelisting the IP addresses, save the firewall configuration for restore after reboot:  
