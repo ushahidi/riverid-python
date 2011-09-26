@@ -28,7 +28,7 @@ RiverID is an authentication and identity management system that provides users 
 
 Please remember to execute each of the following as `root`.
 
-### API Server
+### Application Server
 
 1. Run the installation script:  
 `wget -qO- --no-check-certificate https://raw.github.com/ushahidi/riverid/master/scripts/install-app.sh | bash`
