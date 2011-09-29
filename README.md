@@ -8,13 +8,10 @@ RiverID is an authentication and identity management system that provides users 
 
 ![Diagram](https://github.com/ushahidi/riverid/raw/master/diagrams/architecture.png)
 
-## Supported Operating Systems
-
-* [Debian 6.0](http://www.debian.org/)
-
-## Dependencies
+## Software Stack
 
 * [Apache HTTP Server](http://httpd.apache.org/)
+* [Debian 6.0](http://www.debian.org/)
 * [Flask](http://flask.pocoo.org/)
 * [mod_wsgi](http://code.google.com/p/modwsgi/)
 * [MongoDB](http://www.mongodb.org/)
