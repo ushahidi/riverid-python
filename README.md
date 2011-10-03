@@ -55,7 +55,7 @@ Please remember to execute each of the following as `root`.
 3. Load the new configuration:  
 `/etc/init.d/apache2 reload`
 
-### MongoDB Node
+### MongoDB Replication Set Node
 
 1. Run the installation script:  
 `wget -qO- --no-check-certificate https://raw.github.com/ushahidi/riverid/master/scripts/install-mongo.sh | bash`
