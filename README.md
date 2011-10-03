@@ -54,7 +54,7 @@ RiverID is an authentication and identity management system that provides users 
 `/var/www/riverid/api/config.py`
 
 3. Load the new configuration:  
-`/etc/init.d/apache2 reload`
+`/etc/init.d/apache2 restart`
 
 ## MongoDB Replication Set Node
 
