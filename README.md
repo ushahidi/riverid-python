@@ -49,7 +49,7 @@ Please remember to execute each of the following as `root`.
 1. Run the installation script:  
 `wget -qO- --no-check-certificate https://raw.github.com/ushahidi/riverid/master/scripts/install-app.sh | bash`
 
-2. Edit the nginx configuration file at the following location:  
+2. Edit the configuration file at the following location:  
 `/var/www/riverid/api/config.py`
 
 3. Load the new configuration:  
