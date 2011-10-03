@@ -74,7 +74,7 @@ RiverID is an authentication and identity management system that provides users 
 3. Load the new configuration:  
 `/etc/init.d/mongodb restart`
 
-4. Whitelist the IP address of each Application Server and each other MongoDB Node. Replace `10.1.2.3` and repeat for each:  
+4. Whitelist the IP address of each Application Cluster Node and each other MongoDB Node. Replace `10.1.2.3` and repeat for each:  
 `iptables -I INPUT 1 -p tcp --dport 27017 -j ACCEPT -s 10.1.2.3`
 
 5. After whitelisting the IP addresses, save the firewall configuration for restoration after reboot:  
