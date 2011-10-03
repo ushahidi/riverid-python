@@ -80,6 +80,8 @@ RiverID is an authentication and identity management system that provides users 
 5. After whitelisting the IP addresses, save the firewall configuration for restoration after reboot:  
 `iptables-save > /etc/firewall.conf`
 
+6. Configure the [Replication Set](http://www.mongodb.org/display/DOCS/Replica+Sets).
+
 ## Documentation
 
 * [API Documentation](https://github.com/ushahidi/riverid/blob/master/doc/api.md)
