@@ -27,28 +27,43 @@ RiverID is an authentication and identity management system that provides users 
 
 Please remember to execute each of the following as `root`.
 
-### Application Server
+### Application Server Load Balancer
+
+1. Run the installation script:  
+`wget -qO- --no-check-certificate https://raw.github.com/ushahidi/riverid/master/scripts/install-lb.sh | bash`
+
+2. Edit the configuration file at the following location:  
+`/etc/nginx/sites-enabled/riverid`
+
+3. Install the SSL certificate at the following location:  
+`/etc/nginx/ssl/riverid.in.crt`
+
+4. Install the SSL key at the following location:  
+`/etc/nginx/ssl/riverid.in.key`
+
+5. Load the new configuration:  
+`/etc/init.d/nginx reload`
+
+### Application Server Cluster Node
 
 1. Run the installation script:  
 `wget -qO- --no-check-certificate https://raw.github.com/ushahidi/riverid/master/scripts/install-app.sh | bash`
 
-2. Edit the configuration file using a tool such as `vim` or `nano`:  
-`vim /var/www/riverid/api/config.py`  
-`nano /var/www/riverid/api/config.py`
+2. Edit the nginx configuration file at the following location:  
+`/var/www/riverid/api/config.py`
 
-3. Restart Apache to make sure your new configuration is loaded:  
-`/etc/init.d/apache2 restart`
+3. Load the new configuration:  
+`/etc/init.d/apache2 reload`
 
 ### MongoDB Node
 
 1. Run the installation script:  
 `wget -qO- --no-check-certificate https://raw.github.com/ushahidi/riverid/master/scripts/install-mongo.sh | bash`
 
-2. Edit the configuration file using a tool such as `vim` or `nano`:  
-`vim /etc/mongodb.conf`  
-`nano /etc/mongodb.conf`
+2. Edit the configuration file at the following location:  
+`/etc/mongodb.conf`
 
-3. Restart MongoDB to make sure your new configuration is loaded.  
+3. Load the new configuration:  
 `/etc/init.d/mongodb restart`
 
 4. Whitelist the IP address of each Application Server and each other MongoDB Node. Replace `10.1.2.3` and repeat for each:  
