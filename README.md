@@ -8,26 +8,15 @@ RiverID is an authentication and identity management system that provides users 
 
 ![Diagram](https://github.com/ushahidi/riverid/raw/master/diagrams/architecture.png)
 
-## Software Stack
+## Application Load Balancer
 
-* [Apache HTTP Server](http://httpd.apache.org/)
-* [Debian 6.0](http://www.debian.org/)
-* [Flask](http://flask.pocoo.org/)
-* [mod_wsgi](http://code.google.com/p/modwsgi/)
-* [MongoDB](http://www.mongodb.org/)
-* [nginx](http://nginx.org/)
+### Software
+
+* [Debian](http://www.debian.org/)
+* [Nginx](http://nginx.org/)
 * [OpenSSL](http://www.openssl.org/)
-* [Postfix](http://www.postfix.org/)
-* [Python 2.x](http://python.org/)
-* [pymongo](http://pypi.python.org/pypi/pymongo/)
 
-## Installation
-
-### Root Required
-
-Please remember to execute each of the following as `root`.
-
-### Application Server Load Balancer
+### Deployment
 
 1. Run the installation script:  
 `wget -qO- --no-check-certificate https://raw.github.com/ushahidi/riverid/master/scripts/install-lb.sh | bash`
@@ -44,7 +33,19 @@ Please remember to execute each of the following as `root`.
 5. Load the new configuration:  
 `/etc/init.d/nginx reload`
 
-### Application Server Cluster Node
+## Application Cluster Node
+
+### Software
+
+* [Apache HTTP Server](http://httpd.apache.org/)
+* [Debian](http://www.debian.org/)
+* [Flask](http://flask.pocoo.org/)
+* [Mod_wsgi](http://code.google.com/p/modwsgi/)
+* [Postfix](http://www.postfix.org/)
+* [Pymongo](http://pypi.python.org/pypi/pymongo/)
+* [Python 2.x](http://python.org/)
+
+### Deployment
 
 1. Run the installation script:  
 `wget -qO- --no-check-certificate https://raw.github.com/ushahidi/riverid/master/scripts/install-app.sh | bash`
@@ -55,7 +56,14 @@ Please remember to execute each of the following as `root`.
 3. Load the new configuration:  
 `/etc/init.d/apache2 reload`
 
-### MongoDB Replication Set Node
+## MongoDB Replication Set Node
+
+### Software
+
+* [Debian](http://www.debian.org/)
+* [MongoDB](http://www.mongodb.org/)
+
+### Deployment
 
 1. Run the installation script:  
 `wget -qO- --no-check-certificate https://raw.github.com/ushahidi/riverid/master/scripts/install-mongo.sh | bash`
