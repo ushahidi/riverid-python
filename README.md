@@ -82,6 +82,11 @@ RiverID is an authentication and identity management system that provides users 
 
 6. Configure the [Replication Set](http://www.mongodb.org/display/DOCS/Replica+Sets).
 
+### Content Delivery Network
+
+* HTTP: `http://c739724.r24.cf2.rackcdn.com`
+* HTTPS: `https://c739724.ssl.cf2.rackcdn.com/`
+
 ## Documentation
 
 * [API Documentation](https://github.com/ushahidi/riverid/blob/master/doc/api.md)
