@@ -18,6 +18,8 @@
  * along with RiverID.  If not, see <http://www.gnu.org/licenses/>.
  */
 
+var base = 'http://crowdmapid.com';
+
 $('nav a').live('click', function() {
 	$('nav a.active').removeClass('active');
 	$(this).addClass('active');
@@ -30,7 +32,7 @@ $('nav a').live('click', function() {
 $('#signin button').live('click', function() {
 	$('#signin button, #signin input').attr('disabled', true);
 
-	$.getJSON('/api/signin', {email: $('#signin-email').val(), password: $('#signin-password').val()}, function(response) {
+	$.getJSON(base + '/api/signin', {email: $('#signin-email').val(), password: $('#signin-password').val()}, function(response) {
 		if (response.success) {
 			localStorage.setItem('session_email', $('#signin-email').val());
 			localStorage.setItem('session_id', response.response.session_id);
@@ -57,9 +59,9 @@ $('#register button').live('click', function() {
 	if ($('#register-email').val() == $('#register-confirm').val()) {
 		$('#register button, #register input').attr('disabled', true);
 
-		$.getJSON('/api/registered', {email: $('#register-email').val()}, function(response) {
+		$.getJSON(base + '/api/registered', {email: $('#register-email').val()}, function(response) {
 			if (!response.response) {
-				$.getJSON('/api/requestpassword', {email: $('#register-email').val()}, function(response) {
+				$.getJSON(base + '/api/requestpassword', {email: $('#register-email').val()}, function(response) {
 					if (response.success) {
 						$('#register .error').text('');
 						$('#register .success').show();
@@ -91,7 +93,7 @@ $('#confirm button').live('click', function() {
 	params.email = $('#confirm-email').val();
 	params.token = $('#confirm-token').val();
 
-	$.getJSON('/api/confirmemail', params, function(response) {
+	$.getJSON(base + '/api/confirmemail', params, function(response) {
 		if (response.success) {
 			$('#confirm .error').text('');
 			$('#confirm .success').show();
@@ -110,9 +112,9 @@ $('#confirm button').live('click', function() {
 $('#recover button').live('click', function() {
 	$('#recover button, #recover input').attr('disabled', true);
 
-	$.getJSON('/api/registered', {email: $('#recover-email').val()}, function(response) {
+	$.getJSON(base + '/api/registered', {email: $('#recover-email').val()}, function(response) {
 		if (response.response) {
-			$.getJSON('/api/requestpassword', {email: $('#recover-email').val()}, function(response) {
+			$.getJSON(base + '/api/requestpassword', {email: $('#recover-email').val()}, function(response) {
 				if (response.success) {
 					$('#recover .error').text('');
 					$('#recover .success').show();
@@ -143,7 +145,7 @@ $('#reset button').live('click', function() {
 		params.token = $('#reset-token').val();
 		params.password = $('#reset-password').val();
 
-		$.getJSON('/api/setpassword', params, function(response) {
+		$.getJSON(base + '/api/setpassword', params, function(response) {
 			if (response.success) {
 				$('#reset .error').text('');
 				$('#reset .success').show();
@@ -171,7 +173,7 @@ $('#changepassword button').live('click', function() {
 		params.oldpassword = $('#changepassword-old').val();
 		params.newpassword = $('#changepassword-new').val();
 
-		$.getJSON('/api/changepassword', params, function(response) {
+		$.getJSON(base + '/api/changepassword', params, function(response) {
 			if (response.success) {
 				$('#changepassword .error').text('');
 				$('#changepassword .success').show();
@@ -199,7 +201,7 @@ $('#changeemail button').live('click', function() {
 		params.newemail = $('#changeemail-email').val();
 		params.password = $('#changeemail-password').val();
 
-		$.getJSON('/api/changeemail', params, function(response) {
+		$.getJSON(base + '/api/changeemail', params, function(response) {
 			if (response.success) {
 				localStorage.setItem('session_email', $('#changeemail-email').val());
 
