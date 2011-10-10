@@ -18,231 +18,233 @@
  * along with RiverID.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-var base = 'http://crowdmapid.com';
+(function() {
+ var base = 'http://crowdmapid.com';
 
-$('nav a').live('click', function() {
-	$('nav a.active').removeClass('active');
-	$(this).addClass('active');
-	$('section').hide();
-	$('#' + this.hash.substr(1)).show();
-	
-	return false;
-});
+ $('nav a').live('click', function() {
+ 	$('nav a.active').removeClass('active');
+ 	$(this).addClass('active');
+ 	$('section').hide();
+ 	$('#' + this.hash.substr(1)).show();
+ 	
+ 	return false;
+ });
 
-$('#signin button').live('click', function() {
-	$('#signin button, #signin input').attr('disabled', true);
+ $('#signin button').live('click', function() {
+ 	$('#signin button, #signin input').attr('disabled', true);
 
-	$.getJSON(base + '/api/signin', {email: $('#signin-email').val(), password: $('#signin-password').val()}, function(response) {
-		if (response.success) {
-			localStorage.setItem('session_email', $('#signin-email').val());
-			localStorage.setItem('session_id', response.response.session_id);
-			localStorage.setItem('user_id', response.response.user_id);
+ 	$.getJSON(base + '/api/signin', {email: $('#signin-email').val(), password: $('#signin-password').val()}, function(response) {
+ 		if (response.success) {
+ 			localStorage.setItem('session_email', $('#signin-email').val());
+ 			localStorage.setItem('session_id', response.response.session_id);
+ 			localStorage.setItem('user_id', response.response.user_id);
 
-			$.cookie('session_id', response.response.session_id);
-			$.cookie('user_id', response.response.user_id);
+ 			$.cookie('session_id', response.response.session_id);
+ 			$.cookie('user_id', response.response.user_id);
 
-			$('#signin-password').val('');
-			$('#email').text($('#signin-email').val());
-			$('#anonymous, #signin').hide();
-			$('#signedin, #changepassword, #signout').show();
-		} else {
-			$('#signin .error').text(response.error);
-		}
+ 			$('#signin-password').val('');
+ 			$('#email').text($('#signin-email').val());
+ 			$('#anonymous, #signin').hide();
+ 			$('#signedin, #changepassword, #signout').show();
+ 		} else {
+ 			$('#signin .error').text(response.error);
+ 		}
 
-		$('#signin button, #signin input').attr('disabled', false);
-	});
+ 		$('#signin button, #signin input').attr('disabled', false);
+ 	});
 
-	return false;
-});
+ 	return false;
+ });
 
-$('#register button').live('click', function() {
-	if ($('#register-email').val() == $('#register-confirm').val()) {
-		$('#register button, #register input').attr('disabled', true);
+ $('#register button').live('click', function() {
+ 	if ($('#register-email').val() == $('#register-confirm').val()) {
+ 		$('#register button, #register input').attr('disabled', true);
 
-		$.getJSON(base + '/api/registered', {email: $('#register-email').val()}, function(response) {
-			if (!response.response) {
-				$.getJSON(base + '/api/requestpassword', {email: $('#register-email').val()}, function(response) {
-					if (response.success) {
-						$('#register .error').text('');
-						$('#register .success').show();
-						$('#register input').val('');
-					} else {
-						$('#register .success').hide();
-						$('#register .error').text(response.error);
-					}
+ 		$.getJSON(base + '/api/registered', {email: $('#register-email').val()}, function(response) {
+ 			if (!response.response) {
+ 				$.getJSON(base + '/api/requestpassword', {email: $('#register-email').val()}, function(response) {
+ 					if (response.success) {
+ 						$('#register .error').text('');
+ 						$('#register .success').show();
+ 						$('#register input').val('');
+ 					} else {
+ 						$('#register .success').hide();
+ 						$('#register .error').text(response.error);
+ 					}
 
-					$('#register button, #register input').attr('disabled', false);
-				});
-			} else {
-				$('#register .success').hide();
-				$('#register .error').text('This email address has already been registered.');
-				$('#register button, #register input').attr('disabled', false);
-			}
-		});
-	} else {
-		$('#register .error').text('The two email addresses you entered do not match. Please try again.')
-	}
+ 					$('#register button, #register input').attr('disabled', false);
+ 				});
+ 			} else {
+ 				$('#register .success').hide();
+ 				$('#register .error').text('This email address has already been registered.');
+ 				$('#register button, #register input').attr('disabled', false);
+ 			}
+ 		});
+ 	} else {
+ 		$('#register .error').text('The two email addresses you entered do not match. Please try again.')
+ 	}
 
-	return false;
-});
+ 	return false;
+ });
 
-$('#confirm button').live('click', function() {
-	$('#confirm button, #confirm input').attr('disabled', true);
+ $('#confirm button').live('click', function() {
+ 	$('#confirm button, #confirm input').attr('disabled', true);
 
-	var params = {};
-	params.email = $('#confirm-email').val();
-	params.token = $('#confirm-token').val();
+ 	var params = {};
+ 	params.email = $('#confirm-email').val();
+ 	params.token = $('#confirm-token').val();
 
-	$.getJSON(base + '/api/confirmemail', params, function(response) {
-		if (response.success) {
-			$('#confirm .error').text('');
-			$('#confirm .success').show();
-			$('#confirm input').val('');
-		} else {
-			$('#confirm .success').hide();
-			$('#confirm .error').text(response.error);
-		}
+ 	$.getJSON(base + '/api/confirmemail', params, function(response) {
+ 		if (response.success) {
+ 			$('#confirm .error').text('');
+ 			$('#confirm .success').show();
+ 			$('#confirm input').val('');
+ 		} else {
+ 			$('#confirm .success').hide();
+ 			$('#confirm .error').text(response.error);
+ 		}
 
-		$('#confirm button, #confirm input').attr('disabled', false);
-	});
+ 		$('#confirm button, #confirm input').attr('disabled', false);
+ 	});
 
-	return false;
-});
+ 	return false;
+ });
 
-$('#recover button').live('click', function() {
-	$('#recover button, #recover input').attr('disabled', true);
+ $('#recover button').live('click', function() {
+ 	$('#recover button, #recover input').attr('disabled', true);
 
-	$.getJSON(base + '/api/registered', {email: $('#recover-email').val()}, function(response) {
-		if (response.response) {
-			$.getJSON(base + '/api/requestpassword', {email: $('#recover-email').val()}, function(response) {
-				if (response.success) {
-					$('#recover .error').text('');
-					$('#recover .success').show();
-					$('#recover input').val('');
-				} else {
-					$('#recover .success').hide();
-					$('#recover .error').text(response.error);
-				}
-				
-				$('#recover button, #recover input').attr('disabled', false);
-			});
-		} else {
-			$('#recover .success').hide();
-			$('#recover .error').text('This email address is not currently associated with any account on our records.');
-			$('#recover button, #recover input').attr('disabled', false);
-		}
-	});
+ 	$.getJSON(base + '/api/registered', {email: $('#recover-email').val()}, function(response) {
+ 		if (response.response) {
+ 			$.getJSON(base + '/api/requestpassword', {email: $('#recover-email').val()}, function(response) {
+ 				if (response.success) {
+ 					$('#recover .error').text('');
+ 					$('#recover .success').show();
+ 					$('#recover input').val('');
+ 				} else {
+ 					$('#recover .success').hide();
+ 					$('#recover .error').text(response.error);
+ 				}
+ 				
+ 				$('#recover button, #recover input').attr('disabled', false);
+ 			});
+ 		} else {
+ 			$('#recover .success').hide();
+ 			$('#recover .error').text('This email address is not currently associated with any account on our records.');
+ 			$('#recover button, #recover input').attr('disabled', false);
+ 		}
+ 	});
 
-	return false;
-});
+ 	return false;
+ });
 
-$('#reset button').live('click', function() {
-	if ($('#reset-password').val() == $('#reset-confirm').val()) {
-		$('#reset button, #reset input').attr('disabled', true);
+ $('#reset button').live('click', function() {
+ 	if ($('#reset-password').val() == $('#reset-confirm').val()) {
+ 		$('#reset button, #reset input').attr('disabled', true);
 
-		var params = {};
-		params.email = $('#reset-email').val();
-		params.token = $('#reset-token').val();
-		params.password = $('#reset-password').val();
+ 		var params = {};
+ 		params.email = $('#reset-email').val();
+ 		params.token = $('#reset-token').val();
+ 		params.password = $('#reset-password').val();
 
-		$.getJSON(base + '/api/setpassword', params, function(response) {
-			if (response.success) {
-				$('#reset .error').text('');
-				$('#reset .success').show();
-				$('#reset input').val('');
-			} else {
-				$('#reset .success').hide();
-				$('#reset .error').text(response.error);
-			}
+ 		$.getJSON(base + '/api/setpassword', params, function(response) {
+ 			if (response.success) {
+ 				$('#reset .error').text('');
+ 				$('#reset .success').show();
+ 				$('#reset input').val('');
+ 			} else {
+ 				$('#reset .success').hide();
+ 				$('#reset .error').text(response.error);
+ 			}
 
-			$('#reset button, #reset input').attr('disabled', false);
-		});
-	} else {
-		$('#reset .error').text('The two passwords you entered do not match. Please try again.');
-	}
+ 			$('#reset button, #reset input').attr('disabled', false);
+ 		});
+ 	} else {
+ 		$('#reset .error').text('The two passwords you entered do not match. Please try again.');
+ 	}
 
-	return false;
-});
+ 	return false;
+ });
 
-$('#changepassword button').live('click', function() {
-	if ($('#changepassword-new').val() == $('#changepassword-confirm').val()) {
-		$('#changepassword button, #changepassword input').attr('disabled', true);
+ $('#changepassword button').live('click', function() {
+ 	if ($('#changepassword-new').val() == $('#changepassword-confirm').val()) {
+ 		$('#changepassword button, #changepassword input').attr('disabled', true);
 
-		var params = {};
-		params.email = localStorage.getItem('session_email');
-		params.oldpassword = $('#changepassword-old').val();
-		params.newpassword = $('#changepassword-new').val();
+ 		var params = {};
+ 		params.email = localStorage.getItem('session_email');
+ 		params.oldpassword = $('#changepassword-old').val();
+ 		params.newpassword = $('#changepassword-new').val();
 
-		$.getJSON(base + '/api/changepassword', params, function(response) {
-			if (response.success) {
-				$('#changepassword .error').text('');
-				$('#changepassword .success').show();
-				$('#changepassword input').val('');
-			} else {
-				$('#changepassword .success').hide();
-				$('#changepassword .error').text(response.error);
-			}
+ 		$.getJSON(base + '/api/changepassword', params, function(response) {
+ 			if (response.success) {
+ 				$('#changepassword .error').text('');
+ 				$('#changepassword .success').show();
+ 				$('#changepassword input').val('');
+ 			} else {
+ 				$('#changepassword .success').hide();
+ 				$('#changepassword .error').text(response.error);
+ 			}
 
-			$('#changepassword button, #changepassword input').attr('disabled', false);
-		});
-	} else {
-		$('#changepassword .error').text('The two passwords you entered do not match. Please try again.');
-	}
+ 			$('#changepassword button, #changepassword input').attr('disabled', false);
+ 		});
+ 	} else {
+ 		$('#changepassword .error').text('The two passwords you entered do not match. Please try again.');
+ 	}
 
-	return false;
-});
+ 	return false;
+ });
 
-$('#changeemail button').live('click', function() {
-	if ($('#changeemail-email').val() == $('#changeemail-confirm').val()) {
-		$('#changeemail button, #changeemail input').attr('disabled', true);
+ $('#changeemail button').live('click', function() {
+ 	if ($('#changeemail-email').val() == $('#changeemail-confirm').val()) {
+ 		$('#changeemail button, #changeemail input').attr('disabled', true);
 
-		var params = {};
-		params.oldemail = localStorage.getItem('session_email');
-		params.newemail = $('#changeemail-email').val();
-		params.password = $('#changeemail-password').val();
+ 		var params = {};
+ 		params.oldemail = localStorage.getItem('session_email');
+ 		params.newemail = $('#changeemail-email').val();
+ 		params.password = $('#changeemail-password').val();
 
-		$.getJSON(base + '/api/changeemail', params, function(response) {
-			if (response.success) {
-				localStorage.setItem('session_email', $('#changeemail-email').val());
+ 		$.getJSON(base + '/api/changeemail', params, function(response) {
+ 			if (response.success) {
+ 				localStorage.setItem('session_email', $('#changeemail-email').val());
 
-				$('#changeemail .error').text('');
-				$('#changeemail .success').show();
-				$('#changeemail input').val('');
-			} else {
-				$('#changeemail .success').hide();
-				$('#changeemail .error').text(response.error);
-			}
+ 				$('#changeemail .error').text('');
+ 				$('#changeemail .success').show();
+ 				$('#changeemail input').val('');
+ 			} else {
+ 				$('#changeemail .success').hide();
+ 				$('#changeemail .error').text(response.error);
+ 			}
 
-			$('#changeemail button, #changeemail input').attr('disabled', false);
-		});
-	} else {
-		$('#changeemail .error').text('The two email addresses you entered do not match. Please try again.');
-	}
+ 			$('#changeemail button, #changeemail input').attr('disabled', false);
+ 		});
+ 	} else {
+ 		$('#changeemail .error').text('The two email addresses you entered do not match. Please try again.');
+ 	}
 
-	return false;
-});
+ 	return false;
+ });
 
-$('#signout').live('click', function() {
-	localStorage.removeItem('session_email');
-	localStorage.removeItem('session_id');
-	localStorage.removeItem('user_id');
+ $('#signout').live('click', function() {
+ 	localStorage.removeItem('session_email');
+ 	localStorage.removeItem('session_id');
+ 	localStorage.removeItem('user_id');
 
-	$.cookie('session_id', null);
-	$.cookie('user_id', null);
+ 	$.cookie('session_id', null);
+ 	$.cookie('user_id', null);
 
-	$('input').val('');
-	$('#email').text('');
-	$('#signedin, section, #signout').hide();
-	$('#anonymous, #signin').show();
-});
+ 	$('input').val('');
+ 	$('#email').text('');
+ 	$('#signedin, section, #signout').hide();
+ 	$('#anonymous, #signin').show();
+ });
 
-$(function() {
-	var session_email = localStorage.getItem('session_email');
-	var session_id = localStorage.getItem('session_id');
+ $(function() {
+ 	var session_email = localStorage.getItem('session_email');
+ 	var session_id = localStorage.getItem('session_id');
 
-	if (session_email != null && session_id != null) {
-		$('#email').text(session_email);
-		$('#anonymous, #signin').hide();
-		$('#signedin, #changepassword, #signout').show();
-	}
-});
+ 	if (session_email != null && session_id != null) {
+ 		$('#email').text(session_email);
+ 		$('#anonymous, #signin').hide();
+ 		$('#signedin, #changepassword, #signout').show();
+ 	}
+ });
+})();
