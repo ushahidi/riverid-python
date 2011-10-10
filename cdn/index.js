@@ -26,7 +26,7 @@
         $(this).addClass('active');
         $('section').hide();
         $('#' + this.hash.substr(1)).show();
-        
+
         return false;
     });
 
@@ -124,7 +124,7 @@
                         $('#recover .success').hide();
                         $('#recover .error').text(response.error);
                     }
-                    
+
                     $('#recover button, #recover input').attr('disabled', false);
                 });
             } else {
