@@ -68,19 +68,13 @@ RiverID is an authentication and identity management system that provides users 
 1. Run the installation script:  
 `wget -qO- --no-check-certificate https://raw.github.com/ushahidi/riverid/master/scripts/install-mongo.sh | bash`
 
-2. Edit the configuration file at the following location:  
-`/etc/mongodb.conf`
-
-3. Load the new configuration:  
-`/etc/init.d/mongodb restart`
-
-4. Whitelist the IP address of each Application Cluster Node and each other MongoDB Node. Replace `10.1.2.3` and repeat for each:  
+2. Whitelist the IP address of each Application Cluster Node and each other MongoDB Node. Replace `10.1.2.3` and repeat for each:  
 `iptables -I INPUT 1 -p tcp --dport 27017 -j ACCEPT -s 10.1.2.3`
 
-5. After whitelisting the IP addresses, save the firewall configuration for restoration after reboot:  
+3. After whitelisting the IP addresses, save the firewall configuration for restoration after reboot:  
 `iptables-save > /etc/firewall.conf`
 
-6. Configure the [Replication Set](http://www.mongodb.org/display/DOCS/Replica+Sets).
+4. Configure the [Replication Set](http://www.mongodb.org/display/DOCS/Replica+Sets).
 
 ## Content Delivery Network
 
