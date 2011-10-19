@@ -31,7 +31,7 @@ apt-get install -y nginx openssl
 rm -f /etc/nginx/sites-enabled/default
 
 # Download Custom Nginx Configuration
-wget -O /etc/nginx/sites-enabled/default/riverid --no-check-certificate https://raw.github.com/ushahidi/riverid/master/config/nginx-lb.conf
+wget -O /etc/nginx/sites-enabled/riverid --no-check-certificate https://raw.github.com/ushahidi/riverid/master/config/nginx-lb.conf
 
 # Create SSL Directory
 mkdir /etc/nginx/ssl
