@@ -79,7 +79,11 @@ class API(object):
         self.user.exists(email):
             raise RiverException(_('The given email address has already been registered.'))
         
-        self.user.insert(email, enabled=True, password=password)
+        user_id = Secret.generate(128)
+
+        self.user.insert(email, enabled=True, id=user_id, password=password)
+
+        return user_id
 
     def registered(self, email):
         Validator.email(email)
