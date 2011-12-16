@@ -56,6 +56,7 @@
 * `oldemail` The old email address of the account.
 * `newemail` The new email address of the account.
 * `password` The account's password.
+* `mailbody` The body of the email to send to the new address.
 
 ### changepassword
 
@@ -109,6 +110,7 @@
 #### Parameters
 
 * `email` The email address of the account.
+* `mailbody` The body of the email to send to the email address.
 
 ### sessions
 

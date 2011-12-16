@@ -28,7 +28,7 @@ class API(object):
     def __init__(self, db):
         self.user = RiverUser(db)
 
-    def changeemail(self, oldemail, newemail, password):
+    def changeemail(self, oldemail, newemail, password, mailbody):
         Validator.email(oldemail)
         Validator.email(newemail)
         Validator.password(password)
@@ -40,7 +40,7 @@ class API(object):
 
         self.user.update(oldemail, email=newemail, enabled=False, token=token)
 
-        Mail.send(MAIL_FROM, newemail, _('RiverID Email Change'), token)
+        Mail.send(MAIL_FROM, newemail, _('RiverID Email Change'), mailbody, token=token)
 
     def changepassword(self, email, oldpassword, newpassword):
         Validator.email(email)
@@ -90,7 +90,7 @@ class API(object):
 
         return self.user.exists(email)
 
-    def requestpassword(self, email):
+    def requestpassword(self, email, mailbody):
         Validator.email(email)
 
         token = Secret.generate(16)
@@ -103,7 +103,7 @@ class API(object):
             user_id = Secret.generate(128)
             self.user.insert(email, id=user_id, enabled=False, token=token)
 
-        Mail.send(MAIL_FROM, email, subject, token)
+        Mail.send(MAIL_FROM, email, subject, mailbody, token=token)
     
     def sessions(self, email, session_id):
         Validator.email(email)
