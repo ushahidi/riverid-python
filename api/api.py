@@ -76,7 +76,7 @@ class API(object):
         Validator.email(email)
         Validator.password(password)
 
-        self.user.exists(email):
+        if self.user.exists(email):
             raise RiverException(_('The given email address has already been registered.'))
         
         user_id = Secret.generate(128)
