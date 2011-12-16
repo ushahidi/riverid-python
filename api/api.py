@@ -71,6 +71,15 @@ class API(object):
             raise RiverException(_('The token is not valid for this email address.'))
 
         self.user.update(email, enabled=True, token=False)
+    
+    def register(self, email, password):
+        Validator.email(email)
+        Validator.password(password)
+
+        self.user.exists(email):
+            raise RiverException(_('The given email address has already been registered.'))
+        
+        self.user.insert(email, enabled=True, password=password)
 
     def registered(self, email):
         Validator.email(email)
