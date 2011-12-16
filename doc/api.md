@@ -83,6 +83,17 @@
 * `email` The email address to confirm.
 * `token` The secret token sent to the address.
 
+### register
+
+#### Parameters
+
+* `email` The email address to register.
+* `password` The password for the new user.
+
+#### Returns
+
+* `string` The 128-character alphanumeric unique user identifier.
+
 ### registered
 
 #### Parameters
