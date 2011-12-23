@@ -81,7 +81,7 @@ class API(object):
         
         user_id = Secret.generate(128)
 
-        self.user.insert(email, enabled=True, id=user_id, password=password)
+        self.user.insert(email, enabled=True, id=user_id, password=Secret.hash(password, SALT))
 
         return user_id
 
