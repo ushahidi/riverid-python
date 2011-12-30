@@ -49,6 +49,13 @@
 
 ## Methods
 
+### about
+
+#### Returns
+
+* `name` The admin created name of the server for display purposes.
+* `version` Version number of the RiverID software running on the server.
+
 ### changeemail
 
 #### Parameters
