@@ -53,8 +53,9 @@
 
 #### Returns
 
-* `name` The admin created name of the server for display purposes.
-* `version` Version number of the RiverID software running on the server.
+* `object`
+    * `name` The admin created name of the server for display purposes.
+    * `version` Version number of the RiverID software running on the server.
 
 ### changeemail
 
@@ -143,8 +144,8 @@
 #### Returns
 
 * `object`
-** `string` `session_id` The 64-character alphanumeric unique session identifier.
-** `string` `user_id` The 128-character alphanumeric unique user identifier.
+    * `string` `session_id` The 64-character alphanumeric unique session identifier.
+    * `string` `user_id` The 128-character alphanumeric unique user identifier.
 
 ### signin
 
@@ -156,8 +157,8 @@
 #### Returns
 
 * `object`
-** `string` `session_id` The new 64-character alphanumeric unique session identifier.
-** `string` `user_id` The 128-character alphanumeric unique user identifier.
+    * `string` `session_id` The new 64-character alphanumeric unique session identifier.
+    * `string` `user_id` The 128-character alphanumeric unique user identifier.
 
 ### signout
 
