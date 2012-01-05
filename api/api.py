@@ -16,7 +16,7 @@
 # You should have received a copy of the GNU Affero General Public License
 # along with RiverID.  If not, see <http://www.gnu.org/licenses/>.
 
-from config import MAIL_FROM, NAME, SALT
+from config import INFO_URL, MAIL_FROM, NAME, SALT
 from datetime import datetime
 from mail import Mail
 from riverexception import RiverException
@@ -29,7 +29,7 @@ class API(object):
         self.user = RiverUser(db)
 
     def about(self):
-        return dict(name=NAME, version='1.0')
+        return dict(info_url=INFO_URL, name=NAME, version='1.0')
 
     def changeemail(self, oldemail, newemail, password, mailbody):
         Validator.email(oldemail)

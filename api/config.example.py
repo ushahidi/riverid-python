@@ -16,6 +16,7 @@
 # You should have received a copy of the GNU Affero General Public License
 # along with RiverID.  If not, see <http://www.gnu.org/licenses/>.
 
+INFO_URL = 'http://example.com/'
 MAIL_FROM = 'riverid@ushahidi.com'
 NAME = 'Anonymous RiverID Deployment'
 SALT = 'ukc6kzceDlBukJNuK5t3ZxdxvG4DJNzcjdREbbfIMZgMf1I0SfoqPw6XytbjL80'

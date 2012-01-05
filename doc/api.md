@@ -54,6 +54,7 @@
 #### Returns
 
 * `object`
+    * `info_url` An URL to a web page with more information about the deployment.
     * `name` The admin created name of the server for display purposes.
     * `version` Version number of the RiverID software running on the server.
 
