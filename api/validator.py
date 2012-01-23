@@ -21,14 +21,14 @@ from riverexception import RiverException
 
 class Validator(object):
     @staticmethod
-    def email(string):
-        if match(r'(?:^|\s)[-a-z0-9_.]+@(?:[-a-z0-9]+\.)+[a-z]{2,6}(?:\s|$)', string, IGNORECASE) == None:
-            raise RiverException(_('Please provide a valid email address.'))
-
-    @staticmethod
     def callback(string):
         if match(r'^[a-zA-Z][a-zA-Z0-9_]*$', string) == None:
             raise RiverException(_('Please provide a valid callback function name.'))
+
+    @staticmethod
+    def email(string):
+        if match(r'(?:^|\s)[-a-z0-9_.]+@(?:[-a-z0-9]+\.)+[a-z]{2,6}(?:\s|$)', string, IGNORECASE) == None:
+            raise RiverException(_('Please provide a valid email address.'))
 
     @staticmethod
     def password(string):
