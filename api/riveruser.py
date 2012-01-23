@@ -46,3 +46,11 @@ class RiverUser(object):
     
     def update_array(self, email, array, count, key, value):
         self.db.user.update({'email': email}, {'$set': {''.join((array, '.', str(count), '.', key)): value}})
+
+    def validate_session(self, sessions, session_id):
+        valid = False
+        for session in sessions:
+            if session['id'] == session_id and 'stop' not in session:
+                valid = True
+        if not valid:
+            throw new RiverException(_('The session is no longer valid; please sign back into the system.'))
