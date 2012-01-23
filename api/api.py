@@ -41,7 +41,10 @@ class API(object):
         user = self.user.get(email)
         self.user.validate_session(user['session'], session_id)
 
-        return self.site.get_user_urls(user['id'])
+        if not self.user.exists(url):
+            self.user.add_site(url)
+
+        self.user.add_user(url, user['id'])
 
     def changeemail(self, oldemail, newemail, password, mailbody):
         Validator.email(oldemail)
@@ -194,3 +197,12 @@ class API(object):
         
         if not found:
             raise RiverException(_('The session is not valid for this account.'))
+
+    def usersites(self, email, session_id):
+        Validator.email(email)
+        Validator.session(session_id)
+
+        user = self.user.get(email)
+        self.user.validate_session(user['session'], session_id)
+
+        return self.site.get_user_urls(user['id'])
