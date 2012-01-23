@@ -44,3 +44,8 @@ class Validator(object):
     def token(string):
         if match(r'^[a-zA-Z0-9]{16}$', string) == None:
             raise RiverException(_('Please provide a valid token.'))
+
+    @staticmethod
+    def url(string):
+        if match(r'^https?://[a-z0-9-\.]+\.[a-z0-9-\.]+/.*$', string) == None:
+            raise RiverException(_('Please provide a valid URL.'))
