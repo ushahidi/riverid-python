@@ -53,4 +53,4 @@ class RiverUser(object):
             if session['id'] == session_id and 'stop' not in session:
                 valid = True
         if not valid:
-            throw new RiverException(_('The session is no longer valid; please sign back into the system.'))
+            raise RiverException(_('The session is no longer valid; please sign back into the system.'))
