@@ -44,7 +44,8 @@ class API(object):
         if not self.site.exists(url):
             self.site.add_site(url)
 
-        self.site.add_user(url, user['id'])
+        if url not in self.site.get_user_urls(user['id']):
+            self.site.add_user(url, user['id'])
 
     def changeemail(self, oldemail, newemail, password, mailbody):
         Validator.email(oldemail)
