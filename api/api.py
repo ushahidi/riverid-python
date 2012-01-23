@@ -21,15 +21,27 @@ from datetime import datetime
 from mail import Mail
 from riverexception import RiverException
 from secret import Secret
+from riversite import RiverSite
 from riveruser import RiverUser
 from validator import Validator
 
 class API(object):
     def __init__(self, db):
+        self.site = RiverSite(db)
         self.user = RiverUser(db)
 
     def about(self):
         return dict(info_url=INFO_URL, name=NAME, version='1.0')
+
+    def addusertosite(self, email, session_id, url):
+        Validator.email(email)
+        Validator.session(session_id)
+        Validator.url(url)
+
+        user = self.user.get(email)
+        self.user.validate_session(user['session'], session_id)
+
+        return self.site.get_user_urls(user['id'])
 
     def changeemail(self, oldemail, newemail, password, mailbody):
         Validator.email(oldemail)
