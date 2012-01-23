@@ -41,10 +41,10 @@ class API(object):
         user = self.user.get(email)
         self.user.validate_session(user['session'], session_id)
 
-        if not self.user.exists(url):
-            self.user.add_site(url)
+        if not self.site.exists(url):
+            self.site.add_site(url)
 
-        self.user.add_user(url, user['id'])
+        self.site.add_user(url, user['id'])
 
     def changeemail(self, oldemail, newemail, password, mailbody):
         Validator.email(oldemail)
