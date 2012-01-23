@@ -58,6 +58,14 @@
     * `name` The admin created name of the server for display purposes.
     * `version` Version number of the RiverID software running on the server.
 
+### addusertosite
+
+#### Parameters
+
+* `email` The current email address of the user.
+* `session_id` An active session identifier of the user.
+* `url` The URL of the site to add to the user.
+
 ### changeemail
 
 #### Parameters
