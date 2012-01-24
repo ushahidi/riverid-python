@@ -22,8 +22,12 @@ from smtplib import SMTP
 class Mail(object):
     @staticmethod
     def send(sender, recipient, subject, body, **values):
-        for key in values:
-            body = body.replace('%%%s%%' % key, values[key])
+        if len(body) > 0:
+            for key in values:
+                body = body.replace('%%%s%%' % key, values[key])
+        else:
+            for key in values:
+                body += "%s=%s\n" % (key, values[key])
 
         message = MIMEText(body)
         message['From'] = sender
