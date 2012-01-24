@@ -27,7 +27,7 @@ class Validator(object):
 
     @staticmethod
     def email(string):
-        if match(r'(?:^|\s)[-a-z0-9_.]+@(?:[-a-z0-9]+\.)+[a-z]{2,6}(?:\s|$)', string, IGNORECASE) == None:
+        if match(r'(?:^|\s)[-a-z0-9_.+]+@(?:[-a-z0-9]+\.)+[a-z]{2,6}(?:\s|$)', string, IGNORECASE) == None:
             raise RiverException(_('Please provide a valid email address.'))
 
     @staticmethod
