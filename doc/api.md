@@ -74,6 +74,7 @@
 * `newemail` The new email address of the account.
 * `password` The account's password.
 * `mailbody` The body of the email to send to the new address.
+    * `%token%` Placeholder for the token to be used with the `confirmemail` method.
 
 ### changepassword
 
@@ -128,6 +129,7 @@
 
 * `email` The email address of the account.
 * `mailbody` The body of the email to send to the email address.
+    * `%token%` Placeholder for the token to be used with the `setpassword` method.
 
 ### sessions
 
