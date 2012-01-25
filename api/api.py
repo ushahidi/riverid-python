@@ -56,6 +56,9 @@ class API(object):
 
         if self.user.get(oldemail)['password'] != Secret.hash(password, SALT):
             raise RiverException(_('The password is incorrect for this user.'))
+
+        if self.user.exists(newemail):
+            raise RiverException(_('The new email address has already been registered.'))
         
         token = Secret.generate(16)
 
