@@ -65,7 +65,6 @@ class API(object):
 
     def changepassword(self, email, oldpassword, newpassword):
         Validator.email(email)
-        Validator.password(oldpassword)
         Validator.password(newpassword)
 
         if self.user.get(email)['password'] != Secret.hash(oldpassword, SALT):
