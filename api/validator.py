@@ -32,8 +32,8 @@ class Validator(object):
 
     @staticmethod
     def password(string):
-        if not 8 <= len(string) <= 128:
-            raise RiverException(_('Please provide a password between 8 and 128 characters in length.'))
+        if not 5 <= len(string) <= 128:
+            raise RiverException(_('Please provide a password between 5 and 128 characters in length.'))
 
     @staticmethod
     def session(string):
