@@ -78,8 +78,8 @@ RiverID is an authentication and identity management system that provides users 
 
 ## Content Delivery Network
 
-* `http://c739724.r24.cf2.rackcdn.com/`
-* `https://c739724.ssl.cf2.rackcdn.com/`
+* `http://c290918.r18.cf1.rackcdn.com/`
+* `https://c290918.ssl.cf1.rackcdn.com/`
 
 ## Documentation
 
