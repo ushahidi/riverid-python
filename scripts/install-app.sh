@@ -27,7 +27,7 @@ apt-get update
 # Upgrade the existing packages.
 apt-get upgrade -y
 
-# Install the necessary Debian packages.
+# Install the necessary Ubuntu packages.
 apt-get install -y apache2 libapache2-mod-wsgi postfix python-pip git
 
 # Install the necessary Python packages.
