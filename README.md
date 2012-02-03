@@ -2,7 +2,7 @@
 
 ## Synopsis
 
-RiverID is an authentication and identity management system that provides users with a secure central sign-on facility. Third party applications can make use of the integrated OAuth and OpenID endpoints.
+RiverID is an authentication and identity management system that provides users with a secure central sign-on facility.
 
 ## Architecture
 
