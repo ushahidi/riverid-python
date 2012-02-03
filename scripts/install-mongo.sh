@@ -34,16 +34,16 @@ apt-get upgrade -y
 apt-get install -y mongodb-10gen
 
 # Download MongoDB Configuration
-wget -O /etc/mongodb.conf --no-check-certificate https://raw.github.com/ushahidi/riverid/master/config/mongodb.conf
+wget -O /etc/mongodb.conf https://raw.github.com/ushahidi/riverid/master/config/mongodb.conf
 
 # Restart MongoDB
 /etc/init.d/mongodb restart
 
 # Download Firewall Configuration
-wget -O /etc/firewall.conf --no-check-certificate https://raw.github.com/ushahidi/riverid/master/config/firewall-mongo.conf
+wget -O /etc/firewall.conf https://raw.github.com/ushahidi/riverid/master/config/firewall-mongo.conf
 
 # Download Firewall Startup Script
-wget -O /etc/init.d/firewall --no-check-certificate https://raw.github.com/ushahidi/riverid/master/scripts/firewall.sh
+wget -O /etc/init.d/firewall https://raw.github.com/ushahidi/riverid/master/scripts/firewall.sh
 
 # Flag Firewall Startup Script as Executable
 chmod +x /etc/init.d/firewall

@@ -19,7 +19,7 @@ RiverID is an authentication and identity management system that provides users 
 ### Deployment
 
 1. Run the installation script:  
-`wget -qO- --no-check-certificate https://raw.github.com/ushahidi/riverid/master/scripts/install-lb.sh | bash`
+`wget -qO- https://raw.github.com/ushahidi/riverid/master/scripts/install-lb.sh | bash`
 
 2. Edit the configuration file at the following location:  
 `/etc/nginx/sites-enabled/riverid`
@@ -48,7 +48,7 @@ RiverID is an authentication and identity management system that provides users 
 ### Deployment
 
 1. Run the installation script:  
-`wget -qO- --no-check-certificate https://raw.github.com/ushahidi/riverid/master/scripts/install-app.sh | bash`
+`wget -qO- https://raw.github.com/ushahidi/riverid/master/scripts/install-app.sh | bash`
 
 2. Edit the configuration file at the following location:  
 `/var/www/riverid/api/config.py`
@@ -66,7 +66,7 @@ RiverID is an authentication and identity management system that provides users 
 ### Deployment
 
 1. Run the installation script:  
-`wget -qO- --no-check-certificate https://raw.github.com/ushahidi/riverid/master/scripts/install-mongo.sh | bash`
+`wget -qO- https://raw.github.com/ushahidi/riverid/master/scripts/install-mongo.sh | bash`
 
 2. Whitelist the IP address of each Application Cluster Node and each other MongoDB Node. Replace `10.1.2.3` and repeat for each:  
 `iptables -I INPUT 1 -p tcp --dport 27017 -j ACCEPT -s 10.1.2.3`

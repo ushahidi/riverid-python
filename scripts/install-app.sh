@@ -52,10 +52,10 @@ cp /var/www/riverid/config/apache-app.conf /etc/apache2/sites-enabled/riverid-ap
 cp /var/www/riverid/api/config.example.py /var/www/riverid/api/config.py
 
 # Download Firewall Configuration
-wget -O /etc/firewall.conf --no-check-certificate https://raw.github.com/ushahidi/riverid/master/config/firewall-app.conf
+wget -O /etc/firewall.conf https://raw.github.com/ushahidi/riverid/master/config/firewall-app.conf
 
 # Download Firewall Startup Script
-wget -O /etc/init.d/firewall --no-check-certificate https://raw.github.com/ushahidi/riverid/master/scripts/firewall.sh
+wget -O /etc/init.d/firewall https://raw.github.com/ushahidi/riverid/master/scripts/firewall.sh
 
 # Flag Firewall Startup Script as Executable
 chmod +x /etc/init.d/firewall
