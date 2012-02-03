@@ -12,7 +12,7 @@ RiverID is an authentication and identity management system that provides users 
 
 ### Software
 
-* [Debian](http://www.debian.org/)
+* [Ubuntu](http://www.ubuntu.com/)
 * [Nginx](http://nginx.org/)
 * [OpenSSL](http://www.openssl.org/)
 
@@ -38,7 +38,7 @@ RiverID is an authentication and identity management system that provides users 
 ### Software
 
 * [Apache HTTP Server](http://httpd.apache.org/)
-* [Debian](http://www.debian.org/)
+* [Ubuntu](http://www.ubuntu.com/)
 * [Flask](http://flask.pocoo.org/)
 * [Mod_wsgi](http://code.google.com/p/modwsgi/)
 * [Postfix](http://www.postfix.org/)
@@ -60,7 +60,7 @@ RiverID is an authentication and identity management system that provides users 
 
 ### Software
 
-* [Debian](http://www.debian.org/)
+* [Ubuntu](http://www.ubuntu.com/)
 * [MongoDB](http://www.mongodb.org/)
 
 ### Deployment
