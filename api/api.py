@@ -64,7 +64,7 @@ class API(object):
 
         self.user.update(oldemail, email=newemail, enabled=False, token=token)
 
-        Mail.send(MAIL_FROM, newemail, _('RiverID Email Change'), mailbody, token=token)
+        Mail.send(MAIL_FROM, newemail, _('CrowdmapID Email Change'), mailbody, token=token)
 
     def changepassword(self, email, oldpassword, newpassword):
         Validator.email(email)
@@ -119,10 +119,10 @@ class API(object):
         token = Secret.generate(16)
 
         if self.user.exists(email):
-            subject = _('RiverID: Please confirm your password change.')
+            subject = _('CrowdmapID: Please confirm your password change.')
             self.user.update(email, token=token)
         else:
-            subject = _('RiverID: Please confirm your email address.')
+            subject = _('CrowdmapID: Please confirm your email address.')
             user_id = Secret.generate(128)
             self.user.insert(email, id=user_id, enabled=False, token=token)
 
