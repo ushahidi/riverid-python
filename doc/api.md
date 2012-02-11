@@ -182,5 +182,10 @@
 
 #### Parameters
 
+* `email` The email address of the account.
+* `session_id` The session identifier.
+
+#### Returns
+
 * `array`
     * `string` An URL of a site associated with this account.
