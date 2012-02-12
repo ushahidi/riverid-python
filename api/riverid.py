@@ -45,25 +45,33 @@ application = Flask(__name__)
 def api(method_name):
     db = Connection(MONGODB_SERVERS).riverid
     api = API(db)
+
+    # Get a reference to the actual method in the API object to call
     method = getattr(api, method_name, False)
 
+    # If the method could not be returned, it does not exist in the API
     if method == False:
         abort(404)
 
+    # Use reflection to retrieve the list of defined parameters of the method
     method_parameters = getargspec(method).args
     method_parameters.remove('self')
 
+    # Read the given parameters out of the post body if available, otherwise use the querystring
+    # Use to_dict because every parameter key can only have one associated value
     if request.method == 'POST':
         request_parameters = request.form.to_dict()
     else:
         request_parameters = request.args.to_dict()
 
+    # Special treatment for the callback parameter as that is used for JSONP
     if 'callback' in request_parameters:
         callback = request_parameters['callback']
         Validator.callback(callback)
     else:
         callback = False
     
+    # Special treatment for the lang parameter as that is used for GNU Gettext
     if 'lang' in request_parameters:
         if request_parameters['lang'] in languages:
             languages[request_parameters['lang']].install()
@@ -72,13 +80,16 @@ def api(method_name):
     else:
         languages['en_ZA'].install()
     
+    # Pass the cookies object to the method if the method has a parameter called "cookies"
     if 'cookies' in method_parameters:
         request_parameters['cookies'] = request.cookies
 
+    # Check if there are any missing parameters
     for key in method_parameters:
         if key not in request_parameters:
             abort(400)
     
+    # Remove extra parameters in the request that are not needed by the method
     unused_parameters = []
     for key in request_parameters:
         if key not in method_parameters:
@@ -86,8 +97,10 @@ def api(method_name):
     for key in unused_parameters:
         del request_parameters[key]
 
+    # Start building the object to be serialised and returned to the client
     result = dict(method=method_name, request=request_parameters)
 
+    # Attempt to execute the API method with the given parameters
     try:
         result['response'] = method(**request_parameters)
         result['success'] = True
@@ -95,8 +108,10 @@ def api(method_name):
         result['success'] = False
         result['error'] = error
 
+    # Serialise the response data
     json = dumps(result)
 
+    # If the callback has been specified, return as JSONP, otherwise as straight JSON
     if callback:
         javascript = '%s(%s);\n' % (callback, json)
         response = make_response(javascript)
