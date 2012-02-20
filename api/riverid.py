@@ -70,7 +70,7 @@ def api(method_name):
         Validator.callback(callback)
     else:
         callback = False
-    
+
     # Special treatment for the lang parameter as that is used for GNU Gettext
     if 'lang' in request_parameters:
         if request_parameters['lang'] in languages:
@@ -79,7 +79,7 @@ def api(method_name):
             languages['en_ZA'].install()
     else:
         languages['en_ZA'].install()
-    
+
     # Pass the cookies object to the method if the method has a parameter called "cookies"
     if 'cookies' in method_parameters:
         request_parameters['cookies'] = request.cookies
@@ -88,7 +88,7 @@ def api(method_name):
     for key in method_parameters:
         if key not in request_parameters:
             abort(400)
-    
+
     # Remove extra parameters in the request that are not needed by the method
     unused_parameters = []
     for key in request_parameters:
