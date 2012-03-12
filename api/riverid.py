@@ -87,7 +87,8 @@ def api(method_name):
     # Check if there are any missing parameters
     for key in method_parameters:
         if key not in request_parameters:
-            abort(400)
+            if key is not "mailfrom" and key is not "mailsubject":
+                abort(400)
 
     # Remove extra parameters in the request that are not needed by the method
     unused_parameters = []

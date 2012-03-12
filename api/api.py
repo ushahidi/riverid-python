@@ -49,7 +49,7 @@ class API(object):
 
         self.site.add_user(url, user['id'])
 
-    def changeemail(self, oldemail, newemail, password, mailbody, subject = None):
+    def changeemail(self, oldemail, newemail, password, mailbody, mailfrom = None, mailsubject = None):
         Validator.email(oldemail)
         Validator.email(newemail)
         Validator.password(password)
@@ -60,14 +60,17 @@ class API(object):
         if self.user.exists(newemail):
             raise RiverException(_('The new email address has already been registered.'))
 
-        if subject is None:
-            subject = _('CrowdmapID Email Change')
+        if mailsubject is None:
+            mailsubject = _('CrowdmapID Email Change')
+
+        if mailfrom is None:
+            mailfrom = MAIL_FROM
 
         token = Secret.generate(16)
 
         self.user.update(oldemail, email=newemail, enabled=False, token=token)
 
-        Mail.send(MAIL_FROM, newemail, subject, mailbody, token=token)
+        Mail.send(mailfrom, newemail, mailsubject, mailbody, token=token)
 
     def changepassword(self, email, oldpassword, newpassword):
         Validator.email(email)
@@ -116,24 +119,25 @@ class API(object):
 
         return self.user.exists(email)
 
-    def requestpassword(self, email, mailbody, subject = None):
+    def requestpassword(self, email, mailbody, mailfrom = None, mailsubject = None):
         Validator.email(email)
 
         token = Secret.generate(16)
 
-        if self.user.exists(email):
-            if subject is None:
-                subject = _('CrowdmapID: Please confirm your password change.')
+        if mailfrom is None:
+            mailfrom = MAIL_FROM
 
+        if self.user.exists(email):
+            if mailsubject is None:
+                mailsubject = _('CrowdmapID: Please confirm your password change.')
             self.user.update(email, token=token)
         else:
-            if subject is None:
-                subject = _('CrowdmapID: Please confirm your email address.')
-
+            if mailsubject is None:
+                mailsubject = _('CrowdmapID: Please confirm your email address.')
             user_id = Secret.generate(128)
             self.user.insert(email, id=user_id, enabled=False, token=token)
 
-        Mail.send(MAIL_FROM, email, subject, mailbody, token=token)
+        Mail.send(mailfrom, email, mailsubject, mailbody, token=token)
 
     def sessions(self, email, session_id):
         Validator.email(email)
